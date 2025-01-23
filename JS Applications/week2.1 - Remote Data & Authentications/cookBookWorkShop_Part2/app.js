@@ -13,11 +13,7 @@ function initNavigation() {
         guestNavigation.style.display = 'inline-block';
     };
 
-
-
-
 };
-
 
 function loadRecipies() {
     const recipiesURL = `http://localhost:3030/jsonstore/cookbook/recipes`;
@@ -122,6 +118,8 @@ function loadRecipie(recipieData) {
     // Return the constructed article element
     return articleEl;
 };
+
+
 
 loadRecipies();
 initNavigation();
