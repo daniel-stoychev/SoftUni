@@ -54,6 +54,7 @@ function createContacts() {
         .then(() => {
             personEl.value = '';
             phoneEl.value = '';
+            loadContacts();
 
         })
         .catch((err) => alert(err.message));
