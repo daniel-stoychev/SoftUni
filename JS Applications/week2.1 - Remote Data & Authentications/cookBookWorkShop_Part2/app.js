@@ -16,7 +16,7 @@ function initNavigation() {
 };
 
 function loadRecipies() {
-    const recipiesURL = `http://localhost:3030/jsonstore/cookbook/recipes`;
+    const recipiesURL = `http://localhost:3030/data/recipes`;
 
     fetch(recipiesURL)
         .then((response) => response.json())
@@ -50,7 +50,7 @@ function createRecipies(recipie) {
     articleEl.append(titleDiv, smallDiv);
 
     articleEl.addEventListener('click', () => {
-        const recipieDetailsURL = `http://localhost:3030/jsonstore/cookbook/details/${recipie._id}`;
+        const recipieDetailsURL = `http://localhost:3030/data/recipes/${recipie._id}`;
         fetch(recipieDetailsURL)
             .then((response) => response.json())
             .then((data) => {
