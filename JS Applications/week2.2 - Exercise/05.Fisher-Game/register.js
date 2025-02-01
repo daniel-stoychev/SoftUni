@@ -26,12 +26,15 @@ registerForm.addEventListener('submit', (e) => {
         })
             .then((res) => res.json())
             .then((data) => {
+                console.log(data);
+
                 if (data.code > 400) {
                     notificationSectionEl.textContent = data.message;
                     registerForm.reset();
                 } else {
                     localStorage.setItem('accessToken', data.accessToken);
                     localStorage.setItem('email', data.email);
+                    localStorage.setItem('id', data._id);
                     location.href = 'index.html';
                 }
 

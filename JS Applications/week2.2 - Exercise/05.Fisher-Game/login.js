@@ -25,6 +25,7 @@ loginForm.addEventListener('submit', (e) => {
         })
             .then((res) => res.json())
             .then((data) => {
+
                 if (data.code > 400) {
                     notificationSectionEl.textContent = data.message;
                 } else {
