@@ -1,10 +1,10 @@
 const postURL = 'http://localhost:3030/jsonstore/collections/myboard/posts';
-
 const initialForm = document.querySelector('main form');
 const mainEl = document.querySelector('main');
 const topicContainer = document.createElement('div');
 topicContainer.classList.add('topic-container');
 
+loadAllTopics();
 initialForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formFiends = new FormData(initialForm);
@@ -39,6 +39,7 @@ initialForm.addEventListener('submit', (e) => {
                 // console.log(data);
                 initialForm.reset();
                 addCreatedTopics(data.title, data.date, data.username);
+                loadAllTopics();
             })
     }
 });
@@ -48,17 +49,16 @@ function loadAllTopics() {
         .then(res => res.json())
         .then(data => {
             const posts = Object.values(data);
-            console.log(posts);
+            // console.log(posts);
+            topicContainer.innerHTML = '';
 
             posts.forEach(post => {
-                console.log(post);
-                listCreatedTopics(post.title, post.date, post.username);
+                // console.log(post);
+                listCreatedTopics(post.title, post.date, post.username, post._id);
             })
 
         })
 }
-
-loadAllTopics();
 
 function addCreatedTopics(title, date, username) {
     // Create the topic-name-wrapper
@@ -108,7 +108,7 @@ function addCreatedTopics(title, date, username) {
     topicContainer.appendChild(topicWrapper);
 }
 
-function listCreatedTopics(title, date, username) {
+function listCreatedTopics(title, date, username, id) {
     // Create the topic-name-wrapper
     const topicWrapper = document.createElement('div');
     topicWrapper.classList.add('topic-name-wrapper');
@@ -124,6 +124,7 @@ function listCreatedTopics(title, date, username) {
 
     const topicHeading = document.createElement('h2');
     topicHeading.textContent = title;
+    topicHeading.id = id;
 
     topicLink.appendChild(topicHeading);
     topicNameDiv.appendChild(topicLink);
@@ -155,11 +156,168 @@ function listCreatedTopics(title, date, username) {
     topicWrapper.appendChild(topicNameDiv);
     topicContainer.appendChild(topicWrapper);
 
+    mainEl.appendChild(topicContainer);
+
     topicWrapper.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log(`Clicked on: ${title}`);
-        // CONTINUE HERE
+        console.log(`Clicked on: ${id}`);
+        changeTopicLayout(id);
     });
-
-    mainEl.appendChild(topicContainer);
 }
+
+function changeTopicLayout(id) {
+    mainEl.innerHTML = '';
+
+    fetch(postURL)
+        .then(res => res.json())
+        .then(data => {
+            const values = Object.values(data);
+            // console.log(values);
+            for (const value of values) {
+                console.log(value._id);
+
+                if (value._id === id) {
+                    console.log(value.title);
+
+                    secondPageGeneration(value.title, value.username, value.postText, value.date);
+
+                    break;
+                }
+
+            }
+            console.log(data);
+
+
+        })
+
+}
+
+function secondPageGeneration(title, username, postText, date) {
+    //PROFILE>>>>>>>>>>>>
+    const topicContainerDiv = document.createElement('div');
+    topicContainerDiv.classList.add('topic-container');
+
+    // Create topic wrapper
+    const topicDiv = document.createElement('div');
+    topicDiv.classList.add('topic-name');
+
+    // Create link
+    const topicLink = document.createElement('a');
+    topicLink.href = "#";
+    topicLink.classList.add('normal');
+
+    // Create heading
+    const topicHeading = document.createElement('h2');
+    topicHeading.textContent = title;
+
+    // Append heading to link, and link to topic div
+    topicLink.appendChild(topicHeading);
+    topicDiv.appendChild(topicLink);
+
+    // Create comment section
+    const commentDiv = document.createElement('div');
+    commentDiv.classList.add('comment');
+
+    // Create header
+    const headerDiv = document.createElement('div');
+    headerDiv.classList.add('header');
+
+    // Create image
+    const avatarImg = document.createElement('img');
+    avatarImg.src = "./static/profile.png";
+    avatarImg.alt = "avatar";
+
+    // Create user info paragraph
+    const userInfoP = document.createElement('p');
+    userInfoP.innerHTML = `<span>${username}</span> posted on <time>${date}</time>`;
+
+    // Create post content paragraph
+    const postContentP = document.createElement('p');
+    postContentP.classList.add('post-content');
+    postContentP.textContent = postText;
+
+    topicContainerDiv.appendChild(topicDiv);
+    topicContainerDiv.appendChild(commentDiv);
+
+    //COMMENTFORM>>>>>>>>>>>>
+    const answerCommentDiv = document.createElement('div');
+    answerCommentDiv.classList.add('answer-comment');
+
+    // Create paragraph for user comment
+    const userCommentP = document.createElement('p');
+    userCommentP.innerHTML = `<span>currentUser</span> comment:`;
+
+    // Create answer div
+    const answerDiv = document.createElement('div');
+    answerDiv.classList.add('answer');
+
+    // Create form
+    const form = document.createElement('form');
+
+    // Create textarea
+    const textarea = document.createElement('textarea');
+    textarea.name = "postText";
+    textarea.id = "comment";
+    textarea.cols = 30;
+    textarea.rows = 10;
+
+    // Create div for username input
+    const usernameDiv = document.createElement('div');
+
+    // Create label for username
+    const usernameLabel = document.createElement('label');
+    usernameLabel.htmlFor = "username";
+    usernameLabel.innerHTML = `Username <span class="red">*</span>`;
+
+    // Create input for username
+    const usernameInput = document.createElement('input');
+    usernameInput.type = "text";
+    usernameInput.name = "username";
+    usernameInput.id = "username";
+
+    // Create button
+    const postButton = document.createElement('button');
+    postButton.textContent = "Post";
+
+    // Append elements together
+    usernameDiv.appendChild(usernameLabel);
+    usernameDiv.appendChild(usernameInput);
+
+    form.appendChild(textarea);
+    form.appendChild(usernameDiv);
+    form.appendChild(postButton);
+
+    answerDiv.appendChild(form);
+
+    answerCommentDiv.appendChild(userCommentP);
+    answerCommentDiv.appendChild(answerDiv);
+
+    topicContainerDiv.appendChild(answerCommentDiv);
+    //topicContainerDiv appen here
+
+    const commentFormEl = answerDiv.querySelector('form');
+    commentFormEl.addEventListener('submit', commentForm);
+
+    // Append elements together
+    headerDiv.appendChild(avatarImg);
+    headerDiv.appendChild(userInfoP);
+    headerDiv.appendChild(postContentP);
+    commentDiv.appendChild(headerDiv);
+
+    // Combine everything into a fragment
+    const fragment = document.createDocumentFragment();
+    fragment.appendChild(topicContainerDiv);
+    mainEl.appendChild(fragment);
+
+    function commentForm(e) {
+        e.preventDefault();
+
+        // TO DO - TRY UPDATING INITIAL OBJECT BY ADDING NEW KEY -> COMMENT
+    }
+
+}
+
+
+
+
+
