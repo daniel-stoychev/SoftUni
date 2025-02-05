@@ -1,4 +1,5 @@
 const postURL = 'http://localhost:3030/jsonstore/collections/myboard/posts';
+const commentURL = 'http://localhost:3030/jsonstore/collections/myboard/comment';
 const initialForm = document.querySelector('main form');
 const mainEl = document.querySelector('main');
 const topicContainer = document.createElement('div');
@@ -185,7 +186,7 @@ function changeTopicLayout(id) {
                 }
 
             }
-            console.log(data);
+            // console.log(data);
 
 
         })
@@ -238,6 +239,11 @@ function secondPageGeneration(title, username, postText, date) {
 
     topicContainerDiv.appendChild(topicDiv);
     topicContainerDiv.appendChild(commentDiv);
+
+
+    // LOAD COMMENTS IF ANY
+    loadComments(commentDiv);
+
 
     //COMMENTFORM>>>>>>>>>>>>
     const answerCommentDiv = document.createElement('div');
@@ -293,10 +299,6 @@ function secondPageGeneration(title, username, postText, date) {
     answerCommentDiv.appendChild(answerDiv);
 
     topicContainerDiv.appendChild(answerCommentDiv);
-    //topicContainerDiv appen here
-
-    const commentFormEl = answerDiv.querySelector('form');
-    commentFormEl.addEventListener('submit', commentForm);
 
     // Append elements together
     headerDiv.appendChild(avatarImg);
@@ -309,13 +311,123 @@ function secondPageGeneration(title, username, postText, date) {
     fragment.appendChild(topicContainerDiv);
     mainEl.appendChild(fragment);
 
+    const commentFormEl = answerDiv.querySelector('form');
+    commentFormEl.addEventListener('submit', commentForm);
+
     function commentForm(e) {
         e.preventDefault();
+        console.log('TEST');
 
-        // TO DO - TRY UPDATING INITIAL OBJECT BY ADDING NEW KEY -> COMMENT
+        const formData = new FormData(commentFormEl);
+        const textField = formData.get('postText');
+        const usernameField = formData.get('username');
+
+        if (!textField.trim() || !usernameField.trim()) {
+            alert('Please fill up all fields.')
+            throw new Error("All fields must be filled up!");
+        } else {
+            addComment(textField, usernameField, commentDiv);
+        }
+
     }
 
+
 }
+
+function addComment(postText, username, commentDiv) {
+    fetch(commentURL, {
+        method: 'POST',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify({
+            username,
+            postText,
+            date: new Date()
+        })
+    })
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data);
+            const userCommentDiv = document.createElement("div");
+            userCommentDiv.id = "user-comment";
+
+            // Create the topic wrapper
+            const topicWrapperDiv = document.createElement("div");
+            topicWrapperDiv.classList.add("topic-name-wrapper");
+
+            // Create the topic name div
+            const topicNameDiv = document.createElement("div");
+            topicNameDiv.classList.add("topic-name");
+
+            // Create the paragraph for username and date
+            const userInfoP = document.createElement("p");
+            userInfoP.innerHTML = `<strong>${data.username}</strong> commented on <time>${data.date}</time>`;
+
+            // Create the post content div
+            const postContentDiv = document.createElement("div");
+            postContentDiv.classList.add("post-content");
+
+            // Create the paragraph for the comment text
+            const postTextP = document.createElement("p");
+            postTextP.textContent = data.postText;
+
+            // Append elements
+            postContentDiv.appendChild(postTextP);
+            topicNameDiv.appendChild(userInfoP);
+            topicNameDiv.appendChild(postContentDiv);
+            topicWrapperDiv.appendChild(topicNameDiv);
+            userCommentDiv.appendChild(topicWrapperDiv);
+            commentDiv.appendChild(userCommentDiv);
+        })
+}
+
+function loadComments(commentDiv) {
+    fetch(commentURL)
+        .then(res => res.json())
+        .then(data => {
+
+            const commentsData = Object.values(data);
+            if (commentsData.length > 0) {
+                commentsData.forEach(comment => {
+                    console.log(comment);
+                    const username = comment.username;
+                    const postText = comment.postText;
+                    const date = comment.date;
+                    const userCommentDiv = document.createElement("div");
+                    userCommentDiv.id = "user-comment";
+
+                    // Create the topic wrapper
+                    const topicWrapperDiv = document.createElement("div");
+                    topicWrapperDiv.classList.add("topic-name-wrapper");
+
+                    // Create the topic name div
+                    const topicNameDiv = document.createElement("div");
+                    topicNameDiv.classList.add("topic-name");
+
+                    // Create the paragraph for username and date
+                    const userInfoP = document.createElement("p");
+                    userInfoP.innerHTML = `<strong>${username}</strong> commented on <time>${date}</time>`;
+
+                    // Create the post content div
+                    const postContentDiv = document.createElement("div");
+                    postContentDiv.classList.add("post-content");
+
+                    // Create the paragraph for the comment text
+                    const postTextP = document.createElement("p");
+                    postTextP.textContent = postText;
+
+                    // Append elements
+                    postContentDiv.appendChild(postTextP);
+                    topicNameDiv.appendChild(userInfoP);
+                    topicNameDiv.appendChild(postContentDiv);
+                    topicWrapperDiv.appendChild(topicNameDiv);
+                    userCommentDiv.appendChild(topicWrapperDiv);
+                    commentDiv.appendChild(userCommentDiv);
+                })
+            }
+        })
+}
+
+// only thing to do -> sort the topics and their owning comments
 
 
 
