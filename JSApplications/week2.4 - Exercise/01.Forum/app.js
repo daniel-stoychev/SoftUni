@@ -2,6 +2,8 @@ const postURL = 'http://localhost:3030/jsonstore/collections/myboard/posts';
 const commentURL = 'http://localhost:3030/jsonstore/collections/myboard/comment';
 const initialForm = document.querySelector('main form');
 const mainEl = document.querySelector('main');
+const topicTitle = document.querySelector('.topic-title');
+
 const topicContainer = document.createElement('div');
 topicContainer.classList.add('topic-container');
 
@@ -21,7 +23,7 @@ initialForm.addEventListener('submit', (e) => {
         initialForm.reset();
     });
 
-    if (!title.trim() || !username.trim() && !postText.trim()) {
+    if (!title.trim() || !username.trim() || !postText.trim()) {
         alert('Please fill all fields');
         throw new Error("One or more field are missing");
     } else {
@@ -31,7 +33,7 @@ initialForm.addEventListener('submit', (e) => {
             body: JSON.stringify({
                 title,
                 username,
-                postText,
+                content: postText,
                 date: new Date()
             })
         })
@@ -158,7 +160,7 @@ function listCreatedTopics(title, date, username, postId) {
     topicWrapper.appendChild(topicNameDiv);
     topicContainer.appendChild(topicWrapper);
 
-    mainEl.appendChild(topicContainer);
+    topicTitle.appendChild(topicContainer);
 
     topicWrapper.addEventListener('click', (e) => {
         e.preventDefault();
@@ -181,7 +183,7 @@ function changeTopicLayout(postId) {
                 if (value._id === postId) {
                     console.log(value.title);
 
-                    secondPageGeneration(value.title, value.username, value.postText, value.date, postId);
+                    secondPageGeneration(value.title, value.username, value.content, value.date, postId);
 
                     break;
                 }
