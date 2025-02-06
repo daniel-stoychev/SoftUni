@@ -9,7 +9,7 @@ loadAllTopics();
 initialForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formFiends = new FormData(initialForm);
-    console.log(formFiends.get('topicName'));
+    // console.log(formFiends.get('topicName'));
     const title = formFiends.get('topicName');
     const username = formFiends.get('username');
     const postText = formFiends.get('postText');
@@ -37,7 +37,8 @@ initialForm.addEventListener('submit', (e) => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
+                console.log(data._id);
+
                 initialForm.reset();
                 addCreatedTopics(data.title, data.date, data.username);
                 loadAllTopics();
@@ -109,7 +110,7 @@ function addCreatedTopics(title, date, username) {
     topicContainer.appendChild(topicWrapper);
 }
 
-function listCreatedTopics(title, date, username, id) {
+function listCreatedTopics(title, date, username, postId) {
     // Create the topic-name-wrapper
     const topicWrapper = document.createElement('div');
     topicWrapper.classList.add('topic-name-wrapper');
@@ -125,7 +126,7 @@ function listCreatedTopics(title, date, username, id) {
 
     const topicHeading = document.createElement('h2');
     topicHeading.textContent = title;
-    topicHeading.id = id;
+    topicHeading.id = postId;
 
     topicLink.appendChild(topicHeading);
     topicNameDiv.appendChild(topicLink);
@@ -161,12 +162,12 @@ function listCreatedTopics(title, date, username, id) {
 
     topicWrapper.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log(`Clicked on: ${id}`);
-        changeTopicLayout(id);
+        console.log(`Clicked on: ${postId}`);
+        changeTopicLayout(postId);
     });
 }
 
-function changeTopicLayout(id) {
+function changeTopicLayout(postId) {
     mainEl.innerHTML = '';
 
     fetch(postURL)
@@ -177,10 +178,10 @@ function changeTopicLayout(id) {
             for (const value of values) {
                 console.log(value._id);
 
-                if (value._id === id) {
+                if (value._id === postId) {
                     console.log(value.title);
 
-                    secondPageGeneration(value.title, value.username, value.postText, value.date);
+                    secondPageGeneration(value.title, value.username, value.postText, value.date, postId);
 
                     break;
                 }
@@ -193,7 +194,7 @@ function changeTopicLayout(id) {
 
 }
 
-function secondPageGeneration(title, username, postText, date) {
+function secondPageGeneration(title, username, postText, date, postId) {
     //PROFILE>>>>>>>>>>>>
     const topicContainerDiv = document.createElement('div');
     topicContainerDiv.classList.add('topic-container');
@@ -242,7 +243,7 @@ function secondPageGeneration(title, username, postText, date) {
 
 
     // LOAD COMMENTS IF ANY
-    loadComments(commentDiv);
+    loadComments(commentDiv, postId);
 
 
     //COMMENTFORM>>>>>>>>>>>>
@@ -326,27 +327,28 @@ function secondPageGeneration(title, username, postText, date) {
             alert('Please fill up all fields.')
             throw new Error("All fields must be filled up!");
         } else {
-            addComment(textField, usernameField, commentDiv);
+            addComment(textField, usernameField, commentDiv, postId, commentFormEl);
         }
 
     }
 
-
 }
 
-function addComment(postText, username, commentDiv) {
+function addComment(postText, username, commentDiv, postId, commentFormEl) {
     fetch(commentURL, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({
             username,
             postText,
+            postId,
             date: new Date()
         })
     })
         .then(res => res.json())
         .then(data => {
-            // console.log(data);
+            console.log(data);
+            commentFormEl.reset();
             const userCommentDiv = document.createElement("div");
             userCommentDiv.id = "user-comment";
 
@@ -377,57 +379,60 @@ function addComment(postText, username, commentDiv) {
             topicWrapperDiv.appendChild(topicNameDiv);
             userCommentDiv.appendChild(topicWrapperDiv);
             commentDiv.appendChild(userCommentDiv);
+
         })
 }
 
-function loadComments(commentDiv) {
+function loadComments(commentDiv, postId) {
     fetch(commentURL)
         .then(res => res.json())
         .then(data => {
-
+            // console.log(data);
             const commentsData = Object.values(data);
             if (commentsData.length > 0) {
                 commentsData.forEach(comment => {
-                    console.log(comment);
-                    const username = comment.username;
-                    const postText = comment.postText;
-                    const date = comment.date;
-                    const userCommentDiv = document.createElement("div");
-                    userCommentDiv.id = "user-comment";
+                    if (comment.postId === postId) {
+                        // console.log(comment);
+                        const username = comment.username;
+                        const postText = comment.postText;
+                        const date = comment.date;
+                        const userCommentDiv = document.createElement("div");
+                        userCommentDiv.id = "user-comment";
 
-                    // Create the topic wrapper
-                    const topicWrapperDiv = document.createElement("div");
-                    topicWrapperDiv.classList.add("topic-name-wrapper");
+                        // Create the topic wrapper
+                        const topicWrapperDiv = document.createElement("div");
+                        topicWrapperDiv.classList.add("topic-name-wrapper");
 
-                    // Create the topic name div
-                    const topicNameDiv = document.createElement("div");
-                    topicNameDiv.classList.add("topic-name");
+                        // Create the topic name div
+                        const topicNameDiv = document.createElement("div");
+                        topicNameDiv.classList.add("topic-name");
 
-                    // Create the paragraph for username and date
-                    const userInfoP = document.createElement("p");
-                    userInfoP.innerHTML = `<strong>${username}</strong> commented on <time>${date}</time>`;
+                        // Create the paragraph for username and date
+                        const userInfoP = document.createElement("p");
+                        userInfoP.innerHTML = `<strong>${username}</strong> commented on <time>${date}</time>`;
 
-                    // Create the post content div
-                    const postContentDiv = document.createElement("div");
-                    postContentDiv.classList.add("post-content");
+                        // Create the post content div
+                        const postContentDiv = document.createElement("div");
+                        postContentDiv.classList.add("post-content");
 
-                    // Create the paragraph for the comment text
-                    const postTextP = document.createElement("p");
-                    postTextP.textContent = postText;
+                        // Create the paragraph for the comment text
+                        const postTextP = document.createElement("p");
+                        postTextP.textContent = postText;
 
-                    // Append elements
-                    postContentDiv.appendChild(postTextP);
-                    topicNameDiv.appendChild(userInfoP);
-                    topicNameDiv.appendChild(postContentDiv);
-                    topicWrapperDiv.appendChild(topicNameDiv);
-                    userCommentDiv.appendChild(topicWrapperDiv);
-                    commentDiv.appendChild(userCommentDiv);
+                        // Append elements
+                        postContentDiv.appendChild(postTextP);
+                        topicNameDiv.appendChild(userInfoP);
+                        topicNameDiv.appendChild(postContentDiv);
+                        topicWrapperDiv.appendChild(topicNameDiv);
+                        userCommentDiv.appendChild(topicWrapperDiv);
+                        commentDiv.appendChild(userCommentDiv);
+                    }
+
                 })
             }
         })
 }
 
-// only thing to do -> sort the topics and their owning comments
 
 
 
