@@ -24,7 +24,7 @@ createForm.addEventListener('submit', (e) => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            location.href = 'http://127.0.0.1:5500/JSApplications/week2.3%20-%20SPA/cookBookWorkShop_Part3/index.html';
+            location.href = '/';
         })
 
 

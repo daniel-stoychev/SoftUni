@@ -21,6 +21,6 @@ registerForm.addEventListener('submit', (e) => {
             console.log(data);
             localStorage.setItem('accessToken', data.accessToken);
             localStorage.setItem('email', data.email);
-            location.href = 'http://127.0.0.1:5500/JSApplications/week2.3%20-%20SPA/cookBookWorkShop_Part3/index.html';
+            location.href = '/';
         })
 });
