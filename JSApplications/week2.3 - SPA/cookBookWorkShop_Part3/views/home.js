@@ -1,3 +1,7 @@
+import editRecipeForm from "./edit.js"
+
+const recipiesURL = `http://localhost:3030/data/recipes`;
+
 const sectionEl = document.querySelector('#home-section');
 const mainEl = document.querySelector('main');
 
@@ -10,7 +14,6 @@ export default function homePage() {
 }
 
 function loadRecipies() {
-    const recipiesURL = `http://localhost:3030/data/recipes`;
 
     fetch(recipiesURL)
         .then((response) => response.json())
@@ -45,12 +48,12 @@ function createRecipies(recipie) {
 
     articleEl.addEventListener('click', () => {
         const recipieDetailsURL = `http://localhost:3030/data/recipes/${recipie._id}`;
-        console.log(recipieDetailsURL);
+        // console.log(recipieDetailsURL);
 
         fetch(recipieDetailsURL)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 sectionEl.innerHTML = '';
                 sectionEl.appendChild(loadRecipie(data));
             });
@@ -61,7 +64,7 @@ function createRecipies(recipie) {
 };
 
 
-function loadRecipie(recipieData) {
+export function loadRecipie(recipieData) {
     const articleEl = document.createElement('article');
 
     // Create and append h2 for title
@@ -90,6 +93,8 @@ function loadRecipie(recipieData) {
     ingredientsDiv.appendChild(ingredientsListEl);
 
     recipieData.ingredients.forEach((ingredient) => {
+        // console.log(ingredient);
+
         const liEl = document.createElement('li');
         ingredientsListEl.appendChild(liEl);
         liEl.textContent = ingredient;
@@ -115,6 +120,7 @@ function loadRecipie(recipieData) {
     // EDIT and DELETE buttons
     const loggedInUserId = localStorage.getItem('owner');
     if (loggedInUserId === recipieData._ownerId) {
+        const recipeId = recipieData._id;
         const editBtn = document.createElement('button');
         editBtn.textContent = 'Edit';
         editBtn.classList.add('editBtn');
@@ -129,8 +135,8 @@ function loadRecipie(recipieData) {
         buttonsSection.append(editBtn, deleteBtn);
         articleEl.appendChild(buttonsSection);
 
-        editBtn.addEventListener('click', editRecipe);
-        deleteBtn.addEventListener('click', deleteRecipe);
+        editBtn.addEventListener('click', () => editRecipe(recipeId));
+        deleteBtn.addEventListener('click', () => deleteRecipe(recipeId, articleEl));
 
     }
 
@@ -138,12 +144,34 @@ function loadRecipie(recipieData) {
     return articleEl;
 };
 
-function editRecipe() {
-    console.log('edited');
+const accessToken = localStorage.getItem('accessToken');
+// const loggedInUserId = localStorage.getItem('owner');
+
+function editRecipe(recipeId) {
+    // console.log('edited');
+    // console.log(recipeId);
+    mainEl.innerHTML = '';
+    editRecipeForm(recipeId);
+
+
+
 
 };
 
-function deleteRecipe() {
-    console.log('deleted');
+function deleteRecipe(recipeId, articleEl) {
+    fetch(`${recipiesURL}/${recipeId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-type': 'application/json',
+            'X-Authorization': accessToken
+        }
+    })
+        .then(res => res.json())
+        .then(() => {
+            const messageEl = document.createElement('h2');
+            messageEl.textContent = 'Recipe deleted';
+            articleEl.innerHTML = '';
+            articleEl.appendChild(messageEl);
 
+        });
 };
