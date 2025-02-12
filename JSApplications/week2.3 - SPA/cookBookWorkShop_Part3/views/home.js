@@ -1,8 +1,12 @@
 const sectionEl = document.querySelector('#home-section');
+const mainEl = document.querySelector('main');
 
 export default function homePage() {
+    mainEl.innerHTML = '';
+    sectionEl.innerHTML = '';
     sectionEl.style.display = 'block';
     loadRecipies();
+    mainEl.appendChild(sectionEl);
 }
 
 function loadRecipies() {
@@ -11,8 +15,8 @@ function loadRecipies() {
     fetch(recipiesURL)
         .then((response) => response.json())
         .then((data) => {
-            console.log(Object.values(data));
-            // mainEl.innerHTML = '';
+            sectionEl.innerHTML = '';
+            // console.log(Object.values(data));
             const recipiesObj = Object.values(data);
             // mainEl.append(...recipiesObj.map(createRecipies));
             recipiesObj.forEach((recipie) => createRecipies(recipie));
@@ -109,7 +113,3 @@ function loadRecipie(recipieData) {
     // Return the constructed article element
     return articleEl;
 };
-
-
-
-// loadRecipies();

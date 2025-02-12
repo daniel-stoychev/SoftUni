@@ -1,17 +1,17 @@
-const logourBtn = document.querySelector('#logoutBtn');
+import homePage from "./home.js";
+import initNavigation from "../app.js";
+
+export const logoutBtnEl = document.querySelector('#logoutBtn');
 const baseURL = 'http://localhost:3030/users';
 
-logourBtn.addEventListener("click", () => {
+
+logoutBtnEl.addEventListener("click", () => {
     fetch(`${baseURL}/logout`)
         .then(response => response.json())
-        .then(data => {
-            console.log("LOGOUT TEST");
-
-            console.log(data);
-
+        .then(() => {
             localStorage.clear();
-            location.href = '/';
-
+            initNavigation();
+            homePage();
         });
 
 })

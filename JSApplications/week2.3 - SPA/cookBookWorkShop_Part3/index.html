@@ -8,19 +8,19 @@
   <link rel="stylesheet" href="static/recipe.css" />
   <link rel="stylesheet" href="static/form.css" />
   <script src="app.js" type="module" defer></script>
-  <script src="views/logout.js" defer></script>
 </head>
 
 <body>
   <header>
     <h1>My Cookbook</h1>
     <nav>
-      <a href="/" class="active">Catalog</a>
       <div id="user">
+        <a href="/">Catalog</a>
         <a href="/create">Create Recipe</a>
-        <a id="logoutBtn" href="javascript:void(0)">Logout</a>
+        <a id="logoutBtn" href="/logout">Logout</a>
       </div>
       <div id="guest">
+        <a href="/">Catalog</a>
         <a href="/login">Login</a>
         <a href="/register">Register</a>
       </div>
