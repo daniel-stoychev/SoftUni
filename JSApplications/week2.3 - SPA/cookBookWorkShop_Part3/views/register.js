@@ -34,9 +34,12 @@ export default function registerPage() {
                 if (data.code >= 400) {
                     return alert(data.message);
                 }
+                console.log(data);
+
                 // console.log(data);
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('email', data.email);
+                localStorage.setItem('owner', data._id);
                 mainEl.innerHTML = '';
                 renderNavigation();
                 homePage();

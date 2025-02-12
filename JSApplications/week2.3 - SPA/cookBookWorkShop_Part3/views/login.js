@@ -39,6 +39,7 @@ export default function loginPage() {
                 }
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('email', data.email);
+                localStorage.setItem('owner', data._id);
                 renderNavigation();
                 homePage();
 

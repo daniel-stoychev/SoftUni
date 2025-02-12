@@ -68,3 +68,13 @@ a.active {
 .site-section {
     display: none;
 }
+
+.buttonsSection {
+    text-align: right;
+}
+
+.editBtn, .deleteBtn {
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}

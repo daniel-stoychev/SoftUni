@@ -45,6 +45,8 @@ function createRecipies(recipie) {
 
     articleEl.addEventListener('click', () => {
         const recipieDetailsURL = `http://localhost:3030/data/recipes/${recipie._id}`;
+        console.log(recipieDetailsURL);
+
         fetch(recipieDetailsURL)
             .then((response) => response.json())
             .then((data) => {
@@ -110,6 +112,38 @@ function loadRecipie(recipieData) {
     // Append 'band' and 'description' divs to article
     articleEl.append(bandDiv, descriptionDiv);
 
+    // EDIT and DELETE buttons
+    const loggedInUserId = localStorage.getItem('owner');
+    if (loggedInUserId === recipieData._ownerId) {
+        const editBtn = document.createElement('button');
+        editBtn.textContent = 'Edit';
+        editBtn.classList.add('editBtn');
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.classList.add('deleteBtn');
+
+        const buttonsSection = document.createElement('div');
+        buttonsSection.classList.add('buttonsSection');
+
+        buttonsSection.append(editBtn, deleteBtn);
+        articleEl.appendChild(buttonsSection);
+
+        editBtn.addEventListener('click', editRecipe);
+        deleteBtn.addEventListener('click', deleteRecipe);
+
+    }
+
     // Return the constructed article element
     return articleEl;
+};
+
+function editRecipe() {
+    console.log('edited');
+
+};
+
+function deleteRecipe() {
+    console.log('deleted');
+
 };
