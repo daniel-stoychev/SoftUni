@@ -3,7 +3,7 @@ const { expect } = require('chai');
 
 const host = 'http://localhost:3000'; // Application host (NOT service host - that can be anything)
 
-const DEBUG = false;
+const DEBUG = true;
 const slowMo = 1000;
 
 const mockData = {
@@ -33,7 +33,7 @@ let page;
 
 describe('E2E tests', function () {
   // Setup
-  this.timeout(DEBUG ? 120000 : 10000);
+  this.timeout(DEBUG ? 120000 : 7000);
   before(
     async () =>
     (browser = await chromium.launch(
@@ -54,86 +54,27 @@ describe('E2E tests', function () {
   // Test proper
   describe('Book Library', () => {
     it('Load Books', async () => {
-      const data = mockData.catalog;
-      const { get } = await handle(endpoints.catalog);
-      get(data);
 
-      await page.goto(host);
-      await page.waitForSelector('#loadBooks');
+      //TODO
 
-      await page.click('#loadBooks');
-
-      const books = await page.$$eval(`tbody tr`, (t) =>
-        t.map((s) => s.textContent)
-      );
-
-      expect(books.length).to.equal(data.length);
     });
 
     it('Check books info', async () => {
-      const data = mockData.catalog;
-      const { get } = await handle(endpoints.catalog);
-      get(data);
 
-      await page.goto(host);
-      await page.waitForSelector('#loadBooks');
+     //TODO
 
-      await page.click('#loadBooks');
-
-      const books = await page.$$eval(`tbody tr td`, (t) =>
-        t.map((s) => s.textContent)
-      );
-
-      expect(books[0]).to.equal(data[0].title);
-      expect(books[1]).to.equal(data[0].author);
     });
 
     it('Create Book', async () => {
-      const data = mockData.catalog[0];
-      await page.goto(host);
 
-      const { post } = await handle(endpoints.catalog);
-      const { onRequest } = post();
+      //TODO
 
-      await page.waitForSelector('form');
-
-      await page.fill('input[name="title"]', data.title + '1');
-      await page.fill('input[name="author"]', data.author + '1');
-
-      const [request] = await Promise.all([
-        onRequest(),
-        page.click('text=Submit'),
-      ]);
-
-      const postData = JSON.parse(request.postData());
-
-      expect(postData.title).to.equal(data.title + '1');
-      expect(postData.author).to.equal(data.author + '1');
     });
 
     it('Edit should populate form with correct data', async () => {
-      const info = mockData.catalog;
-      const data = mockData.catalog[0];
-      await page.goto(host);
 
-      const { get } = await handle(endpoints.catalog);
-      get(info);
-
-      await page.click('#loadBooks');
-
-      const { get2 } = await handle(endpoints.details(data._id));
-      get2(data);
-
-      await page.click(`tr:has-text("${data.title}") >> text=Edit`);
-
-      await page.waitForSelector('form');
-
-      const inputs = await page.$$eval('form input', t => t.map(i => i.value));
-      console.log(inputs);
-
-
-      expect(inputs[0]).to.equal(data.title);
-      expect(inputs[1]).to.equal(data.author);
+      //TODO
+      
     });
   });
 });

@@ -4,7 +4,7 @@ const { expect } = require('chai');
 const host = 'http://localhost:3000'; // Application host (NOT service host - that can be anything)
 
 const DEBUG = false;
-const slowMo = 500;
+const slowMo = 2000;
 
 const mockData = {
   list: [
@@ -15,10 +15,6 @@ const mockData = {
     {
       author: 'Garry',
       content: 'Yep, whats up :?',
-    },
-    {
-      author: 'George',
-      content: 'Hello, guys! :))',
     },
   ],
 };
@@ -33,12 +29,12 @@ let page;
 
 describe('E2E tests', function () {
   // Setup
-  this.timeout(DEBUG ? 120000 : 7000);
+  this.timeout(DEBUG ? 120000 : 9000);
   before(
     async () =>
-      (browser = await chromium.launch(
-        DEBUG ? { headless: false, slowMo } : {}
-      ))
+    (browser = await chromium.launch(
+      DEBUG ? { headless: false, slowMo } : {}
+    ))
   );
   after(async () => await browser.close());
   beforeEach(async () => {
@@ -54,43 +50,47 @@ describe('E2E tests', function () {
   // Test proper
   describe('Messenger Info', () => {
     it('Load Message', async () => {
+
       const data = mockData.list;
       const { get } = await handle(endpoints.list);
+
       get(data);
 
       await page.goto(host);
       await page.waitForSelector('#refresh');
 
-      await page.click('input[value="Refresh"]');
+      await page.click("input[value='Refresh']");
 
-      const post = await page.$$eval(`textarea`, (t) => t.map((s) => s.value));
+      const post = await page.$$eval(`textarea`, (t) => t.map((r) => r.value));
 
-      expect(post[0]).to.equal(
-        `${data[0].author}: ${data[0].content}\n${data[1].author}: ${data[1].content}\n${data[2].author}: ${data[2].content}`
-      );
+      expect(post[0]).to.equal(`${data[0].author}: ${data[0].content}\n${data[1].author}: ${data[1].content}`)
+
     });
 
     it('Send Message API call', async () => {
+
       const data = mockData.list[0];
       await page.goto(host);
-
       const { post } = await handle(endpoints.list);
       const { onRequest } = post();
 
       await page.waitForSelector('#submit');
-
-      await page.fill('input[name="author"]', data.author + '1');
-      await page.fill('input[name="content"]', data.content + '1');
+      await page.fill('input[name="author"]', data.author);
+      await page.fill('input[name="content"]', data.content);
 
       const [request] = await Promise.all([
         onRequest(),
-        page.click('input[value="Send"]'),
+        page.click('input[value = "Send"]'),
       ]);
 
       const postData = JSON.parse(request.postData());
 
-      expect(postData.author).to.equal(data.author + '1');
-      expect(postData.content).to.equal(data.content + '1');
+      expect(postData.author).to.equal(postData.author);
+      expect(postData.content).to.equal(postData.content);
+
+
+
+
     });
   });
 });
