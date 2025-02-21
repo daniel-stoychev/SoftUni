@@ -32,9 +32,9 @@ export default function registerPage() {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.code >= 400) {
-                    return alert(data.message);
-                }
+                // if (data.code >= 400) {
+                //     return alert(data.message);
+                // }
                 // console.log(data);
                 localStorage.setItem('accessToken', data.accessToken);
                 localStorage.setItem('email', data.email);

@@ -5,7 +5,7 @@ const homeURL = 'http://localhost:3000';
 let browser;
 let page;
 
-before(async () => { browser = await chromium.launch({ headless: false, slowMo: 1000 }); });
+before(async () => { browser = await chromium.launch({ headless: true, slowMo: 0 }); });
 beforeEach(async () => { page = await browser.newPage(); });
 after(async () => { await browser.close(); });
 afterEach(async () => { await page.close(); });
@@ -27,7 +27,7 @@ describe('Login page', async () => {
     });
 });
 
-describe.only('Register Page', async () => {
+describe('Register Page', async () => {
     it('Should register new user if user is not registered', async () => {
         const timeStamp = Date.now();
         const uniqueEmail = `user${timeStamp}@abv.bg`
