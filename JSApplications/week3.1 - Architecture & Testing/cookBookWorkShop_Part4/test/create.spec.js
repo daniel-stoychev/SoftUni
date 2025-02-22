@@ -5,12 +5,12 @@ const homeURL = 'http://localhost:3000';
 let browser;
 let page;
 
-before(async () => { browser = await chromium.launch({ headless: true, slowMo: 0 }); });
+before(async () => { browser = await chromium.launch({ headless: true, slowMo: 1 }); });
 beforeEach(async () => { page = await browser.newPage(); });
 after(async () => { await browser.close(); });
 afterEach(async () => { await page.close(); });
 
-describe.only('Create page', async () => {
+describe('Create page', async () => {
 
     function generateUniqueString() {
         return Date.now();
@@ -59,18 +59,46 @@ describe.only('Create page', async () => {
     });
 
     it('"edit" should load the correct article data for logged in user', async () => {
+        const recipeTitleLocator = await recipeCreation();
+        const articleTitle = await recipeTitleLocator.locator('h2').innerText();
+        await recipeTitleLocator.click();
 
+        const editBtn = page.locator('button:has-text("Edit")');
+        editBtn.click();
+
+        const nameField = page.locator('input[name=name]');
+        expect(await nameField.inputValue()).to.equal(articleTitle);
     });
 
     it('"edit" should edit the recipe', async () => {
+        const recipeTitleLocator = await recipeCreation();
+        const articleTitle = await recipeTitleLocator.locator('h2').innerText();
+        await recipeTitleLocator.click();
+
+        const editBtn = await page.locator('button:has-text("Edit")');
+        await editBtn.click();
+
+        // Edit the recipe name to ensure it's different
+        const newName = articleTitle + ' Edited';
+        await page.fill('input[name=name]', newName);
+        await page.click('input[type=submit]');
+
+        // Verify the new name is displayed
+        const newNameField = await page.locator('h2').innerText();
+        expect(await newNameField).to.equal(newName);
 
     });
 
     it('"delete" should delete the recipe', async () => {
+        const recipeTitleLocator = await recipeCreation();
+        await recipeTitleLocator.click();
 
+        const deleteBtn = await page.locator('button:has-text("Delete")');
+        await deleteBtn.click();
+
+        const deletedMsg = await page.locator('article:has(h2:has-text("Recipe deleted"))');
+        expect(await deletedMsg.isVisible()).to.be.true;
     });
-
-
 
 
 });
