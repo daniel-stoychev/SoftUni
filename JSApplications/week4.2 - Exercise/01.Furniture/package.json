@@ -1,0 +1,21 @@
+{
+  "name": "week4.2---exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -a localhost -p 3000 -P http://localhost:3000? -c-1",
+    "test": "mocha tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "http-server": "^14.1.1",
+    "lit-html": "^3.2.1",
+    "mocha": "^11.1.0",
+    "page": "^1.11.6",
+    "playwright-chromium": "^1.51.0"
+  }
+}
