@@ -8,7 +8,7 @@ import { showLoginView } from "./view/loginView.js";
 import { showLogoutView } from "./view/logoutView.js";
 import { showRegisterView } from "./view/registerView.js";
 import { userHelper } from "./utility/userHelper.js";
-// import { showDetailsView } from "./view/detailsView.js";
+import { showDetailsView } from "./view/detailsView.js";
 // import { showCreateView } from "./view/createView.js";
 // import { showMyFurniture } from "./view/myFurnitureView.js";
 // import { deleteItem } from "./view/deleteView.js.js";
@@ -24,6 +24,7 @@ page('/dashboard', showDashboardView);
 page('/register', showRegisterView);
 page('/login', showLoginView);
 page('/logout', showLogoutView);
+page('/product/:productId', showDetailsView);
 page();
 
 

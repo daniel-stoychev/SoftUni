@@ -1,5 +1,8 @@
+import page from "../../node_modules/page/page.mjs";
+
 import { html } from "../../node_modules/lit-html/lit-html.js";
 import { dataService } from "../service/dataService.js";
+
 
 const cardTemp = (item) => html`
             <div class="col-md-4">
@@ -11,7 +14,7 @@ const cardTemp = (item) => html`
                                 <p>Price: <span>${item.price} $</span></p>
                             </footer>
                             <div>
-                                <a href=”#” class="btn btn-info">Details</a>
+                                <a href="#" class="btn btn-info" @click=${() => handleDetailsClick(item._id)}>Details</a>
                             </div>
                     </div>
                 </div>
@@ -35,4 +38,8 @@ const dashboardTemplate = (item) => html`
 export async function showDashboardView(ctx) {
     const data = await dataService.getAllFurniture();
     ctx.render(dashboardTemplate(data));
+}
+
+async function handleDetailsClick(id) {
+    await page.redirect(`/product/${id}`);
 }
