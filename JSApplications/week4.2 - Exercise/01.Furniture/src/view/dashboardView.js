@@ -40,6 +40,6 @@ export async function showDashboardView(ctx) {
     ctx.render(dashboardTemplate(data));
 }
 
-async function handleDetailsClick(id) {
+export async function handleDetailsClick(id) {
     await page.redirect(`/product/${id}`);
 }

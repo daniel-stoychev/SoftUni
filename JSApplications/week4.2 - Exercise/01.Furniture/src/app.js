@@ -9,10 +9,10 @@ import { showLogoutView } from "./view/logoutView.js";
 import { showRegisterView } from "./view/registerView.js";
 import { userHelper } from "./utility/userHelper.js";
 import { showDetailsView } from "./view/detailsView.js";
-// import { showCreateView } from "./view/createView.js";
-// import { showMyFurniture } from "./view/myFurnitureView.js";
-// import { deleteItem } from "./view/deleteView.js.js";
-// import { showEditView } from "./view/editView.js";
+import { showCreateView } from "./view/createView.js";
+import { showMyFurniture } from "./view/myFurnitureView.js";
+import { deleteItem } from "./view/deleteView.js.js";
+import { showEditView } from "./view/editView.js";
 
 const root = document.querySelector('div[data-id="root"]');
 const guestNav = document.getElementById('guest');
@@ -24,6 +24,10 @@ page('/dashboard', showDashboardView);
 page('/register', showRegisterView);
 page('/login', showLoginView);
 page('/logout', showLogoutView);
+page('/create', showCreateView);
+page('/myFurniture', showMyFurniture);
+page('/edit/:productId', showEditView);
+page('/delete/:productId', deleteItem);
 page('/product/:productId', showDetailsView);
 page();
 

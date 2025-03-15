@@ -22,7 +22,7 @@ function getUserId() {
 
 function hasOwner(ownerId) {
     const id = getUserId();
-    return ownerId = id;
+    return ownerId === id;
 }
 
 export const userHelper = {
