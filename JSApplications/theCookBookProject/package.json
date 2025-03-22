@@ -1,0 +1,23 @@
+{
+  "name": "cookbookworkshop_part4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "lite-server --baseDir=src",
+    "test": "mocha --timeout=10000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "lite-server": "^2.6.1",
+    "mocha": "^11.1.0",
+    "playwright-chromium": "^1.50.1"
+  },
+  "dependencies": {
+    "lit-html": "^3.2.1"
+  }
+}
