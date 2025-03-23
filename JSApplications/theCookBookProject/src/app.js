@@ -1,7 +1,7 @@
 import homePage from "./views/home.js";
 import loginPage from "./views/login.js";
 import registerPage from "./views/register.js"
-import createPage from "./views/create.js";
+import createRecipePage from "./views/create.js";
 import { logoutBtnEl } from "./views/logout.js";
 
 
@@ -11,7 +11,7 @@ const pathnameViews = {
     '/': homePage,
     '/login': loginPage,
     '/register': registerPage,
-    '/create': createPage,
+    '/create': createRecipePage,
     '/logout': logoutBtnEl
 };
 

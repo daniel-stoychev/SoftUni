@@ -1,20 +1,37 @@
+import { html, render } from 'https://unpkg.com/lit-html?module';
 import homePage from "./home.js"
 
 const baseURL = 'http://localhost:3030/data/recipes';
-
 const sectionEl = document.querySelector('#create-section');
 const mainEl = document.querySelector('main');
-const createForm = sectionEl.querySelector('form');
 
-export default function createPage() {
+export default function createRecipePage() {
+
     mainEl.innerHTML = '';
-    sectionEl.style.display = 'block';
     mainEl.appendChild(sectionEl);
-};
+    render(createRecipeTemp(), sectionEl)
+}
 
-createForm.addEventListener('submit', (e) => {
+function createRecipeTemp() {
+    return html`
+        <h2>New Recipe</h2>
+        <form @submit = ${(e) => createNewRecipe(e)}>
+            <label>Name: <input type="text" name="name" placeholder="Recipe name" /></label>
+            <label>Image: <input type="text" name="img" placeholder="Image URL" /></label>
+            <label class="ml">Ingredients:
+            <textarea name="ingredients" placeholder="Enter ingredients on separate lines"></textarea>
+            </label>
+            <label class="ml">Preparation:
+            <textarea name="steps" placeholder="Enter preparation steps on separate lines"></textarea>
+            </label>
+            <input type="submit" value="Create Recipe" />
+        </form>
+    `;
+}
+
+function createNewRecipe(e) {
     e.preventDefault();
-
+    console.log('Create recipe');
     const recipeForm = new FormData(e.currentTarget);
     const data = Object.fromEntries(recipeForm);
     console.log(data);
@@ -36,15 +53,12 @@ createForm.addEventListener('submit', (e) => {
     })
         .then(res => res.json())
         .then(data => {
-
-
             console.log(data);
             homePage();
 
         })
+}
 
-
-});
 
 
 

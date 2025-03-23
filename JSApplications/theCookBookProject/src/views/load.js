@@ -1,13 +1,14 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
 import editRecipeForm from "./edit.js"
+import deleteRecipe from "./DELETE.js"
 
 const mainEl = document.querySelector('main');
+const articleEl = document.querySelector('article');
 const loggedInUserId = localStorage.getItem('owner');
 
 export default function loadRecipe(recipeData) {
     render(loadRecipeTemp(recipeData), mainEl);
 };
-
 
 function loadRecipeTemp(data) {
 
@@ -36,13 +37,12 @@ function loadRecipeTemp(data) {
             ${loggedInUserId === data._ownerId ? html`
                 <div class="buttonsSection">
                     <button class="editBtn" @click=${() => editRecipe(data._id)}>Edit</button>
-                    <button class="deleteBtn" @click=${() => deleteRecipe(data._id)}>Delete</button>
+                    <button class="deleteBtn" @click=${() => deleteRecipe(data._id, articleEl)}>Delete</button>
                 </div>
             ` : ''}
         </article>
     `;
 }
-
 
 function editRecipe(recipeId) {
     console.log(recipeId);
