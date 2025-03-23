@@ -4,13 +4,10 @@ import homePage from "./home.js";
 import renderNavigation from "../app.js";
 
 const sectionEl = document.querySelector('#login-section');
-// const loginForm = sectionEl.querySelector('form');
 const mainEl = document.querySelector('main');
 
 export default function loginPage() {
     mainEl.innerHTML = '';
-    // sectionEl.style.display = 'block';
-    // // console.log(loginForm);
     mainEl.appendChild(sectionEl);
     render(loginPageTemp(), sectionEl)
 }

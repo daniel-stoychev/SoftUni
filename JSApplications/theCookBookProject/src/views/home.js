@@ -1,6 +1,7 @@
 // import { html, render } from "../../node_modules/lit-html/lit-html.js";
 import { html, render } from 'https://unpkg.com/lit-html?module';
 import editRecipeForm from "./edit.js"
+import loadRecipe from "./load.js"
 
 const recipiesURL = `http://localhost:3030/data/recipes`;
 let mainEl = document.querySelector('main');
@@ -8,10 +9,10 @@ let mainEl = document.querySelector('main');
 export default function homePage() {
     console.log('HOMEPAGE TEST');
     mainEl.innerHTML = '';
-    loadRecipies();
+    LoadRecipes();
 }
 
-function loadRecipies() {
+function LoadRecipes() {
     fetch(recipiesURL)
         .then((response) => response.json())
         .then((data) => {
@@ -47,46 +48,12 @@ function onClick(recipe) {
     fetch(recipieDetailsURL)
         .then((response) => response.json())
         .then((data) => {
-            render(loadRecipie(data), mainEl);
+            loadRecipe(data);
         });
 }
 
 
-export function loadRecipie(recipeData) {
 
-    const loggedInUserId = localStorage.getItem('owner');
-
-    return html`
-        <article>
-            <h2>${recipeData.name}</h2>
-            <div class="band">
-                <div class="thumb">
-                    <img src="${recipeData.img}" alt="${recipeData.name}">
-                </div>
-                <div class="ingredients">
-                    <h3>Ingredients:</h3>
-                    <ul>
-                        ${recipeData.ingredients.map(ingredient => html`
-                            <li>${ingredient}</li>
-                        `)}
-                    </ul>
-                </div>
-            </div>
-            <div class="description">
-                <h3>Preparation:</h3>
-                ${recipeData.steps.map(step => html`
-                    <p>${step}</p>
-                `)}
-            </div>
-            ${loggedInUserId === recipeData._ownerId ? html`
-                <div class="buttonsSection">
-                    <button class="editBtn" @click=${() => editRecipe(recipeData._id)}>Edit</button>
-                    <button class="deleteBtn" @click=${() => deleteRecipe(recipeData._id)}>Delete</button>
-                </div>
-            ` : ''}
-        </article>
-    `;
-};
 
 
 const accessToken = localStorage.getItem('accessToken');
@@ -95,6 +62,12 @@ function editRecipe(recipeId) {
     mainEl.innerHTML = '';
     editRecipeForm(recipeId);
 };
+
+
+
+
+
+
 
 function deleteRecipe(recipeId, articleEl) {
     fetch(`${recipiesURL}/${recipeId}`, {
