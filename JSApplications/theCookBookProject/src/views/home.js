@@ -1,35 +1,27 @@
-// import { html, render } from "../../node_modules/lit-html/lit-html.js";
 import { html, render } from 'https://unpkg.com/lit-html?module';
 
 import loadRecipe from "./load.js"
 
 const recipiesURL = `http://localhost:3030/data/recipes`;
+const sectionEl = document.querySelector('#home-section');
 const mainEl = document.querySelector('main');
 
-export default function homePage() {
-    // mainEl.innerHTML = '';
-    loadExistingRecipes();
-}
 
-function loadExistingRecipes() {
+export default function homePage() {
     fetch(recipiesURL)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            serverRecipes(data);
+            mainEl.innerHTML = '';
+            mainEl.appendChild(sectionEl);
+            render(loadExistingRecipesTemp(data), sectionEl)
         })
         .catch((err) => alert(err.message));
 
-};
-
-function serverRecipes(data) {
-    render(loadExistingRecipesTemp(data), mainEl)
 }
 
 function loadExistingRecipesTemp(recipies) {
 
     return html`
-    <section class="site-section" id="home-section">
         ${recipies.map(recipeData => html`
             <article class="preview" @click=${() => onClick(recipeData._id)}>
                 <div class="title">
@@ -40,7 +32,6 @@ function loadExistingRecipesTemp(recipies) {
                 </div>
             </article>
             ` )}
-    </section>
     `
 };
 

@@ -1,46 +1,20 @@
+import page from "//unpkg.com/page/page.mjs";
+
 import homePage from "./views/home.js";
 import loginPage from "./views/login.js";
 import registerPage from "./views/register.js"
 import createRecipePage from "./views/create.js";
-import { logoutBtnEl } from "./views/logout.js";
+import logoutPage from "./views/logout.js";
 
-
-const navElement = document.querySelector('header nav');
-
-const pathnameViews = {
-    '/': homePage,
-    '/login': loginPage,
-    '/register': registerPage,
-    '/create': createRecipePage,
-    '/logout': logoutBtnEl
-};
+page('/', homePage);
+page('/login', loginPage);
+page('/register', registerPage);
+page('/create', createRecipePage);
+page('/logout', logoutPage);
+page();
 
 export default function initNavigation() {
 
-    navElement.addEventListener('click', (e) => {
-        if (e.target.tagName !== 'A') {
-            return;
-        }
-        e.preventDefault();
-        const url = new URL(e.target.href);
-        const pathname = url.pathname;
-        console.log(`Navigating to: ${pathname}`);
-
-        if (pathnameViews[pathname]) {
-            pathnameViews[pathname](); // Ensure the function exists
-        } else {
-            console.log(`No view found for: ${pathname}`); // Debugging log
-        }
-
-    })
-
-    renderNavigation();
-};
-
-
-
-
-function renderNavigation() {
     const email = localStorage.getItem('email');
     const userNavigation = document.getElementById('user');
     const guestNavigation = document.getElementById('guest');
@@ -52,9 +26,6 @@ function renderNavigation() {
         userNavigation.style.display = 'none';
         guestNavigation.style.display = 'inline-block';
     };
-
-}
-
+};
 
 initNavigation();
-homePage();

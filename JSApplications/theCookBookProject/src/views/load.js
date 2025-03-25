@@ -3,14 +3,20 @@ import editRecipeForm from "./edit.js"
 import deleteRecipe from "./DELETE.js"
 
 const mainEl = document.querySelector('main');
-const articleEl = document.querySelector('article');
-const loggedInUserId = localStorage.getItem('owner');
+const sectionEl = document.querySelector('#home-section');
+const articleEl = document.querySelector('.preview');
 
 export default function loadRecipe(recipeData) {
-    render(loadRecipeTemp(recipeData), mainEl);
+    console.log('TEST');
+    mainEl.innerHTML = '';
+    mainEl.appendChild(sectionEl);
+    render(loadRecipeTemp(recipeData), sectionEl);
 };
 
 function loadRecipeTemp(data) {
+    const loggedInUserId = localStorage.getItem('owner');
+    console.log(data._ownerId);
+    console.log(loggedInUserId);
 
     return html`
         <article>
