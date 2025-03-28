@@ -3,7 +3,6 @@ import { html, render } from 'https://unpkg.com/lit-html?module';
 import loadRecipe from "./load.js"
 import authRecipe from "../api/recipes.js";
 
-// const recipiesURL = `http://localhost:3030/data/recipes`;
 const sectionEl = document.querySelector('#home-section');
 const mainEl = document.querySelector('main');
 
@@ -15,14 +14,6 @@ export default function homePage() {
             mainEl.appendChild(sectionEl);
             render(loadExistingRecipesTemp(data), sectionEl)
         })
-    // .catch((err) => alert(err.message));
-    // .then((response) => response.json())
-    // .then((data) => {
-    //     mainEl.innerHTML = '';
-    //     mainEl.appendChild(sectionEl);
-    //     render(loadExistingRecipesTemp(data), sectionEl)
-    // })
-    // .catch((err) => alert(err.message));
 
 }
 
