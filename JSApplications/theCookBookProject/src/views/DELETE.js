@@ -1,11 +1,11 @@
-// TODO
 import { html, render } from 'https://unpkg.com/lit-html?module';
-const accessToken = localStorage.getItem('accessToken');
 
 const recipiesURL = `http://localhost:3030/data/recipes`;
 const mainEl = document.querySelector('main');
+const sectionEl = document.querySelector('#home-section');
 
 export default function deleteRecipe(recipeId, articleEl) {
+    const accessToken = localStorage.getItem('accessToken');
     fetch(`${recipiesURL}/${recipeId}`, {
         method: 'DELETE',
         headers: {
@@ -19,7 +19,9 @@ export default function deleteRecipe(recipeId, articleEl) {
             const recipeDeletedTemplate = html`
                 <h2>Recipe deleted</h2>
             `;
-            render(recipeDeletedTemplate, mainEl);
+            mainEl.innerHTML = '';
+            mainEl.appendChild(sectionEl);
+            render(recipeDeletedTemplate, sectionEl);
 
         });
 };

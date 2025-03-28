@@ -1,7 +1,6 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
-
 import homePage from "./home.js";
-import renderNavigation from "../app.js";
+import initNavigation from "./navigation.js";
 
 const sectionEl = document.querySelector('#register-section');
 const mainEl = document.querySelector('main');
@@ -50,7 +49,7 @@ function onSubmit(e) {
             localStorage.setItem('email', data.email);
             localStorage.setItem('owner', data._id);
             mainEl.innerHTML = '';
-            renderNavigation();
+            initNavigation();
             homePage();
         })
 }

@@ -3,6 +3,7 @@ import loadRecipe from "./load.js";
 
 const recipiesURL = `http://localhost:3030/data/recipes`;
 const mainEl = document.querySelector('main');
+const sectionEl = document.querySelector('#home-section');
 
 export default function editRecipeForm(recipeId) {
 
@@ -17,7 +18,9 @@ export default function editRecipeForm(recipeId) {
 }
 
 function loadEditData(data) {
-    render(loadEditDataTemp(data), mainEl);
+    mainEl.innerHTML = '';
+    mainEl.appendChild(sectionEl);
+    render(loadEditDataTemp(data), sectionEl);
 }
 
 function loadEditDataTemp(recipeData) {

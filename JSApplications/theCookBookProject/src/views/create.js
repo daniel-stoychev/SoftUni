@@ -1,7 +1,8 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
-import homePage from "./home.js"
+import homePage from "./home.js";
+import initNavigation from "./navigation.js";
+import authRecipe from "../api/recipes.js";
 
-const baseURL = 'http://localhost:3030/data/recipes';
 const sectionEl = document.querySelector('#create-section');
 const mainEl = document.querySelector('main');
 
@@ -15,7 +16,7 @@ export default function createRecipePage() {
 function createRecipeTemp() {
     return html`
         <h2>New Recipe</h2>
-        <form @submit = ${(e) => createNewRecipe(e)}>
+        <form @submit = ${createNewRecipe}>
             <label>Name: <input type="text" name="name" placeholder="Recipe name" /></label>
             <label>Image: <input type="text" name="img" placeholder="Image URL" /></label>
             <label class="ml">Ingredients:
@@ -38,29 +39,19 @@ function createNewRecipe(e) {
 
     data.ingredients = data.ingredients.split('\n');
     data.steps = data.steps.split('\n');
-    const accessToken = localStorage.getItem('accessToken');
+
     if (!data.name || !data.img || !data.ingredients || !data.steps) {
         return alert('One or more files are emty!');
     }
 
-    fetch(baseURL, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-type': 'application/json',
-            'X-Authorization': accessToken
-        }
-    })
-        .then(res => res.json())
-        .then(data => {
+    authRecipe.create(data)
+        .then(() => {
             console.log(data);
+
+            initNavigation();
             homePage();
-
         })
+        .catch(err => alert(err.message));
+
+
 }
-
-
-
-
-
-

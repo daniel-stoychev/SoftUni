@@ -1,5 +1,5 @@
 import homePage from "./home.js";
-import initNavigation from "../app.js";
+import initNavigation from "./navigation.js";
 
 const baseURL = 'http://localhost:3030/users';
 
