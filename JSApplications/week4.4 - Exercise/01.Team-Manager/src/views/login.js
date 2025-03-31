@@ -1,6 +1,7 @@
 import { html, nothing } from "lit-html";
 import { login } from "../data/users.js";
 
+
 const loginTemplate = (onLogin, errorMessage) => html`
     <section id="login">
         <article class="narrow">
@@ -24,6 +25,8 @@ const loginTemplate = (onLogin, errorMessage) => html`
 `;
 
 export function loginView(ctx) {
+    console.log(ctx);
+
     updateView();
 
     function updateView(errorMessage) {
@@ -47,3 +50,5 @@ export function loginView(ctx) {
 
 
 
+// The logged in user can be logged out by clicking the logout button. 
+// Write the functionality for this action. After logout redirect to Home page.

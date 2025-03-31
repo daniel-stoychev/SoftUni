@@ -17,6 +17,7 @@ const homeTemplate = (hasUser) => html`
 `;
 
 export function homeView(ctx) {
+
     const userData = ctx.userData;
 
     ctx.render(homeTemplate(userData));
