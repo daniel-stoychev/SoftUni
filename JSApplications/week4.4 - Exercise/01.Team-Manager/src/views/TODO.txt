@@ -1,3 +1,5 @@
-MENU
-Register
+MENU - done
+Register - done
+Create a team
+
 Set modal where it is needed

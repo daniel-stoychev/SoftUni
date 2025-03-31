@@ -7,6 +7,7 @@ import { loginView } from "./views/login.js";
 import { initNavigation } from "./views/navigation.js";
 import { logoutRedirect } from "./views/logout.js";
 import { registerView } from "./views/register.js";
+import { createTeamView } from "./views/create.js";
 
 page(initNavigation);
 page(addSession());
@@ -16,4 +17,5 @@ page('/teams', teamsView);
 page('/login', loginView);
 page('/logout', logoutRedirect);
 page('/register', registerView);
+page('/createteam', createTeamView);
 page();
