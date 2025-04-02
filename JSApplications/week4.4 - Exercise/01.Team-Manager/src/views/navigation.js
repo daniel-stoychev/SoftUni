@@ -24,7 +24,6 @@ const navigationTemplate = (hasUser) => {
 
 export function initNavigation(ctx, next) {
     const hasUser = localStorage.getItem('userData');
-    console.log('TEST NAV');
     render(navigationTemplate(!!hasUser), header);
     next();
 }

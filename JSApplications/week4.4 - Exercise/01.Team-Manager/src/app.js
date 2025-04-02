@@ -8,6 +8,8 @@ import { initNavigation } from "./views/navigation.js";
 import { logoutRedirect } from "./views/logout.js";
 import { registerView } from "./views/register.js";
 import { createTeamView } from "./views/create.js";
+import { teamDetailsView } from "./views/team_details.js";
+import { leaveTeam } from "./views/team_leave.js";
 
 page(initNavigation);
 page(addSession());
@@ -18,4 +20,6 @@ page('/login', loginView);
 page('/logout', logoutRedirect);
 page('/register', registerView);
 page('/createteam', createTeamView);
+page('/teams/:teamId', teamDetailsView);
+// page('/leave/:userId', leaveTeam);
 page();

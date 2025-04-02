@@ -8,3 +8,7 @@ export async function getAllTeams() {
 
     return get(endpoints.allTeams);
 }
+
+export async function getTeamDetails(id) {
+    return get(`${endpoints.allTeams}/${id}`);
+}
