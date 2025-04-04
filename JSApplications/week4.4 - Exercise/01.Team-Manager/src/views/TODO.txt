@@ -1,6 +1,7 @@
 MENU - done
 Register - done
-Team details
-Create a team
+Leave Team - CONTINUE FROM HERE
+Team details - 
+Create a team - 
 
 Set modal where it is needed

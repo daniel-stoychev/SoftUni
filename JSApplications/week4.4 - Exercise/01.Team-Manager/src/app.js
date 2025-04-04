@@ -21,5 +21,5 @@ page('/logout', logoutRedirect);
 page('/register', registerView);
 page('/createteam', createTeamView);
 page('/teams/:teamId', teamDetailsView);
-// page('/leave/:userId', leaveTeam);
+page('/leave/:userId', leaveTeam);
 page();
