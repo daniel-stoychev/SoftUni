@@ -121,3 +121,7 @@ export async function teamDetailsView(ctx) {
 // - logged in user / penmding
 // - logged in user / a memeber
 
+//60f0cf0b-34b0-4abd-9769-8c42f830dffc 
+
+
+//data/members?where=_ownerId%3D%2260f0cf0b-34b0-4abd-9769-8c42f830dffc%22%20AND%20status%3D%22member%22&load=team%3DteamId%3Ateams

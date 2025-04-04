@@ -12,3 +12,7 @@ export async function getAllTeams() {
 export async function getTeamDetails(id) {
     return get(`${endpoints.allTeams}/${id}`);
 }
+
+export async function name(params) {
+
+}
