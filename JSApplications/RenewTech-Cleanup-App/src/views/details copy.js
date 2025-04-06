@@ -1,11 +1,10 @@
 
-import { getAllLikes, getLikesForUser, getOneItem, likeItemRequest } from '../api/items.js';
+import { getOneItem } from '../api/items.js';
 import { html, render } from '../lib/lit-html.js';
-import page from '../lib/page.js';
 import { getUserData } from '../utils/userUrils.js';
 
 
-const template = (itemDetails, isOwner, hasUser, likesCount, hasLiked) => html`
+const template = (itemDetails, isOwner, hasUser) => html`
     <section id="details">
         <div id="details-wrapper">
             <img id="details-img" src=${itemDetails.imageUrl} alt="example1" />
@@ -21,7 +20,7 @@ const template = (itemDetails, isOwner, hasUser, likesCount, hasLiked) => html`
                         </p>
                     </div>
                     </div>
-                    <h3>Like Solution:<span id="like">${likesCount}</span></h3>
+                    <h3>Like Solution:<span id="like">0</span></h3>
 
  
                         <!--Edit and Delete are only for creator-->
@@ -30,8 +29,8 @@ const template = (itemDetails, isOwner, hasUser, likesCount, hasLiked) => html`
         ? html`
                         <a href="/edit/${itemDetails._id}" id="edit-btn">Edit</a>
                         <a href="/delete/${itemDetails._id}" id="delete-btn">Delete</a>`
-        : !isOwner && hasUser && !hasLiked ? html`<!--Bonus - Only for logged-in users ( not authors )-->
-                            <a href="/like/${itemDetails._id}" id="like-btn">Like</a>` : ''}
+        : !isOwner && hasUser ? html`<!--Bonus - Only for logged-in users ( not authors )-->
+                            <a href="#" id="like-btn">Like</a>` : ''}
                 </div>
             </div>
         </div>
@@ -52,22 +51,6 @@ export default async function detailsView(ctx) {
     if (id !== null) {
         hasUser = true;
     }
-
-
-    const itemID = itemDetails._id;
-
-    //all likes count
-    const likesCount = await getAllLikes(itemID);
-    // get likes for user
-    const hasLiked = await getLikesForUser(itemID, id)
-
-    render(template(itemDetails, isOwner, hasUser, likesCount, hasLiked));
-}
-
-export async function likeItem(ctx) {
-    const solutionId = ctx.params.itemId;
-    await likeItemRequest({ solutionId });
-    page.redirect(`/dashboard/${ctx.params.itemId}`);
-
+    render(template(itemDetails, isOwner, hasUser));
 }
 
