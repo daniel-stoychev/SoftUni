@@ -1,0 +1,11 @@
+Data to take for EXAM:
+
+> /lib folder - entire
+> /utils folder - entire 
+> /api folder - entire
+> take views boilercode from /views -> home.js
+> login, register, logout - entire
+> middleware (navigation) - entire
+> views - > dashboard and all other - PARTIAL
+
+
