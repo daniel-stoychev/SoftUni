@@ -1,14 +1,21 @@
 import express from 'express';
 import path from 'node:path';
+import router from './userRouter.js';
+import {
+    loggerMiddleware,
+    userLoginLoggerMiddleware
+} from './middlewares/loggerMiddleware.js';
 
 const app = express();
+
+app.use(loggerMiddleware);
 
 app.get('/', (req, res) => {
 
     res.send('Hello World!')
 });
 
-app.get('/login', (req, res) => {
+app.get('/login', userLoginLoggerMiddleware, (req, res) => {
     res.send(`
             <!DOCTYPE html>
                 <html lang="en">
@@ -86,6 +93,17 @@ app.get('/redirected', (req, res) => {
     res.send('This page has been redirected!')
 
 });
+
+// Using modular router
+
+app.use('/user', router);
+
+
+
+
+
+
+
 
 
 
