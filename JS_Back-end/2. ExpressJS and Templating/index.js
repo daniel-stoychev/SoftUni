@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'node:path';
 
 const app = express();
 
@@ -40,7 +41,15 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-    res.send('Successful login!')
+    res.send('Successful login!');
+});
+
+// Send json
+app.get('/data', (req, res) => {
+    res.json({
+        name: 'Pesho',
+        age: 20
+    });
 });
 
 // Using params
@@ -49,6 +58,33 @@ app.get('/cats/:catId/details', (req, res) => {  //segments
     res.send(`Cat details: ${req.params.catId}`);
 
     res.end();
+});
+
+// Download files inline
+app.get('/send-file', (req, res) => {
+    res.sendFile(path.resolve('./cat.jpeg'));
+});
+
+// Download file attachment
+app.get('/send-file-download', (req, res) => {
+    res.attachment('cute-cat.jpg');
+    res.sendFile(path.resolve('./cat.jpeg'));
+});
+
+// Download file attachment shortcut
+
+app.get('/send-attachment', (req, res) => {
+    res.download('./cat.jpeg', 'cute-cat.jpeg');
+});
+
+// Redirect
+app.get('/redirect', (req, res) => {
+    res.redirect('/redirected');
+});
+
+app.get('/redirected', (req, res) => {
+    res.send('This page has been redirected!')
+
 });
 
 
