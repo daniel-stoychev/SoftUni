@@ -30,11 +30,25 @@ app.get('/', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-    res.render('home', { title: 'My Home page!' });
+    res.render('home', { title: 'My Home page!', userText: `This is <script>alert('You are hacked!')</script>` });
 });
 
 app.get('/about', (req, res) => {
     res.render('about');
+});
+
+app.get('/list', (req, res) => {
+    const users = [
+        { name: 'Pesho', age: 18 },
+        { name: 'Gosho', age: 18 },
+        { name: 'Ivan', age: 18 },
+        { name: 'Petkan', age: 18 },
+        { name: 'Mariyka', age: 18 }
+    ];
+
+    const isAdmin = true;
+
+    res.render('list', { users, isAdmin });
 });
 
 app.get('/login', userLoginLoggerMiddleware, (req, res) => {
