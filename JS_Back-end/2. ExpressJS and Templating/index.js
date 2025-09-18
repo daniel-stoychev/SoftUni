@@ -1,12 +1,22 @@
 import express from 'express';
 import path from 'node:path';
 import router from './userRouter.js';
+import handlebars from 'express-handlebars';
+
 import {
     loggerMiddleware,
     userLoginLoggerMiddleware
 } from './middlewares/loggerMiddleware.js';
+import { title } from 'node:process';
 
 const app = express();
+
+// Add view engine to express
+app.engine('hbs', handlebars.engine());
+
+// User specific view engine
+app.set('view engine', 'hbs');
+
 
 // Use static Middleware
 app.use(express.static('public'))
@@ -15,6 +25,10 @@ app.use(loggerMiddleware);
 app.get('/', (req, res) => {
 
     res.send('Hello World!')
+});
+
+app.get('/home', (req, res) => {
+    res.render('home', { layout: false, title: 'My Home page!' });
 });
 
 app.get('/login', userLoginLoggerMiddleware, (req, res) => {
