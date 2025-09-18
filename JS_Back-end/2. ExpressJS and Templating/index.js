@@ -12,7 +12,9 @@ import { title } from 'node:process';
 const app = express();
 
 // Add view engine to express
-app.engine('hbs', handlebars.engine());
+app.engine('hbs', handlebars.engine({
+    extname: 'hbs',
+}));
 
 // User specific view engine
 app.set('view engine', 'hbs');
@@ -28,7 +30,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-    res.render('home', { layout: false, title: 'My Home page!' });
+    res.render('home', { title: 'My Home page!' });
+});
+
+app.get('/about', (req, res) => {
+    res.render('about');
 });
 
 app.get('/login', userLoginLoggerMiddleware, (req, res) => {
