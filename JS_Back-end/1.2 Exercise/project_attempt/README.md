@@ -14,8 +14,8 @@ SoftUni JS Back End Course Project
 - [x] Extract css into separate js files
 - [x] Read home html from file system
 - [x] Read site css from file system
-- [] Add create bread page
-- [] Add create cat page
+- [x] Add create bread page
+- [x] Add create cat page
 - [] Render view generic function
 - [] Render dynamic cats on home page
 - [] Add cats from add-cats page
