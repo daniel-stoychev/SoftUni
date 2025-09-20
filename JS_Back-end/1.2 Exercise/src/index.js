@@ -1,8 +1,34 @@
 import http from 'http';
 import fs from 'fs/promises';
 
+import { getCats, saveCat } from './data.js';
+
 const server = http.createServer(async (req, res) => {
     let html;
+
+    if (req.method === 'POST') {
+        console.log('Post been sent!');
+        let data = '';
+        req.on('data', (chunk) => {
+            data += chunk.toString();
+        });
+        req.on('end', async () => {
+            const searchParams = new URLSearchParams(data);
+            const newCat = Object.fromEntries(searchParams.entries());
+            await saveCat(newCat)
+            // writeCatToDB(newCat);
+
+
+            //redirect to HOME
+            res.writeHead(301, {
+                'location': '/'
+            });
+            res.end();
+        });
+
+        return;
+    }
+
     switch (req.url) {
         case '/':
             html = await homeView();
@@ -16,7 +42,7 @@ const server = http.createServer(async (req, res) => {
 
 
         case '/styles/site.css':
-            const siteCss = await fs.readFile('./src/styles/site.css', { encoding: 'utf-8' });
+            const siteCss = await readFile('./src/styles/site.css');
 
             res.writeHead(200, {
                 "content-type": 'text/css'
@@ -34,21 +60,60 @@ const server = http.createServer(async (req, res) => {
     res.write(html);
     res.end();
 });
+///////OOOOOOOK
+function readFile(path) {
+    return fs.readFile(path, { encoding: 'utf-8' });
+}
+
+// function writeCatToDB(newCat) {
+//     return fs.writeFile('./db.json', newCat, { encoding: 'utf-8' });
+// }
 
 
 async function homeView() {
-    const homeHtml = await fs.readFile('./src/views/home/index.html', { encoding: 'utf-8' });
-    return homeHtml;
+    const html = await readFile('./src/views/home/index.html');
+    const cats = await getCats();
+
+    let catsHtml = '';
+    if (cats.length > 0) {
+        catsHtml = cats.map(cat => catTemplate(cat)).join('\n');
+    } else {
+        catsHtml = '<span>No cats</span>';
+    }
+
+
+
+    const result = html.replace('{{cats}}', catsHtml)
+
+    return result;
+
 }
 
 async function addBreedView() {
-    const addBreedPage = await fs.readFile('./src/views/addBreed.html', { encoding: 'utf-8' });
+    const addBreedPage = await readFile('./src/views/addBreed.html');
     return addBreedPage;
 }
 
 async function addCatView() {
-    const addCatPage = await fs.readFile('./src/views/addCat.html', { encoding: 'utf-8' });
+    const addCatPage = await readFile('./src/views/addCat.html');
     return addCatPage;
+}
+
+
+
+function catTemplate(cat) {
+    return `
+            <li>
+                <img src="${cat.imageUrl}" alt="${cat.name}">
+                <h3>${cat.name}</h3>
+                <p><span>Breed: </span>${cat.breed}</p>
+                <p><span>Description: </span>${cat.description}</p>
+                <ul class="buttons">
+                    <li class="btn edit"><a href="">Change Info</a></li>
+                    <li class="btn delete"><a href="">New Home</a></li>
+                </ul>
+            </li>
+        `
 }
 
 server.listen(5000);
