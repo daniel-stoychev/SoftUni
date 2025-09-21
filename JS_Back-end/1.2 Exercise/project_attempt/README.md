@@ -19,11 +19,11 @@ SoftUni JS Back End Course Project
 - [x] Render view generic function
 - [x] Render dynamic cats on home page
 - [x] Add cats from add-cats page
-- [] Conditional rendering with cats
-- [] Redirect to home page
-- [] Add cats persistence
-- [] Cache CSS
-- [] Add unique id to each created cat
+- [x] Conditional rendering with cats
+- [x] Redirect to home page
+- [x] Add cats persistence
+- [x] Cache CSS
+- [x] Add unique id to each created cat
 - [] Edit cats
 - [ ] Add dynamic breeds
 

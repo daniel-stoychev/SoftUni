@@ -34,6 +34,13 @@
       "description": "asdasdasd",
       "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-bQnvL_yGisgee2AFzgRyXxfDAaGAo0X348eL4u3RSrDwmgUVYu_c9VFpxE4mPjVx3q8&usqp=CAU",
       "breed": "Fluffy Cat"
+    },
+    {
+      "id": 6,
+      "name": "TestCat",
+      "description": "ID TEST",
+      "imageUrl": "TestCatURL",
+      "breed": "Fluffy Cat"
     }
   ],
   "breeds": []

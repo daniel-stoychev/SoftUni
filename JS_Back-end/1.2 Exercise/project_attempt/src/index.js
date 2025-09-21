@@ -14,6 +14,8 @@ const server = http.createServer(async (req, res) => {
         console.log('POST has been sent!');
         let data = '';
         req.on('data', (chunk) => {
+            console.log(chunk.toString());
+
             data += chunk.toString();
 
         });
@@ -21,6 +23,10 @@ const server = http.createServer(async (req, res) => {
         req.on('end', () => {
             const searchParams = new URLSearchParams(data);
             const newCat = Object.fromEntries(searchParams.entries());
+            // const allCatsObj = await getCats();
+            // const allCatsNumber = Number(Object.keys(allCatsObj).length);
+            // newCat.id = allCatsNumber + 1;  // COMPLETED IN data.js
+
             saveCat(newCat);
         });
 
@@ -84,7 +90,7 @@ function catTemplate(cat) {
                 <li>
                     <img src="${cat.imageUrl}"
                         alt="Black Cat">
-                    <h3>${cat.name}{}</h3>
+                    <h3>${cat.name}</h3>
                     <p><span>Breed: </span>${cat.breed}</p>
                     <p><span>Description: </span>${cat.description}</p>
                     <ul class="buttons">
