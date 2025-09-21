@@ -1,6 +1,11 @@
-- [ ] Initializing project
-- [ ] Initializing project
-- [ ] Initializing project
-- [ ] Initializing project
-- [ ] Initializing project
-- [ ] Initializing project
+# Movie-magic-project-sept 2025
+
+## Steps
+
+- [x] Initializing project
+- [x] Configure package.json & launch.json
+- [x] Add Express server
+- [x] Add resources
+- [x] Setup Handlebars
+- [ ] Render Home page
+- [ ]
