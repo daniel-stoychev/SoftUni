@@ -24,6 +24,11 @@ const server = http.createServer(async (req, res) => {
             saveCat(newCat);
         });
 
+        res.writeHead(302, {
+            'location': '/'
+        });
+        res.end();
+        return;
     }
 
     // VIEWS
