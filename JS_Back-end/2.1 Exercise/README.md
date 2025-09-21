@@ -10,4 +10,11 @@
 - [x] Setup static files
 - [x] Render Home page
   - [x] do HTML files changes (home)
+- [x] Add layout
+- [x] Render About page
+
+---
+
+- [ ]
+- [ ]
 - [ ]
