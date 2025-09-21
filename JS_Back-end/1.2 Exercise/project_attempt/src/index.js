@@ -1,13 +1,32 @@
 import http from 'http';
 import fs from 'fs/promises';
-import { getCats } from './data.js';
+import { getCats, saveCat } from './data.js';
+
+
 
 
 
 const server = http.createServer(async (req, res) => {
     let html = '';
-    console.log(req.url);
 
+    //POSTS resquests for adding cat
+    if (req.method === 'POST') {
+        console.log('POST has been sent!');
+        let data = '';
+        req.on('data', (chunk) => {
+            data += chunk.toString();
+
+        });
+
+        req.on('end', () => {
+            const searchParams = new URLSearchParams(data);
+            const newCat = Object.fromEntries(searchParams.entries());
+            saveCat(newCat);
+        });
+
+    }
+
+    // VIEWS
     if (req.url === '/') {
         html = await homeView();
     } else if (req.url === '/cats/add-breed') {
