@@ -9,8 +9,12 @@ app.engine('hbs', handlebars.engine({
 }));
 
 app.set('view engine', 'hbs'); // setup variable to use hbs as view engine
-app.set('views', 'src/views');
+app.set('views', 'src/views');  // setup views folder location
 
+
+// Setup middlewares
+
+app.use(express.static('src/public'))
 
 // Routes
 app.get('/', (req, res) => {
