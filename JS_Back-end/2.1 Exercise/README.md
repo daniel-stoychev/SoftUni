@@ -7,6 +7,7 @@
 - [x] Add Express server
 - [x] Add resources
 - [x] Setup Handlebars
-- [] Setup static files
-- [ ] Render Home page
+- [x] Setup static files
+- [x] Render Home page
+  - [x] do HTML files changes (home)
 - [ ]
