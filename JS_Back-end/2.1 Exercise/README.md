@@ -17,18 +17,29 @@
 
 ---
 
-### Architecture
+### Architecture & dynamic rendering
 
 - [x] Add home controller
 - [x] Add movie data layer
-- [ ] Add movie service
-- [ ] Render movies on homepage
-- [ ] Show no movies screen
+- [x] Add movie service
+- [x] Render movies on homepage
+- [x] Show no movies screen
 - [ ]
 
----
+### Create Movie
 
+- [ ] Add Movie controller
+- [ ] Show create movie page
 - [ ] Add routes
+- [ ] Ability to parse user data (read body data)
+- [ ] Create movie
+  - [ ] Add action
+  - [ ] Add service
+  - [ ] Add model method for creating movie
+- [ ]
+- [ ] Add 404 page
+
+---
 
 #### Comments
 
