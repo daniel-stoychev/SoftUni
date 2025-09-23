@@ -25,6 +25,14 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
+app.get('/create', (req, res) => {
+    res.render('create');
+});
+
+app.get('/search', (req, res) => {
+    res.render('search');
+});
+
 // ----------------
 
 

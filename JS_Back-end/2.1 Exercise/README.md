@@ -12,6 +12,8 @@
   - [x] do HTML files changes (home)
 - [x] Add layout
 - [x] Render About page
+- [x] Render Create page
+- [x] Render Search page
 
 ---
 
