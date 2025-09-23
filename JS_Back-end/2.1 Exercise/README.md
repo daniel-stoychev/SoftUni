@@ -28,8 +28,8 @@
 
 ### Create Movie
 
-- [ ] Add Movie controller
-- [ ] Show create movie page
+- [x] Add Movie controller
+- [x] Show create movie page
 - [ ] Add routes
 - [ ] Ability to parse user data (read body data)
 - [ ] Create movie
