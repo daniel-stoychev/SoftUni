@@ -17,6 +17,24 @@
 
 ---
 
+### Architecture
+
+- [x] Add home controller
+- [ ] Add movie data laayer
+- [ ] Add movie service
+- [ ] Render movies on homepage
+- [ ] Show no movies screen
 - [ ]
-- [ ]
-- [ ]
+
+---
+
+- [ ] Add routes
+
+#### Comments
+
+- here we use 3 layer architecture (different than MVC)
+  - standard for backend app development
+  - three main elements (layer)
+  - controller - group of actions handling the requests
+  - service - handles & completes the requests (and the business logic / logical operation)
+  - data - handles the data that is required by the service

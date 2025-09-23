@@ -1,0 +1,23 @@
+import { Router } from "express";
+
+const homeController = Router();
+
+homeController.get('/', (req, res) => {
+    res.render('home');
+});
+
+homeController.get('/about', (req, res) => {
+    res.render('about');
+});
+
+homeController.get('/create', (req, res) => {
+    res.render('create');
+});
+
+homeController.get('/search', (req, res) => {
+    res.render('search');
+});
+
+
+
+export default homeController;
