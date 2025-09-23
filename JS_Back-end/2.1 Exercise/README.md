@@ -33,8 +33,8 @@
 - [x] Add routes
 - [x] Ability to parse user data (read body data)
 - [ ] Create movie
-  - [ ] Add action
-  - [ ] Add service
+  - [x] Add action
+  - [x] Add service
   - [ ] Add model method for creating movie
 - [ ]
 - [ ] Add 404 page
