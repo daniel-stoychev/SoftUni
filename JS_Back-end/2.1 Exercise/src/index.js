@@ -15,7 +15,9 @@ app.set('views', 'src/views');  // setup views folder location
 
 // Setup middlewares
 
-app.use(express.static('src/public'))
+app.use(express.static('src/public'));
+app.use(express.urlencoded()); // returns middleware that reads if there is data in the request 
+// tream and if there are, it will parse them automatically /(factory method)
 
 // Routes
 app.use(routes);

@@ -30,8 +30,8 @@
 
 - [x] Add Movie controller
 - [x] Show create movie page
-- [ ] Add routes
-- [ ] Ability to parse user data (read body data)
+- [x] Add routes
+- [x] Ability to parse user data (read body data)
 - [ ] Create movie
   - [ ] Add action
   - [ ] Add service

@@ -2,9 +2,15 @@ import { Router } from "express";
 
 const movieController = Router();
 
-movieController.get('/movies/create', (req, res) => {
+movieController.get('/create', (req, res) => {
 
     res.render('create');
+
+});
+
+movieController.post('/create', (req, res) => {
+
+    res.end();
 
 });
 
