@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';  // bibliotec for unique IDs / npm i uuid
+
 const movies = [
     {
         id: '1',
@@ -38,17 +40,22 @@ const movies = [
 export default class Movie {
     constructor(data) {
         Object.assign(this, data);
-
+        // HERE WE CREATE THE MOVIE OBJECT IN THE MEMORY
+        this._id = uuid();
     }
 
     static find() {
         return movies.slice();
     }
 
+    get id() {
+        return this._id;
+    }
+
     save() {
         movies.push(this);
         console.log(movies);
-
+        // HERE WE SAVE THE MOVIE OBJECT IN THE SPECIAL MEMORY FOR ALL MOVIES
         return this;
     }
 

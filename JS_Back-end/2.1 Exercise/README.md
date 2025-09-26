@@ -37,6 +37,8 @@
   - [x] Add service //1.55
   - [x] Add model method for creating movie
 - [ ] Redirect after creation
+- [ ] Add unique for each created movie
+- [ ]
 - [ ]
 - [ ] Add 404 page
 
