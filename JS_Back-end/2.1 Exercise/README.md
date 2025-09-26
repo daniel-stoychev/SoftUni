@@ -32,10 +32,11 @@
 - [x] Show create movie page
 - [x] Add routes
 - [x] Ability to parse user data (read body data)
-- [ ] Create movie
+- [x] Create movie
   - [x] Add action
   - [x] Add service //1.55
-  - [ ] Add model method for creating movie
+  - [x] Add model method for creating movie
+- [ ] Redirect after creation
 - [ ]
 - [ ] Add 404 page
 

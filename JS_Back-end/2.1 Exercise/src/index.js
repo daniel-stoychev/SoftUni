@@ -4,7 +4,7 @@ import routes from './routes.js';
 
 const app = express();
 
-//Setup Handlebars (engive)
+//Setup Handlebars (engine)
 app.engine('hbs', handlebars.engine({
     extname: 'hbs', //setup for .hbs files
 }));
