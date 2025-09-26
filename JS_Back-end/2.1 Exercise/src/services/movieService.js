@@ -1,4 +1,4 @@
-import { Movie } from "../models/Movie.js";
+import Movie from "../models/Movie.js";
 
 export default {
     getAll() {
@@ -6,6 +6,9 @@ export default {
     },
     create(movieData) {
         console.log(movieData);
+        const movie = new Movie(movieData);
+
+        return movie.save();
 
     }
 }

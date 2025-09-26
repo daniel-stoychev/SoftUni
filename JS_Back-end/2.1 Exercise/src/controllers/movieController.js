@@ -9,7 +9,11 @@ movieController.get('/create', (req, res) => {
 
 movieController.post('/create', (req, res) => {
     const movieData = req.body;
-    movieService.create(movieData)
+
+    const movie = movieService.create(movieData);
+
+    console.log(movie.title);
+
     res.end();
 
 });

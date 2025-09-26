@@ -35,8 +35,22 @@ const movies = [
 ];
 
 
-export class Movie {
+export default class Movie {
+    constructor(data) {
+        Object.assign(this, data);
+
+    }
+
     static find() {
         return movies.slice();
     }
+
+    save() {
+        movies.push(this);
+        console.log(movies);
+
+        return this;
+    }
+
+
 }
