@@ -44,11 +44,11 @@
 
 ### Details page
 
-- [ ] Add Navigation button for details page
-- [ ] Add route with param for details page
+- [x] Add Navigation button for details page
+- [x] Add route with param for details page
 - [ ] GetOne movie from service
 - [ ] Find movide by id in model
-- [ ]
+- [ ] Render details page with dynamic data
 
 ### Search page
 
