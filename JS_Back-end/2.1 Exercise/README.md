@@ -34,7 +34,7 @@
 - [x] Ability to parse user data (read body data)
 - [ ] Create movie
   - [x] Add action
-  - [x] Add service
+  - [x] Add service //1.55
   - [ ] Add model method for creating movie
 - [ ]
 - [ ] Add 404 page
