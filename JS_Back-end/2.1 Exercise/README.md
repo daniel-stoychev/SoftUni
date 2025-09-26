@@ -36,10 +36,30 @@
   - [x] Add action
   - [x] Add service //1.55
   - [x] Add model method for creating movie
-- [ ] Redirect after creation
-- [ ] Add unique for each created movie
+- [x] Redirect after creation
+- [x] Add unique for each created movie
 - [ ]
 - [ ]
+
+### Details page
+
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+
+### Search page
+
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+
+### Bonuses
+
+- [ ] File Persitance
+
 - [ ] Add 404 page
 
 ---
