@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';  // bibliotec for unique IDs / npm i uuid
 
 const movies = [
     {
-        id: '1',
+        _id: '1',
         title: 'The Shawshank Redemption',
         genre: 'Drama',
         description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
@@ -13,7 +13,7 @@ const movies = [
         category: 'Classic'
     },
     {
-        id: '2',
+        _id: '2',
         title: 'The Dark Knight',
         genre: 'Action, Crime, Drama',
         description: 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.',
@@ -24,7 +24,7 @@ const movies = [
         category: 'Superhero'
     },
     {
-        id: '3',
+        _id: '3',
         title: 'Interstellar',
         genre: 'Sci-Fi, Drama, Adventure',
         description: 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',

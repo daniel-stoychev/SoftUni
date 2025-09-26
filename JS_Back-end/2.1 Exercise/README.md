@@ -31,6 +31,7 @@
 - [x] Add Movie controller
 - [x] Show create movie page
 - [x] Add routes
+- [x] Add 404 page
 - [x] Ability to parse user data (read body data)
 - [x] Create movie
   - [x] Add action
@@ -43,9 +44,10 @@
 
 ### Details page
 
-- [ ]
-- [ ]
-- [ ]
+- [ ] Add Navigation button for details page
+- [ ] Add route with param for details page
+- [ ] GetOne movie from service
+- [ ] Find movide by id in model
 - [ ]
 
 ### Search page
@@ -59,8 +61,6 @@
 ### Bonuses
 
 - [ ] File Persitance
-
-- [ ] Add 404 page
 
 ---
 
