@@ -57,8 +57,8 @@
 - [x] Modify search form
 - [] Filter movies
   - [x] by year
-  - [] by title
-  - [] by genre
+  - [x] by title
+  - [x] by genre
 - [ ] Remember search words
 
 ### Bonuses
