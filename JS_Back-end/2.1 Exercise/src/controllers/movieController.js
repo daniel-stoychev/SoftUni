@@ -31,7 +31,7 @@ movieController.get('/search', (req, res) => {
     console.log(movies);
 
 
-    res.render('search', { movies, filter });
+    res.render('search', { movies, pageTitle: 'Search Movies' });
 });
 
 export default movieController;

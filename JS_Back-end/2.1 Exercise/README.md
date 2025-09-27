@@ -59,11 +59,13 @@
   - [x] by year
   - [x] by title
   - [x] by genre
-- [ ] Remember search words
+- [x] Remember search words
 
 ### Bonuses
 
+- [x] Dynamic page title // THIS WILL BE ON THE EXAM
 - [ ] File Persitance
+- [ ] Rating
 
 ---
 
