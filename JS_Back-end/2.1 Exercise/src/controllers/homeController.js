@@ -14,12 +14,4 @@ homeController.get('/about', (req, res) => {
     res.render('about');
 });
 
-
-
-homeController.get('/search', (req, res) => {
-    res.render('search');
-});
-
-
-
 export default homeController;

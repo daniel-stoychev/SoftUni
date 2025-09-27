@@ -46,17 +46,17 @@
 
 - [x] Add Navigation button for details page
 - [x] Add route with param for details page
-- [ ] GetOne movie from service
-- [ ] Find movide by id in model
-- [ ] Render details page with dynamic data
+- [x] GetOne movie from service
+- [x] Find movide by id in model
+- [x] Render details page with dynamic data
 
 ### Search page
 
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Show static search page
+- [x] Render all movies
+- [ ] Modify search form
+- [ ] Filter movies
+- [ ] Remember search words
 
 ### Bonuses
 
