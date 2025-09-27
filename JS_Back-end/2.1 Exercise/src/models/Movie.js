@@ -1,40 +1,8 @@
 import { v4 as uuid } from 'uuid';  // bibliotec for unique IDs / npm i uuid
+import fs from 'fs/promises';
 
-const movies = [
-    {
-        _id: '1',
-        title: 'The Shawshank Redemption',
-        genre: 'Drama',
-        description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
-        imageUrl: 'https://i.pinimg.com/236x/fd/84/34/fd8434cc3ae7c0626c4d344a79ecf4c4.jpg',
-        director: 'Frank Darabont',
-        year: '1994',
-        rating: 3.3,
-        category: 'Classic'
-    },
-    {
-        _id: '2',
-        title: 'The Dark Knight',
-        genre: 'Drama',
-        description: 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.',
-        imageUrl: 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg',
-        director: 'Christopher Nolan',
-        year: '2008',
-        rating: 9.0,
-        category: 'Superhero'
-    },
-    {
-        _id: '3',
-        title: 'Interstellar',
-        genre: 'Adventure',
-        description: 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
-        imageUrl: 'https://i.ebayimg.com/images/g/Zo4AAOSwuZRn5XHn/s-l1200.jpg',
-        director: 'Christopher Nolan',
-        year: '2014',
-        rating: 8.7,
-        category: 'Space Exploration'
-    }
-];
+let dbSerialized = await fs.readFile('./src/db.json', { encoding: 'utf-8' });
+let db = JSON.parse(dbSerialized);
 
 
 export default class Movie {
@@ -45,10 +13,10 @@ export default class Movie {
     }
 
     static find(filter = {}) {
-        let result = movies.slice();
+        let result = db.movies.slice();
 
         if (filter._id) {
-            result = movies.filter(movie => movie._id === filter._id)
+            result = db.movies.filter(movie => movie._id === filter._id)
         };
 
         if (filter.title) {
@@ -70,9 +38,9 @@ export default class Movie {
     }
 
     static findOne(filter = {}) {
-        let result = movies.at(0);
+        let result = db.movies.at(0);
         if (filter._id) {
-            result = movies.find(movie => movie._id === filter._id)
+            result = db.movies.find(movie => movie._id === filter._id)
         }
         return result; // returns an Object
     }
@@ -81,10 +49,14 @@ export default class Movie {
         return this._id;
     }
 
-    save() {
-        movies.push(this);
-        console.log(movies);
-        // HERE WE SAVE THE MOVIE OBJECT IN THE SPECIAL MEMORY FOR ALL MOVIES
+    async save() {
+        db.movies.push(this);
+
+        const dbSerialized = JSON.stringify(db, null, 2);
+
+        await fs.writeFile('./src/db.json', dbSerialized)
+
+        // HERE WE SAVE THE MOVIE OBJECT IN THE SPECIAL MEMORY FOR ALL db.MOVIES
         return this;
     }
 
