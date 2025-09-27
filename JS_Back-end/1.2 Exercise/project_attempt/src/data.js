@@ -4,9 +4,13 @@ const dbSerialized = await fs.readFile('./src/db.json');
 const db = JSON.parse(dbSerialized);
 
 export async function getCats() {
-    console.log(db.cats);
+    // console.log(db.cats);
 
     return db.cats;
+}
+
+export async function getCat(id) {
+    return db.cats.find(cat => cat.id === id);
 }
 
 export async function saveCat(catData) {

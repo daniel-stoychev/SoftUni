@@ -41,6 +41,20 @@
       "description": "ID TEST",
       "imageUrl": "TestCatURL",
       "breed": "Fluffy Cat"
+    },
+    {
+      "id": 7,
+      "name": "TestCat",
+      "description": "",
+      "imageUrl": "https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg",
+      "breed": "Fluffy Cat"
+    },
+    {
+      "id": 8,
+      "name": "Bogdan",
+      "description": "ffff",
+      "imageUrl": "TestCatURL",
+      "breed": "Fluffy Cat"
     }
   ],
   "breeds": []

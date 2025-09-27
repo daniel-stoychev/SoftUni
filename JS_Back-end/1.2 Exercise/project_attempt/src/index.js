@@ -1,6 +1,7 @@
 import http from 'http';
 import fs from 'fs/promises';
-import { getCats, saveCat } from './data.js';
+import { getCat, getCats, saveCat } from './data.js';
+import { get } from 'https';
 
 
 
@@ -14,7 +15,7 @@ const server = http.createServer(async (req, res) => {
         console.log('POST has been sent!');
         let data = '';
         req.on('data', (chunk) => {
-            console.log(chunk.toString());
+            // console.log(chunk.toString());
 
             data += chunk.toString();
 
@@ -37,13 +38,18 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
-    // VIEWS
+    //ROUTES ---------------------------------
     if (req.url === '/') {
         html = await homeView();
     } else if (req.url === '/cats/add-breed') {
         html = await addBreedView();
     } else if (req.url === '/cats/add-cat') {
         html = await addCatView();
+    } else if (req.url.startsWith('/cats/edit-cat')) {
+        const segments = req.url.split('/');
+        const catId = Number(segments.at(3));
+        html = await editCatView(catId);
+
     }
 
     if (req.url === '/styles/site.css') {
@@ -64,7 +70,7 @@ const server = http.createServer(async (req, res) => {
     res.end();
 });
 
-
+//VIEWS ---------------------------------
 async function homeView() {
     const html = await fs.readFile('./src/views/home/index.html', { encoding: 'utf-8' });
     const cats = await getCats();
@@ -83,6 +89,19 @@ async function addCatView() {
     return result;
 }
 
+async function editCatView(catId) {
+    const cat = await getCat(catId);
+
+    let html = await fs.readFile('./src/views/editCat.html', { encoding: 'utf-8' });
+
+    html = html.replaceAll('{{name}}', cat.name);
+    html = html.replaceAll('{{description}}', cat.description);
+    html = html.replaceAll('{{imageUrl}}', cat.imageUrl);
+
+    return html;
+}
+
+
 
 
 function catTemplate(cat) {
@@ -94,7 +113,7 @@ function catTemplate(cat) {
                     <p><span>Breed: </span>${cat.breed}</p>
                     <p><span>Description: </span>${cat.description}</p>
                     <ul class="buttons">
-                        <li class="btn edit"><a href="">Change Info</a></li>
+                        <li class="btn edit"><a href="/cats/edit-cat/${cat.id}">Change Info</a></li>
                         <li class="btn delete"><a href="">New Home</a></li>
                     </ul>
                 </li>
