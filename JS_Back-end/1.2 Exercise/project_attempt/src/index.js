@@ -1,6 +1,6 @@
 import http from 'http';
 import fs from 'fs/promises';
-import { deleteCat, editCat, getCat, getCats, saveCat } from './data.js';
+import { addBreed, deleteCat, editCat, getCat, getCats, saveCat } from './data.js';
 
 const server = http.createServer(async (req, res) => {
     let html = '';
@@ -37,6 +37,12 @@ const server = http.createServer(async (req, res) => {
                 await deleteCat(catId);
             }
 
+            if (req.url === '/cats/add-breed') {
+                const catBreed = Object.values(catResult);
+                await addBreed(catBreed);
+
+
+            }
 
         });
 

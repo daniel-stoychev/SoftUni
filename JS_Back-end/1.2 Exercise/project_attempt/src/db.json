@@ -28,5 +28,12 @@
       "description": "Mysterious and elegant. Often found lounging in sunny spots."
     }
   ],
-  "breeds": []
+  "breeds": [
+    [
+      "goodCat"
+    ],
+    [
+      "badCat"
+    ]
+  ]
 }

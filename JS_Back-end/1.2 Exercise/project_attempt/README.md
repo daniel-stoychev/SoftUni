@@ -30,8 +30,8 @@ SoftUni JS Back End Course Project
 ## Next steps
 
 - [x] Show details page
-- [ ] Delete cat (shlter cat button)
-- [ ] Add breed to db
+- [x] Delete cat (shlter cat button)
+- [x] Add breed to db
 - [ ] Show breed on cat create
 - [ ] Show breed on cat edit (selected current breed) (not EASY)
 - [ ] Search cat

@@ -26,9 +26,13 @@ export async function editCat(catId, catData) {
     await saveDb();
 }
 
-
 export async function deleteCat(catId) {
     db.cats = db.cats.filter(cat => cat.id !== catId);
+    await saveDb();
+}
+
+export async function addBreed(breed) {
+    db.breeds.push(breed);
     await saveDb();
 }
 
