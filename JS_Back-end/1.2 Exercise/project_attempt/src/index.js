@@ -51,6 +51,13 @@ const server = http.createServer(async (req, res) => {
         const catId = Number(segments.at(3));
         html = await editCatView(catId);
 
+    } else if (req.url.startsWith('/cats/cat-details')) {
+        const segments = req.url.split('/');
+        const catId = Number(segments.at(3));
+        console.log(catId);
+
+        html = await catDetailsView(catId);
+
     }
 
     if (req.url === '/styles/site.css') {
@@ -75,7 +82,6 @@ const server = http.createServer(async (req, res) => {
 async function homeView() {
     const html = await fs.readFile('./src/views/home/index.html', { encoding: 'utf-8' });
     const cats = await getCats();
-    console.log(cats);
 
     let catsHtml = '';
 
@@ -109,6 +115,18 @@ async function editCatView(catId) {
     html = html.replaceAll('{{description}}', cat.description);
     html = html.replaceAll('{{imageUrl}}', cat.imageUrl);
 
+
+    return html;
+}
+
+async function catDetailsView(catId) {
+    const cat = await getCat(catId);
+
+    let html = await fs.readFile('./src/views/catShelter.html', { encoding: 'utf-8' });
+    html = html.replaceAll('{{name}}', cat.name);
+    html = html.replaceAll('{{description}}', cat.description);
+    html = html.replaceAll('{{imageUrl}}', cat.imageUrl);
+
     return html;
 }
 
@@ -125,7 +143,7 @@ function catTemplate(cat) {
                     <p><span>Description: </span>${cat.description}</p>
                     <ul class="buttons">
                         <li class="btn edit"><a href="/cats/edit-cat/${cat.id}">Change Info</a></li>
-                        <li class="btn delete"><a href="">New Home</a></li>
+                        <li class="btn delete"><a href="/cats/cat-details/${cat.id}">New Home</a></li>
                     </ul>
                 </li>
     `;

@@ -30,16 +30,22 @@
     },
     {
       "id": 6,
-      "name": "TestCat",
+      "name": "TestCat 10000",
       "description": "ID TEST",
-      "imageUrl": "TestCatURL",
-      "breed": "Fluffy Cat"
+      "imageUrl": "TestCatURL"
     },
     {
       "id": 7,
       "name": "FINALLY",
       "description": "",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/en/e/e7/Harry_Potter_and_the_Order_of_the_Phoenix_poster.jpg"
+    },
+    {
+      "id": 8,
+      "name": "TestCat 10",
+      "description": "",
+      "imageUrl": "TestCatURL",
+      "breed": "Fluffy Cat"
     }
   ],
   "breeds": []
