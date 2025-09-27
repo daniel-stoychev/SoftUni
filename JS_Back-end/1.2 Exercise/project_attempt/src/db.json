@@ -9,10 +9,9 @@
     },
     {
       "id": 2,
-      "imageUrl": "https://media.istockphoto.com/id/1443562748/photo/cute-ginger-cat.jpg?s=612x612&w=0&k=20&c=vvM97wWz-hMj7DLzfpYRmY2VswTqcFEKkC437hxm3Cg=",
-      "name": "Navcho",
-      "breed": "Persian Cat",
-      "description": "A talkative and affectionate cat with striking yellow eyes."
+      "name": "Navcho 1",
+      "description": "A talkative and affectionate cat with striking yellow eyes.",
+      "imageUrl": "https://media.istockphoto.com/id/1443562748/photo/cute-ginger-cat.jpg?s=612x612&w=0&k=20&c=vvM97wWz-hMj7DLzfpYRmY2VswTqcFEKkC437hxm3Cg="
     },
     {
       "id": 3,
@@ -27,25 +26,6 @@
       "name": "Garry",
       "breed": "Bombay Cat",
       "description": "Mysterious and elegant. Often found lounging in sunny spots."
-    },
-    {
-      "id": 6,
-      "name": "TestCat 10000",
-      "description": "ID TEST",
-      "imageUrl": "TestCatURL"
-    },
-    {
-      "id": 7,
-      "name": "FINALLY",
-      "description": "",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/e/e7/Harry_Potter_and_the_Order_of_the_Phoenix_poster.jpg"
-    },
-    {
-      "id": 8,
-      "name": "TestCat 10",
-      "description": "",
-      "imageUrl": "TestCatURL",
-      "breed": "Fluffy Cat"
     }
   ],
   "breeds": []

@@ -26,6 +26,13 @@ export async function editCat(catId, catData) {
     await saveDb();
 }
 
+
+export async function deleteCat(catId) {
+    db.cats = db.cats.filter(cat => cat.id !== catId);
+    await saveDb();
+}
+
+
 async function saveDb() {
     const dbSerialized = JSON.stringify(db, null, 2);
     await fs.writeFile('./src/db.json', dbSerialized, { encoding: 'utf-8' });

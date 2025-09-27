@@ -1,6 +1,6 @@
 import http from 'http';
 import fs from 'fs/promises';
-import { editCat, getCat, getCats, saveCat } from './data.js';
+import { deleteCat, editCat, getCat, getCats, saveCat } from './data.js';
 
 const server = http.createServer(async (req, res) => {
     let html = '';
@@ -29,6 +29,14 @@ const server = http.createServer(async (req, res) => {
                 await editCat(catId, catResult);
             }
 
+            if (req.url.startsWith('/cats/cat-details')) {
+                const segments = req.url.split('/');
+
+                const catId = Number(segments[3]);
+
+                await deleteCat(catId);
+            }
+
 
         });
 
@@ -54,7 +62,6 @@ const server = http.createServer(async (req, res) => {
     } else if (req.url.startsWith('/cats/cat-details')) {
         const segments = req.url.split('/');
         const catId = Number(segments.at(3));
-        console.log(catId);
 
         html = await catDetailsView(catId);
 
