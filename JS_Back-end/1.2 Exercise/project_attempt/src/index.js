@@ -1,18 +1,13 @@
 import http from 'http';
 import fs from 'fs/promises';
-import { getCat, getCats, saveCat } from './data.js';
-import { get } from 'https';
-
-
-
-
+import { editCat, getCat, getCats, saveCat } from './data.js';
 
 const server = http.createServer(async (req, res) => {
     let html = '';
 
     //POSTS resquests for adding cat
     if (req.method === 'POST') {
-        console.log('POST has been sent!');
+
         let data = '';
         req.on('data', (chunk) => {
             // console.log(chunk.toString());
@@ -21,14 +16,20 @@ const server = http.createServer(async (req, res) => {
 
         });
 
-        req.on('end', () => {
+        req.on('end', async () => {
             const searchParams = new URLSearchParams(data);
-            const newCat = Object.fromEntries(searchParams.entries());
-            // const allCatsObj = await getCats();
-            // const allCatsNumber = Number(Object.keys(allCatsObj).length);
-            // newCat.id = allCatsNumber + 1;  // COMPLETED IN data.js
+            const catResult = Object.fromEntries(searchParams.entries());
 
-            saveCat(newCat);
+            if (req.url === '/cats/add-cat') {
+                await saveCat(catResult);
+            } else if (req.url.startsWith('/cats/edit-cat')) {
+                const segments = req.url.split('/');
+                const catId = Number(segments.at(3));
+
+                await editCat(catId, catResult);
+            }
+
+
         });
 
         res.writeHead(302, {
@@ -61,7 +62,7 @@ const server = http.createServer(async (req, res) => {
         res.write(siteCss);
         return res.end();
     }
-
+    //ROUTES ---------------------------------
 
     res.writeHead(200, {
         "content-type": "text/html"
@@ -74,9 +75,18 @@ const server = http.createServer(async (req, res) => {
 async function homeView() {
     const html = await fs.readFile('./src/views/home/index.html', { encoding: 'utf-8' });
     const cats = await getCats();
+    console.log(cats);
+
     let catsHtml = '';
-    catsHtml = cats.map(cat => catTemplate(cat)).join('\n');
-    const result = html.replace('{{cats}}', catsHtml);
+
+    if (cats.length > 0) {
+        catsHtml = cats.map(cat => catTemplate(cat)).join('\n');
+    } else {
+        catsHtml = '<span>There are no cats</span>';
+    }
+
+
+    const result = html.replaceAll('{{cats}}', catsHtml);
     return result;
 
 }
@@ -86,6 +96,7 @@ async function addBreedView() {
 }
 async function addCatView() {
     const result = await fs.readFile('./src/views/addCat.html', { encoding: 'utf-8' });
+
     return result;
 }
 
@@ -108,7 +119,7 @@ function catTemplate(cat) {
     return `
                 <li>
                     <img src="${cat.imageUrl}"
-                        alt="Black Cat">
+                        alt="${cat.name}">
                     <h3>${cat.name}</h3>
                     <p><span>Breed: </span>${cat.breed}</p>
                     <p><span>Description: </span>${cat.description}</p>

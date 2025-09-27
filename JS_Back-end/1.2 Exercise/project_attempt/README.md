@@ -24,7 +24,7 @@ SoftUni JS Back End Course Project
 - [x] Add cats persistence
 - [x] Cache CSS
 - [x] Add unique id to each created cat
-- [ ] Edit cats
+- [x] Edit cats
 - [ ] Add dynamic breeds
 
 ## Next steps

@@ -29,13 +29,6 @@
       "description": "Mysterious and elegant. Often found lounging in sunny spots."
     },
     {
-      "id": 5,
-      "name": "Superman",
-      "description": "asdasdasd",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-bQnvL_yGisgee2AFzgRyXxfDAaGAo0X348eL4u3RSrDwmgUVYu_c9VFpxE4mPjVx3q8&usqp=CAU",
-      "breed": "Fluffy Cat"
-    },
-    {
       "id": 6,
       "name": "TestCat",
       "description": "ID TEST",
@@ -44,17 +37,9 @@
     },
     {
       "id": 7,
-      "name": "TestCat",
+      "name": "FINALLY",
       "description": "",
-      "imageUrl": "https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg",
-      "breed": "Fluffy Cat"
-    },
-    {
-      "id": 8,
-      "name": "Bogdan",
-      "description": "ffff",
-      "imageUrl": "TestCatURL",
-      "breed": "Fluffy Cat"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/e/e7/Harry_Potter_and_the_Order_of_the_Phoenix_poster.jpg"
     }
   ],
   "breeds": []
