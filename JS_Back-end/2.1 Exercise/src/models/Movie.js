@@ -15,7 +15,7 @@ const movies = [
     {
         _id: '2',
         title: 'The Dark Knight',
-        genre: 'Action, Crime, Drama',
+        genre: 'Drama',
         description: 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.',
         imageUrl: 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg',
         director: 'Christopher Nolan',
@@ -26,7 +26,7 @@ const movies = [
     {
         _id: '3',
         title: 'Interstellar',
-        genre: 'Sci-Fi, Drama, Adventure',
+        genre: 'Adventure',
         description: 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
         imageUrl: 'https://i.ebayimg.com/images/g/Zo4AAOSwuZRn5XHn/s-l1200.jpg',
         director: 'Christopher Nolan',
@@ -58,7 +58,7 @@ export default class Movie {
 
         if (filter.genre) {
             // TODO search by genre, exact match, case insensitive 
-
+            result = result.filter(movie => movie.genre.toLowerCase() === filter.genre.toLowerCase());
         }
 
         if (filter.year) {
