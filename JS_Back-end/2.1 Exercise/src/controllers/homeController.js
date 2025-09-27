@@ -11,7 +11,7 @@ homeController.get('/', (req, res) => {
 });
 
 homeController.get('/about', (req, res) => {
-    res.render('about');
+    res.render('about', { pageTitle: 'About' });
 });
 
 export default homeController;
