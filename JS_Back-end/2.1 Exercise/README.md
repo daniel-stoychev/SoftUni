@@ -55,7 +55,10 @@
 - [x] Show static search page
 - [x] Render all movies
 - [x] Modify search form
-- [ ] Filter movies
+- [] Filter movies
+  - [x] by year
+  - [] by title
+  - [] by genre
 - [ ] Remember search words
 
 ### Bonuses

@@ -8,7 +8,7 @@ const movies = [
         description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
         imageUrl: 'https://i.pinimg.com/236x/fd/84/34/fd8434cc3ae7c0626c4d344a79ecf4c4.jpg',
         director: 'Frank Darabont',
-        year: 1994,
+        year: '1994',
         rating: 9.3,
         category: 'Classic'
     },
@@ -19,7 +19,7 @@ const movies = [
         description: 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.',
         imageUrl: 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg',
         director: 'Christopher Nolan',
-        year: 2008,
+        year: '2008',
         rating: 9.0,
         category: 'Superhero'
     },
@@ -30,7 +30,7 @@ const movies = [
         description: 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
         imageUrl: 'https://i.ebayimg.com/images/g/Zo4AAOSwuZRn5XHn/s-l1200.jpg',
         director: 'Christopher Nolan',
-        year: 2014,
+        year: '2014',
         rating: 8.7,
         category: 'Space Exploration'
     }
@@ -50,6 +50,21 @@ export default class Movie {
         if (filter._id) {
             result = movies.filter(movie => movie._id === filter._id)
         };
+
+        if (filter.title) {
+            // TODO search by title, partial match, case insensitive 
+
+        }
+
+        if (filter.genre) {
+            // TODO search by genre, exact match, case insensitive 
+
+        }
+
+        if (filter.year) {
+            // TODO search by year, exact match 
+            result = result.filter(movie => movie.year === filter.year)
+        }
 
         return result // returns an Array
     }
