@@ -65,7 +65,7 @@
 
 - [x] Dynamic page title // THIS WILL BE ON THE EXAM
 - [ ] File Persitance
-- [ ] Rating
+- [x] Rating
 
 ---
 

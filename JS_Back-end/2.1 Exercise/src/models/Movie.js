@@ -9,7 +9,7 @@ const movies = [
         imageUrl: 'https://i.pinimg.com/236x/fd/84/34/fd8434cc3ae7c0626c4d344a79ecf4c4.jpg',
         director: 'Frank Darabont',
         year: '1994',
-        rating: 9.3,
+        rating: 3.3,
         category: 'Classic'
     },
     {
