@@ -54,6 +54,10 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
+
+
+
+
     //ROUTES ---------------------------------
     if (req.url === '/') {
         html = await homeView();
@@ -72,6 +76,8 @@ const server = http.createServer(async (req, res) => {
 
         html = await catDetailsView(catId);
 
+    } else if (req.url.startsWith('/search')) {
+        html = await searchView(req);
     }
 
     if (req.url === '/styles/site.css') {
@@ -130,7 +136,6 @@ async function addCatView() {
     let html = allBreeds.map(breed => `<option value="${breed}">${breed}</option>`).join('\n');
 
     const modifiedResult = result.replaceAll('{{breeds}}', html)
-    console.log(modifiedResult);
 
     return modifiedResult;
 }
@@ -183,6 +188,41 @@ async function catDetailsView(catId) {
     html = html.replaceAll('{{imageUrl}}', cat.imageUrl);
 
     return html;
+}
+
+async function searchView(req) {
+    let html = await fs.readFile('./src/views/home/index.html', { encoding: 'utf-8' });
+    const allCats = await getCats();
+
+    console.log(req.url);
+
+    const url = new URL(req.url, `http://${req.headers.host}`); // Create a full URL object
+    // console.log(url);
+
+    const searchTerm = url.searchParams.get('text'); // Get the 'text' parameter
+
+
+    let filteredCats = allCats; // Start with all cats
+    if (searchTerm) { // Only filter if a search term exists
+        const lowerCaseSearchTerm = searchTerm.toLowerCase();
+        filteredCats = allCats.filter(cat =>
+            cat.name.toLowerCase().includes(lowerCaseSearchTerm));
+    }
+
+    // //dynamic page title
+    html = html.replaceAll('{{pageTitle}}', 'Cat Shelter');
+
+    let catsHtml = '';
+    if (filteredCats.length > 0) {
+        catsHtml = filteredCats.map(cat => catTemplate(cat)).join('\n');
+    } else {
+        catsHtml = `<span>No cats found matching "${searchTerm}"</span>`; // Message for no results
+    }
+
+    const result = html.replaceAll('{{cats}}', catsHtml);
+    return result;
+
+
 }
 
 
