@@ -33,6 +33,6 @@ SoftUni JS Back End Course Project
 - [x] Delete cat (shlter cat button)
 - [x] Add breed to db
 - [x] Show breed on cat create
-- [ ] Show breed on cat edit (selected current breed) (not EASY)
-- [ ] Update pages name in browser bar
+- [x] Show breed on cat edit (selected current breed) (not EASY)
+- [x] Update pages name in browser bar
 - [ ] Search cat

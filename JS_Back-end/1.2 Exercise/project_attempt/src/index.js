@@ -94,8 +94,11 @@ const server = http.createServer(async (req, res) => {
 
 //VIEWS ---------------------------------
 async function homeView() {
-    const html = await fs.readFile('./src/views/home/index.html', { encoding: 'utf-8' });
+    let html = await fs.readFile('./src/views/home/index.html', { encoding: 'utf-8' });
     const cats = await getCats();
+
+    //dynamic page title
+    html = html.replaceAll('{{pageTitle}}', 'Cat Shelter');
 
     let catsHtml = '';
 
@@ -110,16 +113,24 @@ async function homeView() {
 
 }
 async function addBreedView() {
-    const result = await fs.readFile('./src/views/addBreed.html', { encoding: 'utf-8' });
+    let result = await fs.readFile('./src/views/addBreed.html', { encoding: 'utf-8' });
+
+    //dynamic page title
+    result = result.replaceAll('{{pageTitle}}', 'Add breed');
+
     return result;
 }
 async function addCatView() {
-    const result = await fs.readFile('./src/views/addCat.html', { encoding: 'utf-8' });
+    let result = await fs.readFile('./src/views/addCat.html', { encoding: 'utf-8' });
     const allBreeds = await getBreeds();
+
+    //dynamic page title
+    result = result.replaceAll('{{pageTitle}}', 'Add cat');
 
     let html = allBreeds.map(breed => `<option value="${breed}">${breed}</option>`).join('\n');
 
     const modifiedResult = result.replaceAll('{{breeds}}', html)
+    console.log(modifiedResult);
 
     return modifiedResult;
 }
@@ -128,6 +139,9 @@ async function editCatView(catId) {
     const cat = await getCat(catId);
 
     let html = await fs.readFile('./src/views/editCat.html', { encoding: 'utf-8' });
+
+    //dynamic page title
+    html = html.replaceAll('{{pageTitle}}', 'Edit');
 
     html = html.replaceAll('{{name}}', cat.name);
     html = html.replaceAll('{{description}}', cat.description);
@@ -160,6 +174,10 @@ async function catDetailsView(catId) {
     const cat = await getCat(catId);
 
     let html = await fs.readFile('./src/views/catShelter.html', { encoding: 'utf-8' });
+
+    //dynamic page title
+    html = html.replaceAll('{{pageTitle}}', 'Details');
+
     html = html.replaceAll('{{name}}', cat.name);
     html = html.replaceAll('{{description}}', cat.description);
     html = html.replaceAll('{{imageUrl}}', cat.imageUrl);
