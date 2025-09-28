@@ -36,6 +36,11 @@ export async function addBreed(breed) {
     await saveDb();
 }
 
+export async function getBreeds() {
+    // console.log(db.cats);
+    return db.breeds;
+}
+
 
 async function saveDb() {
     const dbSerialized = JSON.stringify(db, null, 2);

@@ -1,6 +1,7 @@
 import http from 'http';
 import fs from 'fs/promises';
-import { addBreed, deleteCat, editCat, getCat, getCats, saveCat } from './data.js';
+import { addBreed, deleteCat, editCat, getBreeds, getCat, getCats, saveCat } from './data.js';
+
 
 const server = http.createServer(async (req, res) => {
     let html = '';
@@ -104,7 +105,6 @@ async function homeView() {
         catsHtml = '<span>There are no cats</span>';
     }
 
-
     const result = html.replaceAll('{{cats}}', catsHtml);
     return result;
 
@@ -115,8 +115,13 @@ async function addBreedView() {
 }
 async function addCatView() {
     const result = await fs.readFile('./src/views/addCat.html', { encoding: 'utf-8' });
+    const allBreeds = await getBreeds();
 
-    return result;
+    let html = allBreeds.map(breed => `<option value="${breed}">${breed}</option>`).join('\n');
+
+    const modifiedResult = result.replaceAll('{{breeds}}', html)
+
+    return modifiedResult;
 }
 
 async function editCatView(catId) {
@@ -128,6 +133,25 @@ async function editCatView(catId) {
     html = html.replaceAll('{{description}}', cat.description);
     html = html.replaceAll('{{imageUrl}}', cat.imageUrl);
 
+
+
+    // adding login for breeds and current breed appearance
+    const allBreeds = await getBreeds();
+    let htmlBreeds = allBreeds.map(breed => `<option value="${breed}">${breed}</option>`).join('\n');
+    const currentCatBreed = cat.breed;
+    let orderedBreedArray = [];
+    const optionsArray = htmlBreeds.split('\n');
+    for (const el of optionsArray) {
+        if (el.includes(currentCatBreed)) {
+            orderedBreedArray.unshift(el);
+        } else {
+            orderedBreedArray.push(el);
+        }
+
+    }
+    const resultBreedsHtml = orderedBreedArray.join('\n');
+    // ----------------------------------------------------
+    html = html.replaceAll('{{breeds}}', resultBreedsHtml);
 
     return html;
 }
@@ -161,6 +185,7 @@ function catTemplate(cat) {
                 </li>
     `;
 }
+
 
 server.listen(4000);
 console.log('Server is listening on http://localhost:4000...');

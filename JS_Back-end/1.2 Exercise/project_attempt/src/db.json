@@ -26,6 +26,34 @@
       "name": "Garry",
       "breed": "Bombay Cat",
       "description": "Mysterious and elegant. Often found lounging in sunny spots."
+    },
+    {
+      "id": 5,
+      "name": "Cutest 1",
+      "description": "cat ever",
+      "imageUrl": "https://images.squarespace-cdn.com/content/v1/607f89e638219e13eee71b1e/1684821560422-SD5V37BAG28BURTLIXUQ/michael-sum-LEpfefQf4rU-unsplash.jpg",
+      "breed": "cuteCat"
+    },
+    {
+      "id": 6,
+      "name": "Bad bad",
+      "description": "kitty",
+      "imageUrl": "https://as2.ftcdn.net/jpg/02/34/56/63/1000_F_234566379_wlPNifoLtOEiNVAFVoNnWJYVCBXMnCZa.jpg",
+      "breed": "badCat"
+    },
+    {
+      "id": 7,
+      "name": "TestCat 31",
+      "description": "very elegant indeed",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Cat_November_2010-1a.jpg",
+      "breed": "elegant cat"
+    },
+    {
+      "id": 8,
+      "name": "TestCat 4",
+      "description": "test 41",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Cat_November_2010-1a.jpg",
+      "breed": "elegant cat"
     }
   ],
   "breeds": [
@@ -34,6 +62,12 @@
     ],
     [
       "badCat"
+    ],
+    [
+      "cuteCat"
+    ],
+    [
+      "elegant cat"
     ]
   ]
 }
