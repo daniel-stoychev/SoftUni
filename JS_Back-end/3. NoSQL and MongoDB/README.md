@@ -22,7 +22,10 @@
 
 #### MongoDB and Mongoose
 
-- MongoDB - more general purpose, resembles as Relational but it is actually Non-Relational
+- MongoDB - more general (standard) purpose, resembles as Relational but it is actually Non-Relational
+- GUI - graphical user interface
+- CLI - command line interface
+- MongoDB has documents (not objects) / database -> collections -> documents -> key / value
 
 ### Mongoose models
 
