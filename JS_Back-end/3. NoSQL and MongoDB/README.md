@@ -22,13 +22,27 @@
 
 #### MongoDB and Mongoose
 
-- MongoDB - more general (standard) purpose, resembles as Relational but it is actually Non-Relational
+- MongoDB (driver) - more general (standard) purpose, resembles as Relational but it is actually Non-Relational
 - GUI - graphical user interface
 - CLI - command line interface
 - MongoDB has documents (not objects) / database -> collections -> documents -> key / value
 
-### Mongoose models
+---
+
+- Mongoose: (Middlemans / collections) - make the connection betwenn node.JS and the DB (MongoDB)
+  - ORM - Object relation mapper/model (famous with relation databases)
+  - ODM - Object document mapper/model (famous with non-relation/document databases)
+  - schema-based solution
+  - Atlas - onpine Cloud for hosting DBs
+
+#### Mongoose models
+
+- we first create the schema beofe creating the model
+- Mongoose makes a magic! - it puralize the name of the models (mongoose.model('Person', peopleSchema); -> collection is 'people')
+- there are validators
 
 #### CRUD with Mongoose
+
+-
 
 #### Mongoose Querying
