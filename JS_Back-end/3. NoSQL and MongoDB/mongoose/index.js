@@ -18,8 +18,47 @@ try {
 // Get all people
 const people = await Person.find();
 
-console.log(people);
+// console.log(people);
+
+// CRUD - create, read, update, delete
+
+//===== CREATE method #1 (PREFERED -> directly saves to DB)
+// const personCreate = await Person.create({ name: 'Petkan', age: 33 });
+// console.log(personCreate);
+
+///===== CREATE method #2 (FIRST saves to the Node.jс/server memory then we have to use save() to save in DB)
+
+// const newPerson = new Person({ name: 'Petkan2', age: 24 });
+// await newPerson.save();
+// console.log(newPerson);
 
 
+//===== READ
+// const allPeople = await Person.find();
+// console.log(allPeople);
+
+//filtered students
+// const result = await Person.find({ age: 33 });  //returns []
+// console.log(result);
+
+// const result = await Person.findOne({ age: 33 });  //returns {}
+// console.log(result);
+
+// Other methods:
+// await Person.findById
+
+
+//===== UPDATE 
+// Methods / await Person. :
+// Person.findByIdAndUpdate('ID', { new data })
+// Person.findOneAndUpdate({age: 33}, {age: 23}) = updateOne - > update first that meets the criteria
+// Person.updateMany({age: 18}, {age: 20}) - > NOT RECOMMENDED!
+
+
+//===== DELETE
+// Methods / await Person. :
+// Person.findByIdAndDelete('ID')
+// Person.deleteOne = Person.findByIdAndDelete
+// .deleteMany
 
 
