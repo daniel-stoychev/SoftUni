@@ -1,9 +1,16 @@
 import express from "express";
 import cookieParser from "cookie-parser";
+import expressSession from "express-session";
 
 const app = express();
 
 app.use(cookieParser());
+app.use(expressSession({
+    secret: 'keyboardud6i7f68og9h0j87g6f5d6f7',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
 
 app.get('/', (req, res) => {
     res.send('It works!');
@@ -56,6 +63,21 @@ app.get('/get-cookie2', (req, res) => {
     res.end();
 });
 
+// Set session using express-session library
+app.get('/set-session', (req, res) => {
+    req.session.name = 'Gosho';
+    req.session.age = Math.floor(Math.random() * 100);
+
+    res.send('Session Created!')
+});
+
+// Get session using express-session library
+app.get('/get-session', (req, res) => {
+    console.log(req.session);
+
+
+    res.send(`Welcome ${req.session.name}, age: ${req.session.age}!`)
+});
 
 
 
