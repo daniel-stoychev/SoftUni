@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
     res.send('It works!');
 });
 
-// Standard http module method
+// Standard SET cokkie method
 app.get('/set-cookie', (req, res) => {
     res.writeHead(200, {
         'set-cookie': 'name=Pesho'
@@ -18,13 +18,13 @@ app.get('/set-cookie', (req, res) => {
 });
 
 
-// Express set cokkie method
+// Express SET cokkie method
 app.get('/set-cookie2', (req, res) => {
     res.header('set-cookie', 'age=20');
 
     res.end();
 });
-// Express easiest way to set cokkie method
+// Express easiest way to SET cokkie method / RECOMMENDED
 app.get('/set-cookie3', (req, res) => {
     res.cookie('width', 190);
 
@@ -33,7 +33,9 @@ app.get('/set-cookie3', (req, res) => {
 
 
 
-// Standard http set cokkie method / get cookie Express way
+
+
+// Standard get cookie Express way
 app.get('/get-cookie', (req, res) => {
     //Read reqiest cookie header
     const cookies = req.header('cookie');
@@ -43,12 +45,12 @@ app.get('/get-cookie', (req, res) => {
     res.send(cookies);
 });
 
-//Get cookie cookieParser way
+//Get cookie Cookie Parser way / RECOMMENDED
 app.get('/get-cookie2', (req, res) => {
     //Read reqiest cookie header
     const cookies = req.cookies;
     console.log(cookies);
-    console.log(cookies['name']);
+    // console.log(cookies['name']);
 
 
     res.end();
