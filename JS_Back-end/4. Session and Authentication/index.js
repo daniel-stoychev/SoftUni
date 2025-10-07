@@ -1,9 +1,13 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import expressSession from "express-session";
+import bcrypt from "bcrypt";
+
+let users = [];
 
 const app = express();
 
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(expressSession({
     secret: 'keyboardud6i7f68og9h0j87g6f5d6f7',
@@ -80,6 +84,48 @@ app.get('/get-session', (req, res) => {
 });
 
 
+
+
+
+
+// Register
+app.get('/register', (req, res) => {
+    res.send(`
+        <form method="post">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div>
+                <input type="submit" value="Register">
+            </div>
+        </form>
+        `)
+});
+
+app.post('/register', async (req, res) => {
+    const { username, password } = req.body;
+
+    //generate salt
+    const salt = await bcrypt.genSalt(10);
+
+    //Hash password
+    const hash = await bcrypt.hash(password, salt);
+
+    const user = {
+        id: users.length,
+        username,
+        password: hash
+    }
+
+    users.push(user);
+
+    res.end();
+});
 
 
 
