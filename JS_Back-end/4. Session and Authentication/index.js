@@ -2,8 +2,10 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import expressSession from "express-session";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 let users = [];
+const JWT_SECRET = 'MYSECRET123456';
 
 const app = express();
 
@@ -124,7 +126,79 @@ app.post('/register', async (req, res) => {
 
     users.push(user);
 
-    res.end();
+    res.redirect('/login');
+});
+
+// Login
+app.get('/login', (req, res) => {
+    res.send(`
+        <form method="post">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div>
+                <input type="submit" value="Login">
+            </div>
+        </form>
+        `)
+});
+
+app.post('/login', async (req, res) => {
+
+    const { username, password } = req.body;
+
+    // Take user
+    const user = users.find(u => u.username === username);
+
+    if (!user) {
+        return res.send('No such user!')
+    }
+
+    // Compare passwords
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+        return res.send('Password is invalid!')
+    }
+
+    //========= TOKENS ========= -> create payload -> create token -> add token to cookie -> send the request
+    // Issue JWT token
+    const payload = {
+        id: user.id,
+        username: user.username,
+        admin: false,
+    };
+
+    const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '2h' });
+
+    // Attack token to cookie
+    res.cookie('auth', token);
+    // Redirect to profile page
+    res.redirect('/profile');
+    //========= TOKENS END =========
+    console.log(users);
+
+});
+
+app.get('/profile', (req, res) => {
+    const token = req.cookies['auth'];
+
+    //Validate token
+    try {
+        const decodeToken = jwt.verify(token, JWT_SECRET);
+        res.send(`Welcome ${decodeToken.username}`)
+
+    } catch (error) {
+        res.status(401).send('Unathorized');
+    }
+
+
 });
 
 
