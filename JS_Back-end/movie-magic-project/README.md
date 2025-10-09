@@ -16,13 +16,15 @@ SoftUni JS Back-End Course Workshop
 - [x] Add Layout
 - [x] Render About Page
 
-### Architecture and dynamic rendering
+### Architecture and dynamic rendering (3 layer architecture != MVC (modle view controller))
 
-- [] Add home controller
-- [] Add movie data layer
-- [] Add movie service
-- [] Render movies on home page
-- [] Show no movies screen
+### Conteoller (groupe of actions / delegation of requests) - Service (perform specific actions) - DATA layer (keps/holds the data)
+
+- [x] Add home controller
+- [x] Add movie data layer
+- [x] Add movie service
+- [x] Render movies on home page
+- [x] Show no movies screen
 
 ### Create Movie
 

@@ -1,5 +1,7 @@
 import express from "express";
 import handlebars from "express-handlebars";
+import homeController from "./controllers/homeController.js";
+
 
 const app = express();
 
@@ -14,16 +16,9 @@ app.set('views', 'src/views');
 //setup static files
 app.use(express.static('src/public'));
 
+//setup modular router
+app.use(homeController);
 
-//render homePage
-app.get('/', (req, res) => {
-    res.render('home');
-});
-
-//render aboutPage
-app.get('/about', (req, res) => {
-    res.render('about');
-});
 
 
 
