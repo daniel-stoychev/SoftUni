@@ -1,6 +1,6 @@
 import express from "express";
 import handlebars from "express-handlebars";
-import homeController from "./controllers/homeController.js";
+import routes from "./routes.js";
 
 
 const app = express();
@@ -13,11 +13,15 @@ app.engine('hbs', handlebars.engine({
 app.set('view engine', 'hbs');
 app.set('views', 'src/views');
 
-//setup static files
+//setup middlewares
+//setup static files 
 app.use(express.static('src/public'));
+//setup URL encoded
+app.use(express.urlencoded()); // factory method 
 
-//setup modular router
-app.use(homeController);
+//setup routes
+app.use(routes);
+
 
 
 
