@@ -10,7 +10,7 @@ movieController.get('/create', (req, res) => {
 movieController.post('/create', (req, res) => {
     // console.log(req.body); // (add action)
     movieService.create(req.body);
-    res.end();
+    res.redirect('/');
 });
 
 export default movieController;

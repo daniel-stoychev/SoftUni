@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 const movies = [
     {
         _id: "1",
@@ -40,12 +42,15 @@ export default class Movie {
     }
 
     constructor(movieData) {
+        this._id = uuid();
         Object.assign(this, movieData)
     }
 
-    save() {
-        console.log(this);
+    get id() {
+        return this._id;
+    }
 
+    save() {
         movies.push(this);
         console.log(movies);
 
