@@ -38,4 +38,17 @@ export default class Movie {
     static find() {
         return movies.slice();
     }
+
+    constructor(movieData) {
+        Object.assign(this, movieData)
+    }
+
+    save() {
+        console.log(this);
+
+        movies.push(this);
+        console.log(movies);
+
+        return this;
+    }
 }

@@ -33,10 +33,10 @@ SoftUni JS Back-End Course Workshop
 - [x] Add routes
 - [] Add 404 page
 - [x] Read body data
-- [] Create movie
-  - [] Add action
-  - [] Add service
-  - [] Add model method for creating movie
+- [x] Create movie
+  - [x] Add action
+  - [x] Add service
+  - [x] Add model method for creating movie
 - [] Redirect after creation
 - [] Add unique if for each cerated movie
 
