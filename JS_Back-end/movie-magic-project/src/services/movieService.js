@@ -4,6 +4,11 @@ export default {
     getAll() {
         return Movie.find();
     },
+
+    getOne(id) {
+        return Movie.findOne(id);
+    },
+
     create(movieData) {
         const movie = new Movie(movieData);
 

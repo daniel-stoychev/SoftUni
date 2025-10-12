@@ -17,7 +17,7 @@ app.set('views', 'src/views');
 //setup static files 
 app.use(express.static('src/public'));
 //setup URL encoded
-app.use(express.urlencoded()); // factory method 
+app.use(express.urlencoded()); // factory method / parses the data that is under the request stream 
 
 //setup routes
 app.use(routes);

@@ -41,14 +41,19 @@ export default class Movie {
         return movies.slice();
     }
 
+    static findOne(id) {
+        const slectedMovie = movies.find(movie => movie._id === id);
+        return slectedMovie;
+    }
+
     constructor(movieData) {
         this._id = uuid();
         Object.assign(this, movieData)
     }
 
-    get id() {
-        return this._id;
-    }
+    // get id() {
+    //     return this._id;
+    // }
 
     save() {
         movies.push(this);
