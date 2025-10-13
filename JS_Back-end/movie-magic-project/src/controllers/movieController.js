@@ -15,8 +15,10 @@ movieController.post('/create', (req, res) => {
 
 movieController.get(`/:id`, (req, res) => {
     const movie = movieService.getOne(req.params.id);
+    const ratingViewData = '&#x2605;'.repeat(Math.trunc(movie.rating));
 
-    res.render('details', { movie, pageTitle: 'Details' })
+
+    res.render('details', { movie, pageTitle: 'Details', rating: ratingViewData })
 });
 
 export default movieController;

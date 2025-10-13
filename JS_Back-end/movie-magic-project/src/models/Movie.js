@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-const movies = [
+let movies = [
     {
         _id: "1",
         title: "The Shawshank Redemption",
