@@ -63,4 +63,4 @@ SoftUni JS Back-End Course Workshop
 - [x] Add 404 page
 - [x] Dynamic page title
 - [x] Rating (temp solution)
-- [] File Persistance
+- [x] File Persistance
