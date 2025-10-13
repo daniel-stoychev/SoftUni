@@ -14,8 +14,7 @@ movieController.post('/create', (req, res) => {
 });
 
 movieController.get(`/:id`, (req, res) => {
-    const movie = movieService.getOne(req.params.id)
-    console.log(movie);
+    const movie = movieService.getOne(req.params.id);
 
     res.render('details', { movie })
 });
