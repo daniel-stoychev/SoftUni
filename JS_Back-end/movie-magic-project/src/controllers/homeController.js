@@ -11,8 +11,9 @@ homeController.get('/', (req, res) => {
 
 //render search page
 homeController.get('/search', (req, res) => {
-    const movies = movieService.getAll();
-    res.render('search', { movies });
+    const filter = req.query;
+    const movies = movieService.getAll(filter);
+    res.render('search', { movies, filter });
 });
 
 //render aboutPage
