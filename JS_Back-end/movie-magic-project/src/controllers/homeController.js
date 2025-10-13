@@ -5,20 +5,21 @@ const homeController = Router();
 
 //render homePage
 homeController.get('/', (req, res) => {
+
     const movies = movieService.getAll();
-    res.render('home', { movies });
+    res.render('home', { movies, pageTitle: 'Home' });
 });
 
 //render search page
 homeController.get('/search', (req, res) => {
     const filter = req.query;
     const movies = movieService.getAll(filter);
-    res.render('search', { movies, filter });
+    res.render('search', { movies, filter, pageTitle: 'Search' });
 });
 
 //render aboutPage
 homeController.get('/about', (req, res) => {
-    res.render('about');
+    res.render('about', { pageTitle: 'About' });
 });
 
 export default homeController;

@@ -4,7 +4,7 @@ import movieService from "../services/movieService.js";
 const movieController = Router();
 
 movieController.get('/create', (req, res) => {
-    res.render('create');
+    res.render('create', { pageTitle: 'Add movie' });
 });
 
 movieController.post('/create', (req, res) => {
@@ -16,7 +16,7 @@ movieController.post('/create', (req, res) => {
 movieController.get(`/:id`, (req, res) => {
     const movie = movieService.getOne(req.params.id);
 
-    res.render('details', { movie })
+    res.render('details', { movie, pageTitle: 'Details' })
 });
 
 export default movieController;

@@ -56,11 +56,11 @@ SoftUni JS Back-End Course Workshop
   - [x] By year
   - [x] By genre
   - [x] By title
-- [] Remember search words
+- [x] Remember search words
 
 ### Bonuses
 
 - [x] Add 404 page
-- [] Dynamic page title
+- [x] Dynamic page title
 - [] Rating (temp solution)
 - [] File Persistance
