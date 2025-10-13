@@ -60,8 +60,7 @@ SoftUni JS Back-End Course Workshop
 
 ### Bonuses
 
-- [] Add 404 page
-
+- [x] Add 404 page
 - [] Dynamic page title
 - [] Rating (temp solution)
 - [] File Persistance
