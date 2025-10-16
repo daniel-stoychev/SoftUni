@@ -8,7 +8,11 @@ const app = express();
 
 //setup hamdlebars
 app.engine('hbs', handlebars.engine({
-    extname: 'hbs'
+    extname: 'hbs',
+    runtimeOptions: {
+        allowProtoMethodsByDefault: true,
+        allowProtoPropertiesByDefault: true
+    }
 }));
 
 app.set('view engine', 'hbs');
