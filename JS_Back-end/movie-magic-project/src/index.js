@@ -1,6 +1,7 @@
 import express from "express";
 import handlebars from "express-handlebars";
 import routes from "./routes.js";
+import mongoose from "mongoose";
 
 
 const app = express();
@@ -22,15 +23,20 @@ app.use(express.urlencoded()); // factory method / parses the data that is under
 //setup routes
 app.use(routes);
 
-
-
-
-
-
-
-
 app.listen(5000, () => {
     console.log('Server is listening on http://localhost:5000...');
 });
+
+// database connection
+const localDB = 'mongodb://localhost:27017';
+
+try {
+    await mongoose.connect(localDB, { dbName: 'movie_magic_projectDB' });
+    console.log('DB connected successfully!');
+
+
+} catch (error) {
+    console.error('Cannot connect to DB!')
+}
 
 

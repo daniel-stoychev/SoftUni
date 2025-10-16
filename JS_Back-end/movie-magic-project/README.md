@@ -4,6 +4,8 @@ SoftUni JS Back-End Course Workshop
 
 ## Development Steps
 
+## Part 1
+
 ### Setup
 
 - [x] Initialize Project
@@ -64,3 +66,62 @@ SoftUni JS Back-End Course Workshop
 - [x] Dynamic page title
 - [x] Rating (temp solution)
 - [x] File Persistance
+
+---
+
+## Part 2 (MongoDB and Mongoose)
+
+### Prerequisites
+
+- [x] Install MongoDB Community Server
+- [x] Install Compass GUI
+- [] Install Mongosh CLI (Optional)
+
+### Setup Database
+
+- [x] Install mongoose `npm i mongoose`
+- [x] Connect to DB
+
+### Refactor Movies to use mongoose
+
+- [] Add movie model
+  - [] Create movie schema
+  - [] Create movie model
+- [] mport file movies to database !DON'T IMPORT IDs
+- [] Fix own property handlebars problem with lean method
+- [] General fix for own property problem
+- [] Refactor details
+- [] Refactor create
+- [] Refactor search
+
+### Add Cast
+
+- [] Add new resources
+- [] Create Cast Controller
+- [] Create Cast Page
+- [] Add Cast model
+- [] Create Cast Service
+- [] Create Cast Functionallity
+
+### Attach Cast to Movie (relations)
+
+- [] Add attach cast button
+- [] Add attach cast page
+- [] Add dynamic data to cast page
+- [] Show cast list in attach select
+- [] Add relation between cast and movie
+- [] Attach cast functionallity
+
+### Show Cast Details (population)
+
+- [] Get movie casts filtered
+- [] Show casts on details
+- [] Get movie casts using population
+
+### Bonuses
+
+- [] Filter casts if they are already attached
+- [ ] Env variables
+- [ ] name in movie
+- [ ] Back refference from vscode
+- [ ] Add movie views to a folder

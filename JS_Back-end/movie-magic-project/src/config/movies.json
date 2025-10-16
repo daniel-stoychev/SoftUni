@@ -45,11 +45,11 @@
       "description": "sth"
     },
     {
-      "_id": "9c987e2e-4b13-4a3e-8d26-c2066d33a54d",
+      "_id": "5de35502-101e-458e-9731-1eb83fdd1571",
       "title": "Madagaskar",
       "category": "animation",
       "genre": "Kids",
-      "director": "\t Eric Darnell",
+      "director": "Eric Darnell",
       "year": "2005",
       "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/7f/Madagascar2poster.jpg",
       "rating": 7,

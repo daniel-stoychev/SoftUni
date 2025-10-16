@@ -13,8 +13,8 @@ movieController.post('/create', async (req, res) => {
     res.redirect('/');
 });
 
-movieController.get(`/:id`, (req, res) => {
-    const movie = movieService.getOne(req.params.id);
+movieController.get(`/:id`, async (req, res) => {
+    const movie = await movieService.getOne(req.params.id);
     const ratingViewData = '&#x2605;'.repeat(Math.trunc(movie.rating));
 
 

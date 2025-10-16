@@ -2,8 +2,6 @@ import Movie from "../models/Movie.js";
 
 export default {
     getAll(filter) {
-        // console.log(filter);
-
         return Movie.find(filter);
     },
 
