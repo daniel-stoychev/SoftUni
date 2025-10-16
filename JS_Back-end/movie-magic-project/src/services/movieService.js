@@ -1,23 +1,45 @@
 import Movie from "../models/Movie.js";
 
 export default {
-    async getAll(filter) {
-        const result = await Movie.find(filter);
+    getAll(filter) {
+        //General fix for own property problem
+        let query = Movie.find();
         // const result = await Movie.find(filter).lean();
         //await Movie.find(filter) - query of document
         // lean() makes object from document and resilves "Handlebars: Access has been denied to resolve the property" error
 
-        return result;
+        if (filter.title) {
+            //partial match
+            // query = query.filter(movie => movie.title.toLocaleLowerCase().includes(filter.title.toLocaleLowerCase()));
+            query = query.find({ title: { $regex: filter.title, $options: 'i' } });
+        }
+
+        if (filter.genre) {
+            //exact match
+            // query = query.filter(movie => movie.genre.toLocaleLowerCase() === filter.genre.toLocaleLowerCase());
+            query = query.find({ genre: { $regex: new RegExp(`^${filter.genre}$`), $options: 'i' } });
+        }
+
+        if (filter.year) {
+            // result = result.filter(movie => movie.year === filter.year);
+            query = query.where('year').equals(filter.year);
+        }
+
+
+        return query;
     },
 
-    getOne(id) {
-        return Movie.findOne(id);
+    async getOne(id) {
+        // const result = await Movie.findOne({ _id: id });
+        const result = await Movie.findById(id);
+        return result;
     },
 
     create(movieData) {
         movieData.rating = Number(movieData.rating);
-        const movie = new Movie(movieData);
+        // const movie = new Movie(movieData);
 
-        return movie.save();
+        // return movie.save();
+        return Movie.create(movieData);
     }
 }
