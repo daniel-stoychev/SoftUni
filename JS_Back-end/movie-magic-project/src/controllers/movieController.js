@@ -17,9 +17,7 @@ movieController.get(`/:_id`, async (req, res) => {
 
     const movie = await movieService.getOne(req.params._id);
 
-
     const ratingViewData = '&#x2605;'.repeat(Math.trunc(movie.rating));
-
 
     res.render('details', { movie, pageTitle: 'Details', rating: ratingViewData })
 });
