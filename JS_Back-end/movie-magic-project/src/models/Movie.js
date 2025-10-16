@@ -1,51 +1,16 @@
-import { v4 as uuid } from 'uuid';
-import fs from 'fs/promises';
-import { type } from 'os';
+import { Schema, model } from "mongoose";
 
-let dbSerialized = await fs.readFile('./src/config/movies.json', { encoding: 'utf-8' });
-let db = JSON.parse(dbSerialized);
+const movieSchema = new Schema({
+    title: String,       // Очаквана стойност: низ (текст)
+    category: String,    // Очаквана стойност: низ (текст)
+    genre: String,       // Очаквана стойност: низ (текст)
+    director: String,    // Очаквана стойност: низ (текст)
+    year: Number,        // Очаквана стойност: число
+    imageUrl: String,    // Очаквана стойност: низ (URL)
+    rating: Number,      // Очаквана стойност: число
+    description: String  // Очаквана стойност: низ (текст)
+});
 
-export default class Movie {
-    static find(filter = {}) {
+const Movie = model('Movie', movieSchema);
 
-        let result = db.movies.slice();
-
-        if (filter.title) {
-            //partial match
-            result = result.filter(movie => movie.title.toLocaleLowerCase().includes(filter.title.toLocaleLowerCase()));
-        }
-
-        if (filter.genre) {
-            //exact match
-            result = result.filter(movie => movie.genre.toLocaleLowerCase() === filter.genre.toLocaleLowerCase());
-        }
-
-        if (filter.year) {
-            result = result.filter(movie => movie.year === filter.year);
-        }
-
-        return result;
-    }
-
-    static findOne(id) {
-        const slectedMovie = db.movies.find(movie => movie._id === id);
-        return slectedMovie;
-    }
-
-    constructor(movieData) {
-        this._id = uuid();
-        Object.assign(this, movieData)
-    }
-
-    // get id() {
-    //     return this._id;
-    // }
-
-    async save() {
-        db.movies.push(this);
-        const dbSerialized = JSON.stringify(db, null, 2)
-        await fs.writeFile('./src/config/movies.json', dbSerialized)
-
-        return this;
-    }
-}
+export default Movie;

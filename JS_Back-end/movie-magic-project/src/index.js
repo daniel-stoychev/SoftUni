@@ -1,8 +1,8 @@
 import express from "express";
 import handlebars from "express-handlebars";
-import routes from "./routes.js";
 import mongoose from "mongoose";
 
+import routes from "./routes.js";
 
 const app = express();
 
@@ -33,10 +33,8 @@ const localDB = 'mongodb://localhost:27017';
 try {
     await mongoose.connect(localDB, { dbName: 'movie_magic_projectDB' });
     console.log('DB connected successfully!');
-
-
 } catch (error) {
-    console.error('Cannot connect to DB!')
+    console.error('Cannot connect to DB, ', error.message)
 }
 
 

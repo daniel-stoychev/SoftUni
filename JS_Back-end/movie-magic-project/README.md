@@ -4,7 +4,7 @@ SoftUni JS Back-End Course Workshop
 
 ## Development Steps
 
-## Part 1
+## Part 1 (Expres & Templating)
 
 ### Setup
 
@@ -84,9 +84,9 @@ SoftUni JS Back-End Course Workshop
 
 ### Refactor Movies to use mongoose
 
-- [] Add movie model
-  - [] Create movie schema
-  - [] Create movie model
+- [x] Add movie model
+  - [x] Create movie schema
+  - [x] Create movie model
 - [] mport file movies to database !DON'T IMPORT IDs
 - [] Fix own property handlebars problem with lean method
 - [] General fix for own property problem
