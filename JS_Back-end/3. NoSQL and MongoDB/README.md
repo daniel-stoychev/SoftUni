@@ -29,7 +29,7 @@
 
 ---
 
-- Mongoose: (Middlemans / collections) - make the connection betwenn node.JS and the DB (MongoDB)
+- Mongoose (it is a ODM): (Middlemans / collections) - make the connection betwenn node.JS and the DB (MongoDB)
   - ORM - Object relation mapper/model (famous with relation databases)
   - ODM - Object document mapper/model (famous with non-relation/document databases)
   - schema-based solution

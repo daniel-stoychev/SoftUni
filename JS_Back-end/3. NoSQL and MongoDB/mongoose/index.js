@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import Human from "./models/Humans.js";
 import Course from "./models/Course.js";
 
-// const atlasDBUrl = 'mongodb+srv://danibg11_db_user:gXcUwvX6vrip8Kpj@cluster0.nvyr2zo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const atlasDBUrl = 'mongodb+srv://danibg11_db_user:gXcUwvX6vrip8Kpj@cluster0.nvyr2zo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const localDB = 'mongodb://localhost:27017';
 
 //Connect to DB
@@ -25,7 +25,7 @@ try {
 // CRUD - create, read, update, delete
 
 // ===== CREATE method #1 (PREFERED -> directly saves to DB)
-// const personCreate = await Human.create({ name: 'Petkan', age: 33 });
+// const personCreate = await Human.create({ name: 'Petkan-child', age: 15 });
 // console.log(personCreate);
 
 // /===== CREATE method #2 (FIRST saves to the Node.jс/server memory then we have to use save() to save in DB)
@@ -73,6 +73,10 @@ try {
 // const olderPeople = await Human.find({ age: { $gt: 25 } });
 // console.log(olderPeople);
 
+// const resultsAmongArray = await Human.find({ name: { $in: ['Iva', 'Petkan3', 'Petkan2', 'Maria'] } });
+// console.log(resultsAmongArray);
+
+
 // - comparison Mongoose operators
 
 // const olderPeople = await Human.find().where('age').gt(25);
@@ -82,6 +86,11 @@ try {
 // Human.find({facultyNumber: '2345'}); --- MONGO DB query
 
 // Select specific data from result
+// const humanNames = await Human.find().select('name'); //Mongoose
+// const humanNames = await Human.find().select({ name: 1, _id: 0 }); //Mongoose
+// const humanNames = await Human.find({}, { name: true, _id: false }); //MongoDB
+// console.log(humanNames);
+
 // Sorting
 
 // ===== ===== ===== ===== ===== ===== ===== ===== ===== 
@@ -108,8 +117,8 @@ try {
 
 // Retrieve person in course
 
-const studentInCourse = await Human.findOne({ name: 'Iva21' }).exists('course').populate('course');
-console.log(studentInCourse);
+// const studentInCourse = await Human.findOne({ name: 'Iva21' }).exists('course').populate('course');
+// console.log(studentInCourse);
 
 // const result = await Human.findById(personInCourse.course);
 // console.log(result);
