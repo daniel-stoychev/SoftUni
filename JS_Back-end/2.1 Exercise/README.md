@@ -64,7 +64,7 @@
 ### Bonuses
 
 - [x] Dynamic page title // THIS WILL BE ON THE EXAM
-- [ ] File Persitance
+- [x] File Persitance
 - [x] Rating
 
 ---
