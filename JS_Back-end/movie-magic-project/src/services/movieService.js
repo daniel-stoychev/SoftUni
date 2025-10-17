@@ -46,5 +46,8 @@ export default {
         const movie = await Movie.findById(movieId);
         movie.casts.push(castId);
         return movie.save();
+
+        // other method MongoDB
+        // return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
     }
 }
