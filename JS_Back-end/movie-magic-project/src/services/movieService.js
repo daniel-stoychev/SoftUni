@@ -29,10 +29,13 @@ export default {
         return query;
     },
 
-    async getOne(id) {
+    getOne(id) {
         // const result = await Movie.findOne({ _id: id });
-        const result = await Movie.findById(id);
-        return result;
+        return Movie.findById(id);
+    },
+    getOneDetailed(id) {
+        // const result = await Movie.findOne({ _id: id });
+        return this.getOne(id).populate('casts')
     },
 
     create(movieData) {

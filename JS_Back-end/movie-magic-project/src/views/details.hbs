@@ -31,9 +31,9 @@
                             alt="image">
                     </div>
                 </div>
-                {{#each movieCast}}
+                
                 <div class="main-cast-card">
-                        
+                    {{#each movie.casts}}    
                         <div class="cast-card">
                             <div class="card-img">
                                 <img src="{{imageUrl}}"
@@ -46,8 +46,9 @@
                                 {{!-- <h3>Name in Movie: {{movieCast.imageUrl}}</h3> --}}
                             </div>
                         </div>
+                        {{/each}}
                 </div>
-                {{/each}}
+                
 
             </section>
 

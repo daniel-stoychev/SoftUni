@@ -16,14 +16,13 @@ movieController.post('/create', async (req, res) => {
 });
 
 movieController.get(`/:_id`, async (req, res) => {
-    const movie = await movieService.getOne(req.params._id);
+    const movie = await movieService.getOneDetailed(req.params._id);
 
-    const movieCast = await castService.getAll({ includes: movie.casts });
-    console.log(movieCast);
-
+    // const movieCast = await castService.getAll({ includes: movie.casts });
+    // console.log(movieCast);
 
     const ratingViewData = '&#x2605;'.repeat(Math.trunc(movie.rating));
-    res.render('details', { movie, movieCast, pageTitle: 'Details', rating: ratingViewData })
+    res.render('details', { movie, pageTitle: 'Details', rating: ratingViewData })
 });
 
 // add cast page
