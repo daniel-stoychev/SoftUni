@@ -35,4 +35,4 @@ SoftUni JS Back End Course Project
 - [x] Show breed on cat create
 - [x] Show breed on cat edit (selected current breed) (not EASY)
 - [x] Update pages name in browser bar
-- [ ] Search cat
+- [x] Search cat

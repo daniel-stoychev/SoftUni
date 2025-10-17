@@ -105,7 +105,7 @@ SoftUni JS Back-End Course Workshop
 
 ### Attach Cast to Movie (relations)
 
-- [] Add attach cast button
+- [x] Add attach cast button
 - [] Add attach cast page
 - [] Add dynamic data to cast page
 - [] Show cast list in attach select
