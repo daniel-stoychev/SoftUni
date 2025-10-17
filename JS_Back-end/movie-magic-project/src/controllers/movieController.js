@@ -35,4 +35,14 @@ movieController.get('/:_id/attach', async (req, res) => {
     res.render('casts/cast-attach', { movie, casts, pageTitle: 'Attach cast' });
 });
 
+movieController.post('/:_id/attach', async (req, res) => {
+
+    const movieID = req.params._id;
+    const castID = req.body.cast;
+
+    await movieService.attach(movieID, castID);
+
+    res.redirect(`/movies/${movieID}`);
+})
+
 export default movieController;
