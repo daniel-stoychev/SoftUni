@@ -22,4 +22,13 @@ movieController.get(`/:_id`, async (req, res) => {
     res.render('details', { movie, pageTitle: 'Details', rating: ratingViewData })
 });
 
+// add cast page
+
+movieController.get('/:_id/attach', async (req, res) => {
+
+    const movie = await movieService.getOne(req.params._id);
+
+    res.render('casts/cast-attach', { movie, pageTitle: 'Attach cast' });
+});
+
 export default movieController;
