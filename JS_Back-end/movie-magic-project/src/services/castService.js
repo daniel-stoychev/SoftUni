@@ -9,8 +9,12 @@ export default {
 
         if (filter.includes) {
             query = query.in('_id', filter.includes); //Mongoose
-
         }
+
+        if (filter.excludes) {
+            query = query.nin('_id', filter.excludes)
+        }
+
         return query;
     }
 

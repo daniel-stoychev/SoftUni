@@ -30,7 +30,7 @@ movieController.get(`/:_id`, async (req, res) => {
 movieController.get('/:_id/attach', async (req, res) => {
 
     const movie = await movieService.getOne(req.params._id);
-    const casts = await castService.getAll();
+    const casts = await castService.getAll({ excludes: movie.casts }); // remves added casts to the dropdown options
 
     res.render('casts/cast-attach', { movie, casts, pageTitle: 'Attach cast' });
 });
