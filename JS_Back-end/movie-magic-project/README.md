@@ -130,7 +130,7 @@ SoftUni JS Back-End Course Workshop
 
 ### Initial Setup
 
-- [] Add resources
+- [x] Add resources
 
 ### egistration
 
