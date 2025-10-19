@@ -125,3 +125,70 @@ SoftUni JS Back-End Course Workshop
 - [ ] name in movie
 - [ ] Back refference from vscode
 - [ ] Add movie views to a folder
+
+## Part 3 (Session and Authentication)
+
+### Initial Setup
+
+- [] Add resources
+
+### egistration
+
+- [] Add new controller `authController`
+- [] Add registration page
+- [] Add User model
+- [] Add User service
+- [] Handle registration (create user in database)
+- [] Add password hashing
+
+### ogin
+
+- [] Add login page
+- [] Handle login page
+  -[] Validate user
+  -[] Validate password
+  -[] Create token
+  -[] Return token to client
+
+### oout
+
+- []Add logout action
+- [] Clear cookie
+
+### uthorization
+
+- [] Install cookie parser
+- [] Add auth middleware
+- [] Add isAuth route guard
+- [] Add isGuest route guard
+
+### Dynamic Navigation
+
+- [] Group navigation by user type (all, authenticated and guest)
+- [] Add auth info to handlebars context
+
+### Show creator control buttons
+
+- [] Add edit and delete buttons on details page
+- [] Add creator as relation to movies
+- [] Add user as creator on movie create
+- [] Show buttons only for creators
+
+### Delete movies
+
+- [] Add delete action
+- [] Add creator validation
+
+### Edit movies
+
+- [] Add edit page
+- [] Add dynamic movie data to edit page
+- [] Handle edit movie
+
+### Bonuses
+
+- [] Automatic login on register
+- [] Edit categories
+- [ ] Invalidate token on logout
+- [ ] Refresh token
+- [ ] Async jwt
