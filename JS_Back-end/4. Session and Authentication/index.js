@@ -9,7 +9,8 @@ const JWT_SECRET = 'MYSECRET123456';
 
 const app = express();
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false })); // allows to read the body which s sent as result in the POST request
+
 app.use(cookieParser());
 app.use(expressSession({
     secret: 'keyboardud6i7f68og9h0j87g6f5d6f7',
