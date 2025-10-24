@@ -132,7 +132,7 @@ SoftUni JS Back-End Course Workshop
 
 - [x] Add resources
 
-### egistration
+### Registration
 
 - [x] Add new controller `authController`
 - [x] Add registration page
@@ -141,21 +141,21 @@ SoftUni JS Back-End Course Workshop
 - [x] Handle registration (create user in database)
 - [x] Add password hashing
 
-### ogin
+### Login
 
-- [] Add login page
+- [x] Add login page
 - [] Handle login page
   -[] Validate user
   -[] Validate password
   -[] Create token
   -[] Return token to client
 
-### oout
+### Logut
 
 - []Add logout action
 - [] Clear cookie
 
-### uthorization
+### Authorization
 
 - [] Install cookie parser
 - [] Add auth middleware
