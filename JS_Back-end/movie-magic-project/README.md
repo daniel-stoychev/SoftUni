@@ -154,6 +154,7 @@ SoftUni JS Back-End Course Workshop
 
 - [x] Add logout action
 - [x] Clear cookie
+- [x] Invalidate token //BONUS
 
 ### Authorization
 
