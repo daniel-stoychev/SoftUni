@@ -29,5 +29,6 @@ export default {
         const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '2h' });
 
         return token;
-    }
+    },
+
 }
