@@ -2,6 +2,7 @@ import Movie from "../models/Movie.js";
 
 export default {
     getAll(filter = {}) {
+
         //General fix for own property problem
         let query = Movie.find();
         // const result = await Movie.find(filter).lean();

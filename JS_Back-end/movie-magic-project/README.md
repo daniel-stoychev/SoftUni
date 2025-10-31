@@ -154,11 +154,11 @@ SoftUni JS Back-End Course Workshop
 
 - [x] Add logout action
 - [x] Clear cookie
-- [x] Invalidate token //BONUS
+- [] Invalidate token //BONUS
 
 ### Authorization
 
-- [] Install cookie parser
+- [x] Install cookie parser
 - [] Add auth middleware
 - [] Add isAuth route guard
 - [] Add isGuest route guard
