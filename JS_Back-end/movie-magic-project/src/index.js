@@ -3,6 +3,8 @@ import handlebars from "express-handlebars";
 import mongoose from "mongoose";
 
 import routes from "./routes.js";
+import cookieParser from "cookie-parser";
+import authMiddleware from "./middlewares/authMiddleware.js";
 
 const app = express();
 
@@ -23,6 +25,11 @@ app.set('views', 'src/views');
 app.use(express.static('src/public'));
 //setup URL encoded
 app.use(express.urlencoded()); // factory method / parses the data that is under the request stream 
+//Cookie Prser
+app.use(cookieParser());
+
+//Auth Middleware
+app.use(authMiddleware);
 
 //setup routes
 app.use(routes);

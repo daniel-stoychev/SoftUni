@@ -1,8 +1,8 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "../config/constants.js";
 
-const JWT_SECRET = 'e5dr6ft7g68h9j0k-9j8h7g6f5d45f6g7h8j';
 
 export default {
     register(userData) {
