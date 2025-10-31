@@ -2,10 +2,11 @@ import { Router } from "express";
 import movieService from "../services/movieService.js";
 import castController from "./castController.js";
 import castService from "../services/castService.js";
+import { isAuth } from "../middlewares/authMiddleware.js";
 
 const movieController = Router();
 
-movieController.get('/create', (req, res) => {
+movieController.get('/create', isAuth, (req, res) => {
     if (req.isAuthenticated) {
         console.log(req.user.email);
 
@@ -13,7 +14,7 @@ movieController.get('/create', (req, res) => {
     res.render('create', { pageTitle: 'Add movie' });
 });
 
-movieController.post('/create', async (req, res) => {
+movieController.post('/create', isAuth, async (req, res) => {
     // console.log(req.body); // (add action)
     await movieService.create(req.body);
     res.redirect('/');
