@@ -28,3 +28,11 @@ export function isAuth(req, res, next) {
     }
     next();
 }
+
+// checks if user is guest or NOT
+export function isGuest(req, res, next) {
+    if (req.isAuthenticated) {
+        res.redirect('/');
+    }
+    next();
+}

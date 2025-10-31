@@ -26,7 +26,7 @@ export default {
             email: user.email
         }
 
-        const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '10s' });
+        const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '2h' });
 
         return token;
     },
