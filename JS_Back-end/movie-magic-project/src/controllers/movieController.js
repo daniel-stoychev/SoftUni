@@ -11,7 +11,7 @@ movieController.get('/create', isAuth, (req, res) => {
         console.log(req.user.email);
 
     }
-    res.render('create', { pageTitle: 'Add movie' });
+    res.render('movies/create', { pageTitle: 'Add movie' });
 });
 
 movieController.post('/create', isAuth, async (req, res) => {
@@ -27,7 +27,7 @@ movieController.get(`/:_id`, async (req, res) => {
     // console.log(movieCast);
 
     const ratingViewData = '&#x2605;'.repeat(Math.trunc(movie.rating));
-    res.render('details', { movie, pageTitle: 'Details', rating: ratingViewData })
+    res.render('movies/details', { movie, pageTitle: 'Details', rating: ratingViewData })
 });
 
 // add cast page

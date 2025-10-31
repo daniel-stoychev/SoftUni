@@ -170,6 +170,7 @@ SoftUni JS Back-End Course Workshop
 
 ### Show creator control buttons
 
+- [x] Move create/details views to separate folder
 - [] Add edit and delete buttons on details page
 - [] Add creator as relation to movies
 - [] Add user as creator on movie create
