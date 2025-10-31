@@ -39,12 +39,15 @@ export default {
         return this.getOne(id).populate('casts')
     },
 
-    create(movieData) {
-        movieData.rating = Number(movieData.rating);
+    create(movieData, userId) {
         // const movie = new Movie(movieData);
 
         // return movie.save();
-        return Movie.create(movieData);
+        return Movie.create({
+            ...movieData,
+            rating: Number(movieData.rating),
+            creator: userId
+        });
     },
     async attach(movieId, castId) {
         const movie = await Movie.findById(movieId);
