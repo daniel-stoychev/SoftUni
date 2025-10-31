@@ -13,6 +13,10 @@ export default function authMiddleware(req, res, next) {
         const decodeToken = jwt.verify(token, JWT_SECRET);
         req.user = decodeToken;
         req.isAuthenticated = true;
+
+        res.locals.isAuthenticated = true;
+        res.locals.user = decodeToken;
+
         next();
 
     } catch (error) {
