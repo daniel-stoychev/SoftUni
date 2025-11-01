@@ -28,7 +28,10 @@ movieController.get(`/:_id`, async (req, res) => {
     // console.log(movieCast);
 
     const ratingViewData = '&#x2605;'.repeat(Math.trunc(movie.rating));
-    res.render('movies/details', { movie, pageTitle: 'Details', rating: ratingViewData })
+    // const isCreator = req.user?.id && movie.creator == req.user.id;
+    const isCreator = movie.creator && movie.creator.equals(req.user?.id);
+
+    res.render('movies/details', { movie, pageTitle: 'Details', rating: ratingViewData, isCreator })
 });
 
 // add cast page
