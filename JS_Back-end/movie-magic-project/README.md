@@ -189,7 +189,7 @@ SoftUni JS Back-End Course Workshop
 
 ### Bonuses
 
-- [] Automatic login on register
+- [x] Automatic login on register
 - [x] Edit categories
 - [ ] Invalidate token on logout
 - [ ] Refresh token
