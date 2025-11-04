@@ -1,0 +1,17 @@
+{
+  "name": "5.-validation-and-error-handling",
+  "version": "1.0.0",
+  "description": "## Comments",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3"
+  }
+}
