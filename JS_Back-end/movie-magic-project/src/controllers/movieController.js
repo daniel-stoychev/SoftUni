@@ -52,6 +52,20 @@ movieController.post('/:_id/attach', async (req, res) => {
     await movieService.attach(movieID, castID);
 
     res.redirect(`/movies/${movieID}`);
-})
+});
+
+movieController.get('/:_id/delete', async (req, res) => {
+    const movieId = req.params._id;
+    const movie = await movieService.getOne(movieId);
+    const isCreator = movie.creator && movie.creator.equals(req.user?.id);
+    if (isCreator) {
+        await movieService.delete(movieId);
+        res.redirect('/');
+    } else {
+        throw new Error("Not creator - cannot delete!");
+
+    }
+
+});
 
 export default movieController;

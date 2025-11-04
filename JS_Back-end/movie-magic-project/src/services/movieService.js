@@ -56,5 +56,8 @@ export default {
 
         // other method MongoDB
         // return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
+    },
+    delete(id) {
+        return Movie.findByIdAndDelete(id);
     }
 }
