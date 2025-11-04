@@ -1,5 +1,6 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
+import validator from 'validator';
 
 const app = express({ extended: false });
 
@@ -22,6 +23,23 @@ app.get('/register', (req, res) => {
 app.post('/register', (req, res) => {
     const formData = req.body;
     console.log(formData);
+
+    // validate email
+    const isEmailValid = validator.isEmail(formData.email);
+
+    if (!isEmailValid) {
+        res.status(400).send('Email is invalid!');
+    }
+
+    //sanitize
+    const user = {
+        email: formData.email.trim().toLowerCase(),
+    }
+
+    console.log(user);
+
+
+    res.redirect('/');
 
     res.end();
 });
