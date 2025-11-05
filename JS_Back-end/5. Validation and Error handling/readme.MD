@@ -21,4 +21,18 @@
 
 - demo till before model...
 
+- mongoose validations
+  - buit-in
+  - custom
+    - Regex
+
 ## Error handling
+
+- we do this when the validation fails
+- we always need to hink what the user will see and provide good UX
+- we have expected errros and diff types of errors
+  - technical/network errors
+  - expected errors
+  - bug/logical errors (QA, end-to-end testing, integration testing....)
+- we deal with errors with try/catch for synchronous and then() - catch() for asynchronous
+- error handling MUST be paralel whilke writting the code/features
