@@ -7,7 +7,7 @@ import User from './models/User.js';
 const app = express();
 
 await mongoose.connect('mongodb://localhost:27017', {
-    dbName: 'validation-err_handling-sept2025'
+    dbName: 'test-sept2025'
 })
 
 app.use(express.urlencoded({ extended: false }));

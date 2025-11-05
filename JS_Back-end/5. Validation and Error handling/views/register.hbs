@@ -1,139 +1,201 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Register</title>
-  <style>
-    :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --accent: #2563eb;
-      --muted: #6b7280;
-      --radius: 12px;
-      --shadow: 0 6px 18px rgba(18, 38, 63, 0.08);
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Register — Simple</title>
+    <style>
+        :root {
+            --bg: #f6f8fb;
+            --card: #ffffff;
+            --accent: #2563eb;
+            --muted: #64748b;
+            --radius: 12px;
+            --glass: rgba(255, 255, 255, 0.6);
+            --shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
 
-    * { box-sizing: border-box; }
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: var(--bg);
-      color: #0f172a;
-    }
+        * {
+            box-sizing: border-box
+        }
 
-    .wrap {
-      min-height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 36px;
-    }
+        html,
+        body {
+            height: 100%
+        }
 
-    .card {
-      width: 100%;
-      max-width: 420px;
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 28px;
-    }
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg), #eef3fb 60%);
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            color: #0f172a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    h1 {
-      font-size: 20px;
-      margin: 0 0 10px;
-    }
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(15, 23, 42, 0.04);
+        }
 
-    p.lead {
-      margin: 0 0 22px;
-      color: var(--muted);
-      font-size: 14px;
-    }
+        h1 {
+            margin: 0 0 6px 0;
+            font-size: 20px;
+            letter-spacing: -0.2px;
+        }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+        p.lead {
+            margin: 0 0 18px 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
 
-    label {
-      font-size: 13px;
-      color: var(--muted);
-      display: block;
-      margin-bottom: 6px;
-    }
+        form {
+            display: grid;
+            gap: 12px;
+        }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-    }
+        label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 6px;
+            color: #0f172a;
+            font-weight: 600;
+        }
 
-    input[type="email"],
-    input[type="password"] {
-      height: 44px;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px solid #e6e9ef;
-      font-size: 15px;
-      outline: none;
-      transition: all .14s ease;
-    }
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
 
-    input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.08);
-    }
+        input[type="email"],
+        input[type="password"] {
+            height: 44px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.01));
+            outline: none;
+            font-size: 14px;
+            transition: box-shadow .15s, border-color .15s, transform .08s;
+        }
 
-    .btn {
-      height: 44px;
-      border-radius: 10px;
-      border: 0;
-      background: var(--accent);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 15px;
-    }
+        input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 4px 18px rgba(37, 99, 235, 0.12);
+            transform: translateY(-1px);
+        }
 
-    .footer {
-      margin-top: 10px;
-      font-size: 13px;
-      color: var(--muted);
-      text-align: center;
-    }
+        .muted {
+            font-size: 12px;
+            color: var(--muted);
+        }
 
-    @media (max-width: 420px) {
-      .card { padding: 20px; }
-    }
-  </style>
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .submit {
+            margin-top: 6px;
+            height: 46px;
+            border-radius: 10px;
+            border: 0;
+            background: linear-gradient(180deg, var(--accent), #1e40af);
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.16);
+            transition: transform .12s, box-shadow .12s, opacity .12s;
+        }
+
+        .submit:active {
+            transform: translateY(1px)
+        }
+
+        .foot {
+            margin-top: 14px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* simple helper for required invalid style */
+        input:invalid {
+            border-color: rgba(220, 38, 38, 0.16);
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.06);
+        }
+
+        @media (max-width:420px) {
+            .card {
+                padding: 20px
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <main class="card" aria-labelledby="signup-title">
-      <h1 id="signup-title">Create an account</h1>
-      <p class="lead">Quick and secure — just your email and a password.</p>
+    <main class="card" role="main">
+        <h1>Create account</h1>
+        <p class="lead">Simple registration. Just your email and a secure password.</p>
 
-      <form method="post">
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-        </div>
+        <form method="post" novalidate>
+            {{#if error}}
+            <div class="field">
+                <p style="color: red;">{{error}}</p>
+            </div>
+            {{/if}}
+            <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com"
+                    value="{{user.email}}" required />
+                <div class="muted">We'll never share your email.</div>
+            </div>
 
-        <div class="field">
-          <label for="password">Password</label>
-          <input id="password" name="password" type="password" placeholder="At least 8 characters" required />
-        </div>
+            <div class="field">
+                <label for="age">Age</label>
+                <input id="age" name="age" type="age" autocomplete="age" value="{{user.age}}" placeholder="User Age"
+                    required />
+                <div class="muted">asdasdasd</div>
+            </div>
 
-        <div class="field">
-          <label for="confirm">Repeat password</label>
-          <input id="confirm" name="confirm" type="password" placeholder="Repeat your password" required />
-        </div>
+            <div class="field">
+                <label for="type">Type</label>
+                <select name="type" id="type">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                </select>
+            </div>
 
-        <button class="btn" type="submit">Create account</button>
-      </form>
+            <div class="field">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" autocomplete="new-password" minlength="8"
+                    placeholder="At least 8 characters" required />
+                <div class="muted">Use 8+ characters. Mix letters and numbers for a stronger password.</div>
+            </div>
 
-      <p class="footer">By continuing you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+            <div class="field">
+                <label for="password2">Repeat password</label>
+                <input id="password2" name="password2" type="password" autocomplete="new-password" minlength="8"
+                    placeholder="Repeat your password" required />
+            </div>
+
+            <button type="submit" class="submit">Create account</button>
+        </form>
+
+        <div class="foot">Already have an account? <a href="#">Sign in</a></div>
     </main>
-  </div>
 </body>
+
 </html>
