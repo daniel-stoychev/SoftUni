@@ -34,11 +34,11 @@
 - [x] add routes.js and postController
 - [x] create post request and test sending data with Postman
 - [x] app.use(express.json());
-- [ ] npm i mongoose
-- [ ] setup database
-- [ ] add modles, Post.js and schema
-- [ ] add service
-- [ ] add functionalities - post, get
+- [x] npm i mongoose
+- [x] setup database
+- [x] add modles, Post.js and schema
+- [x] add service
+- [x] add functionalities - post, get
 - [ ] ***
 - [ ] create functionality
 - [ ] add bcrypt, jwt

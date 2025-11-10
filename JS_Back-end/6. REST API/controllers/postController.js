@@ -1,13 +1,22 @@
 import { Router } from "express";
+import postsService from "../services/postsService.js";
 
 const postController = Router();
+
+postController.get('/', async (req, res) => {
+
+    const posts = await postsService.getAll();
+
+    res.json(posts);
+});
 
 postController.post('/', (req, res) => {
     const postData = req.body;
 
-    console.log(postData);
+    postsService.create(postData);
 
-    res.end();
+    res.status(201).end();
 });
+
 
 export default postController;
