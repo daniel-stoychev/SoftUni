@@ -10,12 +10,15 @@ postController.get('/', async (req, res) => {
     res.json(posts);
 });
 
-postController.post('/', (req, res) => {
+postController.post('/', async (req, res) => {
     const postData = req.body;
+    const userId = req.user.id;
 
-    postsService.create(postData);
-
-    res.status(201).end();
+    const createdPost = await postsService.create({
+        ...postData,
+        author: userId
+    });
+    res.status(201).json(createdPost);
 });
 
 

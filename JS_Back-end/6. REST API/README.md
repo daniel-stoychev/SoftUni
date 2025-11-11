@@ -49,11 +49,11 @@
   - [x] add controller
   - [x] test post requests
   - [ ]
-- [ ] create functionality
-- [x] add bcrypt, jwt
-- [x] update LOGIN functionality
+  - [x] add bcrypt, jwt
+  - [x] update LOGIN functionality
+- [ ] assign author to posts
 - [ ] add authMiddleware
-- [ ] add get post, edit post, delete post
+- [ ] add edit post, delete post, update post
 - [ ]
 - [ ]
 - [ ]

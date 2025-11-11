@@ -1,10 +1,10 @@
 import Post from "../models/Post.js";
 
 export default {
-    create(postData) {
-        Post.create(postData);
+    async create(postData) {
+        await Post.create(postData);
     },
     getAll() {
-        return Post.find();
+        return Post.find().populate('author');
     }
 }
