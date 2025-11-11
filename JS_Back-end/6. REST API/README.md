@@ -40,9 +40,18 @@
 - [x] add service
 - [x] add functionalities - post, get
 - [ ] ***
+- [x] create user functionality
+  - [x] add model
+    - [x] hash the password
+  - [x] add service
+    - [x] setup jwt
+    - [x] add utils and setup token
+  - [x] add controller
+  - [x] test post requests
+  - [ ]
 - [ ] create functionality
-- [ ] add bcrypt, jwt
-- [ ] update LOGIN functionality
+- [x] add bcrypt, jwt
+- [x] update LOGIN functionality
 - [ ] add authMiddleware
 - [ ] add get post, edit post, delete post
 - [ ]
