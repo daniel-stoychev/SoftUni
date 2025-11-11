@@ -51,9 +51,11 @@
   - [ ]
   - [x] add bcrypt, jwt
   - [x] update LOGIN functionality
-- [ ] assign author to posts
-- [ ] add authMiddleware
+- [x] setup client (AI AGENT)
+- [x] setup CORS
+- [x] assign author to posts
+- [x] add authMiddleware
+
+## TODO
+
 - [ ] add edit post, delete post, update post
-- [ ]
-- [ ]
-- [ ]

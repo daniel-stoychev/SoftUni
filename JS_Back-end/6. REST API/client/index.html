@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Simple SPA Client</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="topbar">
+        <h1>Mini Posts SPA</h1>
+        <nav>
+            <span id="user-info" class="hidden"></span>
+            <button id="nav-login">Login</button>
+            <button id="nav-logout" class="hidden">Logout</button>
+            <button id="nav-newpost">New Post</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="messages" class="messages" aria-live="polite"></section>
+
+        <section id="login-section" class="panel hidden">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label>Username
+                    <input name="username" required minlength="3">
+                </label>
+                <label>Password
+                    <input name="password" type="password" required minlength="3">
+                </label>
+                <div class="form-actions">
+                    <button type="submit">Login</button>
+                    <button type="button" id="login-cancel">Cancel</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="post-form-section" class="panel hidden">
+            <h2 id="post-form-title">New Post</h2>
+            <form id="post-form">
+                <input type="hidden" name="id">
+                <label>Title
+                    <input name="title" required>
+                </label>
+                <label>Content
+                    <textarea name="content" required></textarea>
+                </label>
+                <div class="form-actions">
+                    <button type="submit">Save</button>
+                    <button type="button" id="post-cancel">Cancel</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="posts-section" class="panel">
+            <h2>Posts</h2>
+            <div id="posts-list" class="posts-list"></div>
+        </section>
+    </main>
+
+    <footer class="footer">Built with vanilla JavaScript • Connects to API at <code>http://localhost:5000</code>
+    </footer>
+
+    <script src="app.js" defer></script>
+</body>
+
+</html>
