@@ -21,11 +21,11 @@
 
 ## Authentication and Authorization
 
-- [ ] Create user controller
-- [ ] Add json parser
-- [ ] Add register endpoint
-- [ ] Add and config database `npm i mongoose`
-- [ ] Add user model
+- [x] Create user controller
+- [x] Add json parser
+- [x] Add register endpoint
+- [x] Add and config database `npm i mongoose`
+- [x] Add user model
 - [ ] Add user service with register method
 - [ ] Install bcrypt
 - [ ] Hash password on register
