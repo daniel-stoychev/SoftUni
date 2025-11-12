@@ -5,7 +5,7 @@ const furnitureController = Router();
 furnitureController.get('/', (req, res) => {
 
 
-    res.send('It works!')
+    res.json([]);
 });
 
 export default furnitureController;

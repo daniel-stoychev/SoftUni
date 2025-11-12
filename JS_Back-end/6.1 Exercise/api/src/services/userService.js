@@ -5,7 +5,15 @@ import { generateAuthToken } from "../utils/tokenUtils.js";
 export default {
     async register(email, password) {
         const user = await User.create({ email, password });
-        return user;
+
+        const token = generateAuthToken(user);
+
+        return {
+            _id: user.id,
+            email: user.email,
+            accessToken: token
+        };
+
     },
     async login(email, password) {
         const user = await User.findOne({ email });
@@ -22,8 +30,10 @@ export default {
 
         const token = generateAuthToken(user);
 
-        return token;
-
-
+        return {
+            _id: user.id,
+            email: user.email,
+            accessToken: token
+        };
     }
 }
