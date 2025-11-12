@@ -2,15 +2,15 @@
 
 ## Initial Setup
 
-- [ ] Create repository
-- [ ] Initial folder structure
-- [ ] Add client resources and install dependencies `cd client` `npm i`
-- [ ] Add gitignore in client folder
+- [x] Create repository
+- [x] Initial folder structure
+- [x] Add client resources and install dependencies `cd client` `npm i`
+- [x] Add gitignore in client folder
 
 ## Startup Client
 
-- [ ] Install vite (local development server) `npm i -D vite`
-- [ ] Setup vite
+- [x] Install vite (local development server) `npm i -D vite`
+- [x] Setup vite
 
 ## Setup REST API
 
