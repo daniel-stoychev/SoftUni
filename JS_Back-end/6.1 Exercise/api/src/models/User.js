@@ -13,8 +13,10 @@ const userSchema = new Schema({
     }
 });
 
-userSchema.pre('save', function () {
-    this.password = bcrypt.hash(this.password, 12);
+userSchema.pre('save', async function () {
+    this.password = await bcrypt.hash(this.password, 12);
 });
 
-export default User = model('User', userSchema);
+const User = model('User', userSchema);
+
+export default User;
