@@ -1,55 +1,62 @@
 # Furniture Store Project
 
 ## Initial Setup
- - [x] Create repository
- - [x] Initial folder structure
- - [x] Add client resources and install dependencies `cd client` `npm i`
- - [x] Add gitignore in client folder
+
+- [ ] Create repository
+- [ ] Initial folder structure
+- [ ] Add client resources and install dependencies `cd client` `npm i`
+- [ ] Add gitignore in client folder
 
 ## Startup Client
- - [x] Install vite (local development server) `npm i -D vite`
- - [x] Setup vite
+
+- [ ] Install vite (local development server) `npm i -D vite`
+- [ ] Setup vite
 
 ## Setup REST API
- - [x] Initialize project and add .gitignore
- - [x] Install and setup express `npm i express`
- - [x] Add cors
- - [x] Add furniture controller
+
+- [ ] Initialize project and add .gitignore
+- [ ] Install and setup express `npm i express`
+- [ ] Add cors
+- [ ] Add furniture controller
 
 ## Authentication and Authorization
- - [x] Create user controller
- - [x] Add json parser
- - [x] Add register endpoint
- - [x] Add and config database `npm i mongoose`
- - [x] Add user model
- - [x] Add user service with register method
- - [x] Install bcrypt
- - [x] Hash password on register
- - [x] Add login endpoint and service
- - [x] Verify login credentials
- - [x] Generate and return token `npm i jsonwebtoken`
- - [x] Auto login after register
- - [x] Create logout
- - [x] Add auth middleware
-  
-## Furniture Endpoints
- - [x] Add furniture model
- - [x] Add furniture service
- - [x] Create furniture endpoint
- - [x] Get all furnitures
- - [x] Select only needed information for catalog
- - [x] Create details endpoint
- - [x] Add owner relation to furniture model
- - [x] Edit furniture endpoint
- - [x] Delete furniture endpoint
- - [x] Filter furniture by userId
 
-## Error handling 
- - [x] Create error util for message
- - [x] Global error handler
+- [ ] Create user controller
+- [ ] Add json parser
+- [ ] Add register endpoint
+- [ ] Add and config database `npm i mongoose`
+- [ ] Add user model
+- [ ] Add user service with register method
+- [ ] Install bcrypt
+- [ ] Hash password on register
+- [ ] Add login endpoint and service
+- [ ] Verify login credentials
+- [ ] Generate and return token `npm i jsonwebtoken`
+- [ ] Auto login after register
+- [ ] Create logout
+- [ ] Add auth middleware
+
+## Furniture Endpoints
+
+- [ ] Add furniture model
+- [ ] Add furniture service
+- [ ] Create furniture endpoint
+- [ ] Get all furnitures
+- [ ] Select only needed information for catalog
+- [ ] Create details endpoint
+- [ ] Add owner relation to furniture model
+- [ ] Edit furniture endpoint
+- [ ] Delete furniture endpoint
+- [ ] Filter furniture by userId
+
+## Error handling
+
+- [ ] Create error util for message
+- [ ] Global error handler
 
 ## Bonus
- - [x] Use env variables `npm i dotenv`
- - [x] Build with vite
- - [x] Refactor services
- - [ ] Invalidate token
+
+- [ ] Use env variables `npm i dotenv`
+- [ ] Build with vite
+- [ ] Refactor services
+- [ ] Invalidate token
