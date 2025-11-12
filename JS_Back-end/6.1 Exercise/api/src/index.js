@@ -7,6 +7,7 @@ app.get('/', (req, res) => {
     res.send('It works!');
 });
 
+app.use(cors());
 
 
 

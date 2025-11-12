@@ -14,9 +14,9 @@
 
 ## Setup REST API
 
-- [ ] Initialize project and add .gitignore
-- [ ] Install and setup express `npm i express`
-- [ ] Add cors
+- [x] Initialize project and add .gitignore
+- [x] Install and setup express `npm i express`
+- [x] Add cors
 - [ ] Add furniture controller
 
 ## Authentication and Authorization
