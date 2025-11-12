@@ -1,5 +1,6 @@
 import User from "../models/User.js"
 import bcrypt from 'bcrypt';
+import { generateAuthToken } from "../utils/tokenUtils.js";
 
 export default {
     async register(email, password) {
@@ -18,5 +19,11 @@ export default {
         if (!isValid) {
             throw new Error("User or password invalid!");
         }
+
+        const token = generateAuthToken(user);
+
+        return token;
+
+
     }
 }
