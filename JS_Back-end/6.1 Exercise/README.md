@@ -31,9 +31,9 @@
 - [x] Hash password on register
 - [x] Add login endpoint and service
 - [x] Verify login credentials
-- [ ] Generate and return token `npm i jsonwebtoken`
-- [ ] Auto login after register
-- [ ] Create logout
+- [x] Generate and return token `npm i jsonwebtoken`
+- [x] Auto login after register
+- [x] Create logout
 - [ ] Add auth middleware
 
 ## Furniture Endpoints
