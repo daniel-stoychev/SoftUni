@@ -4,6 +4,7 @@ import cors from 'cors';
 
 import routes from '../routes.js';
 import mongoose from 'mongoose';
+import { authMiddleware } from './middlewares/authMiddleware.js';
 
 
 
@@ -19,11 +20,12 @@ try {
     console.error(err.message);
 }
 
+
 app.use(cors());
 
 app.use(express.json());
 
-
+app.use(authMiddleware);
 
 
 
