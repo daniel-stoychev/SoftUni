@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import bcrypt from 'bcrypt';
 
 const userSchema = new Schema({
     email: {
@@ -10,6 +11,10 @@ const userSchema = new Schema({
         required: [true, 'Password is required!'],
         minLength: [6, 'Password must be at least 6 chars long!']
     }
+});
+
+userSchema.pre('save', function () {
+    this.password = bcrypt.hash(this.password, 12);
 });
 
 export default User = model('User', userSchema);
