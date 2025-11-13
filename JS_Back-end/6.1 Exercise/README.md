@@ -38,7 +38,7 @@
 
 ## Furniture Endpoints
 
-- [ ] Add furniture model
+- [x] Add furniture model
 - [ ] Add furniture service
 - [ ] Create furniture endpoint
 - [ ] Get all furnitures
