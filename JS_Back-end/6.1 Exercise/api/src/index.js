@@ -5,6 +5,7 @@ import cors from 'cors';
 import routes from '../routes.js';
 import mongoose from 'mongoose';
 import { authMiddleware } from './middlewares/authMiddleware.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 
 
@@ -33,5 +34,7 @@ app.use(authMiddleware);
 
 
 app.use(routes);
+
+app.use(errorHandler);
 
 app.listen(3030, () => console.log('Server is listening on http://localhost:3030'));

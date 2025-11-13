@@ -51,12 +51,12 @@
 
 ## Error handling
 
-- [ ] Create error util for message
-- [ ] Global error handler
+- [x] Create error util for message
+- [x] Global error handler
 
 ## Bonus
 
-- [ ] Use env variables `npm i dotenv`
+- [x] Use env variables `npm i dotenv`
 - [ ] Build with vite
 - [ ] Refactor services
 - [ ] Invalidate token

@@ -2,7 +2,7 @@
 import querystring from 'querystring';
 import { Router } from 'express';
 import furnitureService from '../services/furnitureService.js';
-// import { getErrorMessage } from '../utils/errorUtils.js';
+import { getErrorMessage } from '../utils/errorUtils.js';
 
 const furnitureController = Router();
 
@@ -36,7 +36,7 @@ furnitureController.post('/', async (req, res) => {
 
         res.status(201).json(furniture);
     } catch (err) {
-        // res.status(400).json({ message: getErrorMessage(err) });
+        res.status(400).json({ message: getErrorMessage(err) });
     }
 
 });
