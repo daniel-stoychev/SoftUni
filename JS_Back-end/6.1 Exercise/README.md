@@ -41,13 +41,13 @@
 - [x] Add furniture model
 - [x] Add furniture service
 - [x] Create furniture endpoint
-- [ ] Get all furnitures
-- [ ] Select only needed information for catalog
-- [ ] Create details endpoint
-- [ ] Add owner relation to furniture model
-- [ ] Edit furniture endpoint
-- [ ] Delete furniture endpoint
-- [ ] Filter furniture by userId
+- [x] Get all furnitures
+- [x] Select only needed information for catalog
+- [x] Create details endpoint
+- [x] Add owner relation to furniture model
+- [x] Edit furniture endpoint
+- [x] Delete furniture endpoint
+- [x] Filter furniture by userId
 
 ## Error handling
 
