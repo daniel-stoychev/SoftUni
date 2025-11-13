@@ -40,7 +40,7 @@
 
 - [x] Add furniture model
 - [x] Add furniture service
-- [ ] Create furniture endpoint
+- [x] Create furniture endpoint
 - [ ] Get all furnitures
 - [ ] Select only needed information for catalog
 - [ ] Create details endpoint
