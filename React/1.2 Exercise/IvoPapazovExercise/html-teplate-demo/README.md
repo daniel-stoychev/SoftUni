@@ -6,5 +6,5 @@
 - [x] Run react app `npm run dev`
 - [x] Cleanup defaul react app
 - [x] Add template resources to public folder
-- [] Add html to App.jsx component
-- [] Clean up jsx errors or use html to jsx converter
+- [x] Add html to App.jsx component
+- [x] Clean up jsx errors or use html to jsx converter
