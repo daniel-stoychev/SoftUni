@@ -9,6 +9,6 @@
 - [x] Add html to App.jsx component
 - [x] Clean up jsx errors or use html to jsx converter
 - [x] Add components
-- []
+- [x] Add Reusability (Fetures)
 - []
 - []
