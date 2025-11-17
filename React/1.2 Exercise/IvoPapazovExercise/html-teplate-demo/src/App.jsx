@@ -5,7 +5,7 @@ import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
 import Preload from "./components/Preload.jsx";
 import WelcomeArea from "./components/WelcomeArea.jsx";
-import HomeParalax from "./components/HomeParalax.jsx";
+import WorkProcessSection from "./components/WorkProcessSection.jsx";
 import Testimonials from "./components/Testimonials.jsx";
 import Pricing from "./components/Pricing.jsx";
 import Counter from "./components/Counter.jsx";
@@ -27,7 +27,7 @@ function App() {
 
       <BigFeaturesRight />
 
-      <HomeParalax />
+      <WorkProcessSection />
 
       <Testimonials />
 

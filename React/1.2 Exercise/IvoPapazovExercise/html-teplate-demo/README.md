@@ -10,5 +10,8 @@
 - [x] Clean up jsx errors or use html to jsx converter
 - [x] Add components
 - [x] Add Reusability (Fetures)
+  - [x] Edit WorkProcessSection (1.48) / map
+  - [] Pricing
+  - [] Features
 - []
 - []
