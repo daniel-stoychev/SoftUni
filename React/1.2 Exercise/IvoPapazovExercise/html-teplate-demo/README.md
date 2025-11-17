@@ -11,7 +11,7 @@
 - [x] Add components
 - [x] Add Reusability (Fetures)
   - [x] Edit WorkProcessSection (1.48) / map
-  - [] Pricing
+  - [x] Pricing
   - [] Features
 - []
 - []
