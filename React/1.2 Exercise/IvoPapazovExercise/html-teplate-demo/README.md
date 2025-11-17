@@ -5,6 +5,6 @@
 - [x] Install packages `npm i`
 - [x] Run react app `npm run dev`
 - [x] Cleanup defaul react app
-- [] Add template resources to public folder
+- [x] Add template resources to public folder
 - [] Add html to App.jsx component
 - [] Clean up jsx errors or use html to jsx converter
