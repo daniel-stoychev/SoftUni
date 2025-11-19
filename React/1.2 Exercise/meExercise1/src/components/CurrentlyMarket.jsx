@@ -1,4 +1,62 @@
+import CurrentlyMarketItem from "./CurrentlyMarketItem.jsx";
+
 export default function CurrentlyMarket() {
+  const items = [
+    {
+      title: "Music Art Super Item",
+      artistName: "Liberty Artist",
+      artistLink: "@libertyart",
+      eth: "2.03",
+      price: 8240.5,
+      endsIn: "4D 08H 15M 42S",
+      date: "July 24th, 2022",
+    },
+    {
+      title: "Digital Crypto Artwork",
+      artistName: "Liberty Artist",
+      artistLink: "@libertyart",
+      eth: "2.03",
+      price: 7200.5,
+      endsIn: "2D 06H 30M 25S",
+      date: "July 26th, 2022",
+    },
+    {
+      title: "Blockchain Item One",
+      artistName: "Liberty Artist",
+      artistLink: "@libertyart",
+      eth: "3.64",
+      price: 6600.0,
+      endsIn: "6D 05H 40M 50S",
+      date: "July 28th, 2022",
+    },
+    {
+      title: "Virtual Currency Art",
+      artistName: "Liberty Artist",
+      artistLink: "@libertyart",
+      eth: "2.44",
+      price: 8800.5,
+      endsIn: "3D 05H 20M 58S",
+      date: "July 14th, 2022",
+    },
+    {
+      title: "Digital Art Item",
+      artistName: "Liberty Artist",
+      artistLink: "@libertyart",
+      eth: "2.50",
+      price: 8400.5,
+      endsIn: "4D 08H 32M 18S",
+      date: "July 16th, 2022",
+    },
+    {
+      title: "Blockchain Music Design",
+      artistName: "Liberty Artist",
+      artistLink: "@libertyart",
+      eth: "2.44",
+      price: 8200.5,
+      endsIn: "5D 10H 22M 24S",
+      date: "July 18th, 2022",
+    },
+  ];
   return (
     <div className="currently-market">
       <div className="container">
@@ -24,272 +82,20 @@ export default function CurrentlyMarket() {
               </ul>
             </div>
           </div>
+
           <div className="col-lg-12">
             <div className="row grid">
-              <div className="col-lg-6 currently-market-item all msc">
-                <div className="item">
-                  <div className="left-image">
-                    <img
-                      src="assets/images/market-01.jpg"
-                      alt=""
-                      style={{ borderRadius: 20, minWidth: 195 }}
-                    />
-                  </div>
-                  <div className="right-content">
-                    <h4>Music Art Super Item</h4>
-                    <span className="author">
-                      <img
-                        src="assets/images/author.jpg"
-                        alt=""
-                        style={{ maxWidth: 50, borderRadius: "50%" }}
-                      />
-                      <h6>
-                        Liberty Artist
-                        <br />
-                        <a href="#">@libertyart</a>
-                      </h6>
-                    </span>
-                    <div className="line-dec" />
-                    <span className="bid">
-                      Current Bid
-                      <br />
-                      <strong>2.03 ETH</strong>
-                      <br />
-                      <em>($8,240.50)</em>
-                    </span>
-                    <span className="ends">
-                      Ends In
-                      <br />
-                      <strong>4D 08H 15M 42S</strong>
-                      <br />
-                      <em>(July 24th, 2022)</em>
-                    </span>
-                    <div className="text-button">
-                      <a href="details.html">View Item Details</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 currently-market-item all dig">
-                <div className="item">
-                  <div className="left-image">
-                    <img
-                      src="assets/images/market-01.jpg"
-                      alt=""
-                      style={{ borderRadius: 20, minWidth: 195 }}
-                    />
-                  </div>
-                  <div className="right-content">
-                    <h4>Digital Crypto Artwork</h4>
-                    <span className="author">
-                      <img
-                        src="assets/images/author.jpg"
-                        alt=""
-                        style={{ maxWidth: 50, borderRadius: "50%" }}
-                      />
-                      <h6>
-                        Liberty Artist
-                        <br />
-                        <a href="#">@libertyart</a>
-                      </h6>
-                    </span>
-                    <div className="line-dec" />
-                    <span className="bid">
-                      Current Bid
-                      <br />
-                      <strong>2.03 ETH</strong>
-                      <br />
-                      <em>($7,200.50)</em>
-                    </span>
-                    <span className="ends">
-                      Ends In
-                      <br />
-                      <strong>2D 06H 30M 25S</strong>
-                      <br />
-                      <em>(July 26th, 2022)</em>
-                    </span>
-                    <div className="text-button">
-                      <a href="details.html">View Item Details</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 currently-market-item all blc">
-                <div className="item">
-                  <div className="left-image">
-                    <img
-                      src="assets/images/market-01.jpg"
-                      alt=""
-                      style={{ borderRadius: 20, minWidth: 195 }}
-                    />
-                  </div>
-                  <div className="right-content">
-                    <h4>Blockchain Item One</h4>
-                    <span className="author">
-                      <img
-                        src="assets/images/author.jpg"
-                        alt=""
-                        style={{ maxWidth: 50, borderRadius: "50%" }}
-                      />
-                      <h6>
-                        Liberty Artist
-                        <br />
-                        <a href="#">@libertyart</a>
-                      </h6>
-                    </span>
-                    <div className="line-dec" />
-                    <span className="bid">
-                      Current Bid
-                      <br />
-                      <strong>3.64 ETH</strong>
-                      <br />
-                      <em>($6,600.00)</em>
-                    </span>
-                    <span className="ends">
-                      Ends In
-                      <br />
-                      <strong>6D 05H 40M 50S</strong>
-                      <br />
-                      <em>(July 28th, 2022)</em>
-                    </span>
-                    <div className="text-button">
-                      <a href="details.html">View Item Details</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 currently-market-item all vtr">
-                <div className="item">
-                  <div className="left-image">
-                    <img
-                      src="assets/images/market-01.jpg"
-                      alt=""
-                      style={{ borderRadius: 20, minWidth: 195 }}
-                    />
-                  </div>
-                  <div className="right-content">
-                    <h4>Virtual Currency Art</h4>
-                    <span className="author">
-                      <img
-                        src="assets/images/author.jpg"
-                        alt=""
-                        style={{ maxWidth: 50, borderRadius: "50%" }}
-                      />
-                      <h6>
-                        Liberty Artist
-                        <br />
-                        <a href="#">@libertyart</a>
-                      </h6>
-                    </span>
-                    <div className="line-dec" />
-                    <span className="bid">
-                      Current Bid
-                      <br />
-                      <strong>2.44 ETH</strong>
-                      <br />
-                      <em>($8,800.50)</em>
-                    </span>
-                    <span className="ends">
-                      Ends In
-                      <br />
-                      <strong>3D 05H 20M 58S</strong>
-                      <br />
-                      <em>(July 14th, 2022)</em>
-                    </span>
-                    <div className="text-button">
-                      <a href="details.html">View Item Details</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 currently-market-item all vrt dig">
-                <div className="item">
-                  <div className="left-image">
-                    <img
-                      src="assets/images/market-01.jpg"
-                      alt=""
-                      style={{ borderRadius: 20, minWidth: 195 }}
-                    />
-                  </div>
-                  <div className="right-content">
-                    <h4>Digital Art Item</h4>
-                    <span className="author">
-                      <img
-                        src="assets/images/author.jpg"
-                        alt=""
-                        style={{ maxWidth: 50, borderRadius: "50%" }}
-                      />
-                      <h6>
-                        Liberty Artist
-                        <br />
-                        <a href="#">@libertyart</a>
-                      </h6>
-                    </span>
-                    <div className="line-dec" />
-                    <span className="bid">
-                      Current Bid
-                      <br />
-                      <strong>2.50 ETH</strong>
-                      <br />
-                      <em>($8,400.50)</em>
-                    </span>
-                    <span className="ends">
-                      Ends In
-                      <br />
-                      <strong>4D 08H 32M 18S</strong>
-                      <br />
-                      <em>(July 16th, 2022)</em>
-                    </span>
-                    <div className="text-button">
-                      <a href="details.html">View Item Details</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 currently-market-item all msc blc">
-                <div className="item">
-                  <div className="left-image">
-                    <img
-                      src="assets/images/market-01.jpg"
-                      alt=""
-                      style={{ borderRadius: 20, minWidth: 195 }}
-                    />
-                  </div>
-                  <div className="right-content">
-                    <h4>Blockchain Music Design</h4>
-                    <span className="author">
-                      <img
-                        src="assets/images/author.jpg"
-                        alt=""
-                        style={{ maxWidth: 50, borderRadius: "50%" }}
-                      />
-                      <h6>
-                        Liberty Artist
-                        <br />
-                        <a href="#">@libertyart</a>
-                      </h6>
-                    </span>
-                    <div className="line-dec" />
-                    <span className="bid">
-                      Current Bid
-                      <br />
-                      <strong>2.44 ETH</strong>
-                      <br />
-                      <em>($8,200.50)</em>
-                    </span>
-                    <span className="ends">
-                      Ends In
-                      <br />
-                      <strong>5D 10H 22M 24S</strong>
-                      <br />
-                      <em>(July 18th, 2022)</em>
-                    </span>
-                    <div className="text-button">
-                      <a href="details.html">View Item Details</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {items.map((item) => (
+                <CurrentlyMarketItem
+                  title={item.title}
+                  artistName={item.artistName}
+                  artistLink={item.artistLink}
+                  eth={item.eth}
+                  price={item.price}
+                  endsIn={item.endsIn}
+                  date={item.date}
+                />
+              ))}
             </div>
           </div>
         </div>
