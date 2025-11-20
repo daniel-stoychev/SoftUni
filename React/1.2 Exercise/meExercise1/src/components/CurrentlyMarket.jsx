@@ -87,6 +87,7 @@ export default function CurrentlyMarket() {
             <div className="row grid">
               {items.map((item) => (
                 <CurrentlyMarketItem
+                  key={item.title}
                   title={item.title}
                   artistName={item.artistName}
                   artistLink={item.artistLink}

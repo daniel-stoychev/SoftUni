@@ -27,6 +27,7 @@ export default function CategoriesCollection() {
 
                 {items.map((item) => (
                   <CategoriesCollectionItem
+                    key={item.title}
                     title={item.title}
                     image={item.image}
                   />
