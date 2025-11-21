@@ -62,12 +62,28 @@ export default function Calendar() {
 
   const isWorkday = day < 5;
 
+  //   isWorkday && "Pesho"; // truthy && any -> 'Pesho'
+  //   isWorkday && "Pesho"; // falsy && 'any' -> falsy
+  //   isWorkday || "Pesho"; // truthy && any -> truthy
+  //   isWorkday || "Pesho"; // falsy && any -> any
+
   return (
     <section>
       <h1>Calendar</h1>
       {/* <p>Current Day {days[day]}</p> */}
       <h2>{isWorkday ? <span>Work day</span> : <span>Weekend</span>}</h2>
       <p>Current Day {currentDay}</p>
+
+      {isWorkday && (
+        <div>
+          <h2>WorkSchedule</h2>
+          <ul>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+          </ul>
+        </div>
+      )}
       <button onClick={nextDayClickHandler}>Next day</button>
     </section>
   );
