@@ -60,10 +60,13 @@ export default function Calendar() {
     );
   }
 
+  const isWorkday = day < 5;
+
   return (
     <section>
       <h1>Calendar</h1>
       {/* <p>Current Day {days[day]}</p> */}
+      <h2>{isWorkday ? <span>Work day</span> : <span>Weekend</span>}</h2>
       <p>Current Day {currentDay}</p>
       <button onClick={nextDayClickHandler}>Next day</button>
     </section>
