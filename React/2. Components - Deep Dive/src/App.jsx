@@ -1,4 +1,5 @@
 import "./App.css";
+import Calendar from "./components/Calender.jsx";
 import Counter from "./components/Counter.jsx";
 import Timer from "./components/Timer.jsx";
 
@@ -7,6 +8,7 @@ function App() {
     <div>
       <Timer />
       <Counter />
+      <Calendar />
     </div>
   );
 }
