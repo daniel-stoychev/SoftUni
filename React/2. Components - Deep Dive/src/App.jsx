@@ -4,6 +4,8 @@ import Counter from "./components/Counter.jsx";
 import MocieList from "./components/MovieList.jsx";
 import Timer from "./components/Timer.jsx";
 
+import TyperSection from "./components/TyperSection.jsx";
+
 function App() {
   return (
     <div>
@@ -11,6 +13,7 @@ function App() {
       <Counter />
       <Calendar />
       <MocieList />
+      <TyperSection />
     </div>
   );
 }
