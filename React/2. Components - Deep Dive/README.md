@@ -1,4 +1,4 @@
-# Componenets - Deep dive
+# Componenets comments - Deep dive
 
 ## State
 
@@ -9,3 +9,9 @@
 - functiinal components
 
 ## Conditional rendering
+
+## Effect Hook
+
+- data fetching
+- subscriptions
+- manually chnaging the DOM
