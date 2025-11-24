@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
 import Pagination from "./components/Pagination.jsx";
@@ -7,7 +7,19 @@ import UserList from "./components/UserList.jsx";
 import CreateUserModal from "./components/CreateUserModal.jsx";
 
 function App() {
+  const [users, setUsers] = useState([]);
   const [showCreateUser, setShowCreateUser] = useState(false);
+  const [forceRefresh, setForceRefresh] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:3030/jsonstore/users")
+      .then((response) => response.json())
+      .then((result) => {
+        setUsers(Object.values(result));
+      })
+      .catch((err) => alert(err.message));
+  }, [forceRefresh]);
+
   function addUserClickHandler() {
     setShowCreateUser(true);
   }
@@ -19,7 +31,28 @@ function App() {
 
     const fortData = new FormData(e.target);
 
-    const userData = Object.fromEntries(fortData);
+    const { country, city, street, streetNumber, ...userData } =
+      Object.fromEntries(fortData);
+    userData.address = {
+      country,
+      city,
+      street,
+      streetNumber,
+    };
+    userData.createdAt = new Date().toISOString();
+    userData.updatedAt = new Date().toISOString();
+    fetch("http://localhost:3030/jsonstore/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then(() => {
+        setForceRefresh((state) => !state);
+        closeUserModalHandler();
+      })
+      .catch((err) => alert(err.message));
   }
   return (
     <div>
@@ -27,7 +60,7 @@ function App() {
       <main className="main">
         <section className="card users-container">
           <Search />
-          <UserList />
+          <UserList users={users} />
           <button className="btn-add btn" onClick={addUserClickHandler}>
             Add new user
           </button>
