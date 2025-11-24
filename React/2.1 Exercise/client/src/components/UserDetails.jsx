@@ -39,7 +39,7 @@ export default function UserDetail({ onClose, userId }) {
             <div className="image-container">
               <img
                 src={userData.imageUrl}
-                alt={`${firstName}'s profile`}
+                alt={`${userData.firstName}'s profile`}
                 className="image"
               />
             </div>
