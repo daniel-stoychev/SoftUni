@@ -72,7 +72,6 @@ function App() {
             onSubmit={addUserSubmitHandler}
           />
         )}
-        ;
       </main>
       <Footer />
     </div>
