@@ -14,6 +14,13 @@ function App() {
   function closeUserModalHandler() {
     setShowCreateUser(false);
   }
+  function addUserSubmitHandler(e) {
+    e.preventDefault();
+
+    const fortData = new FormData(e.target);
+
+    const userData = Object.fromEntries(fortData);
+  }
   return (
     <div>
       <Header />
@@ -26,7 +33,13 @@ function App() {
           </button>
           <Pagination />
         </section>
-        {showCreateUser && <CreateUserModal onClose={closeUserModalHandler} />};
+        {showCreateUser && (
+          <CreateUserModal
+            onClose={closeUserModalHandler}
+            onSubmit={addUserSubmitHandler}
+          />
+        )}
+        ;
       </main>
       <Footer />
     </div>
