@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import TodoListItem from "./TodoListItem.jsx";
+import TodoItem from "./TodoItem.jsx";
 
 export default function TodoList() {
   const [todos, setTodods] = useState([]);
@@ -8,13 +8,14 @@ export default function TodoList() {
       .then((response) => response.json())
       .then((result) => {
         setTodods(Object.values(result));
+        console.log(Object.values(result));
       })
       .catch((err) => alert(err.message));
   }, []);
   return (
     <ul>
       {todos.map((todo) => (
-        <TodoListItem
+        <TodoItem
           key={todo._id}
           title={todo.title}
           completed={todo.completed}
