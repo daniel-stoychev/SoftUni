@@ -9,8 +9,16 @@ import Dashboard from "./Components/Dashboard.jsx";
 import Users from "./Components/Users.jsx";
 import Posts from "./Components/Posts.jsx";
 import Admin from "./Components/Admin.jsx";
+import { useState } from "react";
+import RouteGuard from "./Components/RouteGuard.jsx";
+import Profile from "./Components/Profile.jsx";
+import Login from "./Components/Login.jsx";
 
 function App() {
+  const [user, setuser] = useState({
+    username: 'Pesho',
+    role: 'admin'
+  })
   return (
     <div>
       <h1>React router</h1>
@@ -26,6 +34,7 @@ function App() {
         <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/about">About</NavLink>
         <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/city/Pernik">Pernik parameter</NavLink>
         <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/redirect">Redirect</NavLink>
+        <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/profile">Profile</NavLink>
         <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/admin">Admin</NavLink>
       </nav>
 
@@ -41,15 +50,20 @@ function App() {
       <Routes>
         <Route path="/" element={<h1>This is Home page!</h1>} />
         <Route path="/about" element={<About />} />
-        <Route path="/city/:city" element={<City />} />
+        <Route path="/city/:city?" element={<City />} />
         <Route path="/redirect" element={<Redirect />} />
         <Route path="/admin" element={<Admin />} /> 
+        <Route path="/login" element={<Login />} /> 
         <Route path="*" element={<NotFound />} />
 
         <Route path="/admin" element={<Admin />}>
           <Route index element={<Dashboard />} />
           <Route path="users" element={<Users />} />
           <Route path="posts" element={<Posts />} />
+        </Route>
+
+        <Route element={<RouteGuard user={user}/>}>
+          <Route path="/profile" element={<Profile username={user.username}/>} />
         </Route>
 
       </Routes>
