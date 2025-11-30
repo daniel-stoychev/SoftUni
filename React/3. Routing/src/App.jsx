@@ -13,6 +13,7 @@ import { useState } from "react";
 import RouteGuard from "./Components/RouteGuard.jsx";
 import Profile from "./Components/Profile.jsx";
 import Login from "./Components/Login.jsx";
+import CodeSplitting from "./Components/CodeSplitting.jsx";
 
 function App() {
   const [user, setuser] = useState({
@@ -34,6 +35,7 @@ function App() {
         <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/about">About</NavLink>
         <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/city/Pernik">Pernik parameter</NavLink>
         <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/redirect">Redirect</NavLink>
+        <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/code-splitting">Code Splitting</NavLink>
         <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/profile">Profile</NavLink>
         <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/admin">Admin</NavLink>
       </nav>
@@ -52,6 +54,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/city/:city?" element={<City />} />
         <Route path="/redirect" element={<Redirect />} />
+        <Route path="/code-splitting" element={<CodeSplitting />} />
         <Route path="/admin" element={<Admin />} /> 
         <Route path="/login" element={<Login />} /> 
         <Route path="*" element={<NotFound />} />
