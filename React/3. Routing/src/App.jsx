@@ -3,6 +3,7 @@ import "./App.css";
 import About from "./Components/About.jsx";
 import NotFound from "./Components/NotFound.jsx";
 import City from "./Components/City.jsx";
+import Redirect from "./Components/Redirect.jsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<h1>This is Home page!</h1>} />
         <Route path="/about" element={<About />} />
         <Route path="/city/:city" element={<City />} />
+        <Route path="/redirect" element={<Redirect />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
