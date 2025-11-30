@@ -14,12 +14,13 @@ import RouteGuard from "./Components/RouteGuard.jsx";
 import Profile from "./Components/Profile.jsx";
 import Login from "./Components/Login.jsx";
 import CodeSplitting from "./Components/CodeSplitting.jsx";
+import StarWarsCharacters from "./Components/StarWarsCharacters.jsx";
 
 function App() {
   const [user, setuser] = useState({
-    username: 'Pesho',
-    role: 'admin'
-  })
+    username: "Pesho",
+    role: "admin",
+  });
   return (
     <div>
       <h1>React router</h1>
@@ -30,17 +31,72 @@ function App() {
         <Link to="/redirect">Redirect</Link>
       </nav> */}
 
-      <nav> 
-        <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/">Home</NavLink>
-        <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/about">About</NavLink>
-        <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/city/Pernik">Pernik parameter</NavLink>
-        <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/redirect">Redirect</NavLink>
-        <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/code-splitting">Code Splitting</NavLink>
-        <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/profile">Profile</NavLink>
-        <NavLink className={({isActive}) => isActive ? styles["selected-link"] : ''} to="/admin">Admin</NavLink>
+      <nav>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles["selected-link"] : ""
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles["selected-link"] : ""
+          }
+          to="/about"
+        >
+          About
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles["selected-link"] : ""
+          }
+          to="/city/Pernik"
+        >
+          Pernik parameter
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles["selected-link"] : ""
+          }
+          to="/redirect"
+        >
+          Redirect
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles["selected-link"] : ""
+          }
+          to="/code-splitting"
+        >
+          Code Splitting
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles["selected-link"] : ""
+          }
+          to="/profile"
+        >
+          Profile
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles["selected-link"] : ""
+          }
+          to="/admin"
+        >
+          Admin
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? styles["selected-link"] : ""
+          }
+          to="/star-wars"
+        >
+          Star Wars
+        </NavLink>
       </nav>
-
-
 
       {/* <nav> 
         <NavLink style={({isActive}) => isActive ? {color : 'green'} : {}} to="/">Home</NavLink>
@@ -55,8 +111,8 @@ function App() {
         <Route path="/city/:city?" element={<City />} />
         <Route path="/redirect" element={<Redirect />} />
         <Route path="/code-splitting" element={<CodeSplitting />} />
-        <Route path="/admin" element={<Admin />} /> 
-        <Route path="/login" element={<Login />} /> 
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
 
         <Route path="/admin" element={<Admin />}>
@@ -65,10 +121,14 @@ function App() {
           <Route path="posts" element={<Posts />} />
         </Route>
 
-        <Route element={<RouteGuard user={user}/>}>
-          <Route path="/profile" element={<Profile username={user.username}/>} />
+        <Route element={<RouteGuard user={user} />}>
+          <Route
+            path="/profile"
+            element={<Profile username={user.username} />}
+          />
         </Route>
 
+        <Route path="/star-wars" element={<StarWarsCharacters />} />
       </Routes>
     </div>
   );
