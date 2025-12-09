@@ -1,0 +1,1 @@
+export const JWT_secret = '6%F&g8H()JkJ*H7g^F%';

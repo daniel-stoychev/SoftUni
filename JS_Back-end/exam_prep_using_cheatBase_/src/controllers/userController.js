@@ -1,0 +1,60 @@
+import { Router } from "express";
+import userService from "../services/userService.js";
+import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
+import { getErrorMessage } from "../utils/errorUtils.js";
+
+const userController = Router();
+
+userController.get('/register', isGuest, (req, res) => {
+    res.render('users/register', { pageTitle: 'Register' });
+});
+
+userController.post('/register', isGuest, async (req, res) => {
+    const { email, username, password, repeatPassword } = req.body;
+
+    try {
+        const token = await userService.register(email, username, password, repeatPassword);
+        res.cookie('auth', token);
+        res.redirect('/');
+    } catch (err) {
+        res.status(400).render('users/register', {
+            error: getErrorMessage(err),
+            user: { email, username }
+        });
+    }
+
+});
+
+userController.get('/login', isGuest, (req, res) => {
+    res.render('users/login', { pageTitle: 'Login' });
+});
+
+userController.post('/login', isGuest, async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const token = await userService.login(email, password);
+
+        res.cookie('auth', token);
+
+        res.redirect('/');
+    } catch (err) {
+        res.status(400).render('users/login', {
+            error: getErrorMessage(err),
+            user: { email }
+        });
+    }
+
+});
+
+userController.get('/logout', isAuth, (req, res) => {
+    res.clearCookie('auth');
+    res.redirect('/');
+})
+
+userController.get('/profile', isAuth, (req, res) => {
+    res.render('users/profile', { pageTitle: 'Profile' })
+})
+
+
+export default userController;
