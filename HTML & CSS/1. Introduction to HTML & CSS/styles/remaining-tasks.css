@@ -1,0 +1,39 @@
+time {
+    margin: 5px;
+    color: gray;
+    font-style: italic;
+}
+
+nav {
+    margin: 20px;
+}
+
+li {
+    display: inline;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+    background-color: black;
+    border-radius: 3px;
+}
+
+li a:hover {
+    background-color: gray;
+    transition: 0.5s;
+}
+
+article {
+    margin: 20px;
+    border: 1px solid black;
+}
+
+span {
+    font-weight: bold;
+}
+
+main img {
+    width: 300px;
+}
