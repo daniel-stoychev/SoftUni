@@ -1,0 +1,29 @@
+details {
+    border: 1px solid gray;
+    padding: 15px;
+}
+
+/* summary {
+    font-weight: bold;
+} */
+
+
+summary {
+    font-weight: bold;
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+    padding-left: 20px; /* Space for the icon */
+}
+
+summary::before {
+    content: "\f105"; /* Font Awesome right arrow (unicode) */
+    font-family: "Font Awesome 5 Free";
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+details[open] summary::before {
+    content: "\f107"; /* Font Awesome down arrow (unicode) */
+}
