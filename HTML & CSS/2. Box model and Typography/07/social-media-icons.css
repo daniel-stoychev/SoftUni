@@ -1,0 +1,7 @@
+section {
+    display: inline-block;
+    margin: 10px;
+    background-color: rgb(235, 235, 235);
+    padding: 25px;
+    border-radius: 50%;
+}
