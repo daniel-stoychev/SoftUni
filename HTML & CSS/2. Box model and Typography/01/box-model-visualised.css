@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+}
+
+section{
+    padding: 5px 25px 25px 25px;
+    border: 1px dashed black;
+}
+
+.margin {
+    width: 60%;
+    background-color: rgb(251, 147, 10);
+    margin: auto;
+}
+
+
+.border {
+    background-color: burlywood;
+}
+
+.padding {
+    background-color: rgb(90, 184, 74);
+}
+
+section.content {
+    padding: 0;
+    background-color: rgb(130, 120, 240);
+    display: flex;
+    align-items: center;
+    height: 70px;
+    justify-content: center;
+    
+}
