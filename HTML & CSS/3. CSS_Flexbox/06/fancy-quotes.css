@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    background-color: lightgray;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.green {
+    background-color: green;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 1px 1px 5px;
+}
+
+.small {
+    width: 100px;
+    height: 100px;
+}
+
+.horizontal {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.horizontal > article {
+    background-color: #f9f9f9;
+    padding: 30px;
+    margin: 30px;
+}
+
+
+.vertical {
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding: 30px;
+    margin: 30px;
+}
+
+article {
+    display: flex;
+    justify-content: space-between;
+}
+
+article > section {
+    width: 60%;
+}
+
+.fa-quote-left {
+    font-size: 80px;
+}
+
+.name {
+    font-weight:bold;
+}
+
+.text {
+    color: gray;
+}
