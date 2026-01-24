@@ -1,0 +1,25 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+img {
+    width: 450px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+section {
+    padding: 30px;
+    margin: 10px;
+    border: 7px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    justify-content: flex-end;
+}
+
+
+
