@@ -1,0 +1,19 @@
+@media (max-width: 600px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav img {
+        margin-bottom: 10px;
+    }
+
+    .our-dogs ul li img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .helpNeed ul {
+        flex-direction: column;
+    }
+}
