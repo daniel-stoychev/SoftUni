@@ -53,12 +53,14 @@ nav {
 
 .green h1 {
     color: white;
-    padding-top: 50px;
+    padding-top: 40px;
+    font-size: 25px;
 }
 
 .music { 
     width: 45%;
     position: absolute;
+    z-index: 0;
     top: 100px;
 }
 
@@ -67,4 +69,74 @@ nav {
 
 }
 
+.plans {
+    display: flex;
+    justify-content:space-evenly;
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 160px;
+}
 
+section {
+    width: 400px;
+    box-shadow: 0 0 5px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.student > :first-child, .family > :first-child {
+    padding: 20px 40px;
+}
+
+.student > :first-child h1, .family > :first-child h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.student ul li, .family ul li {
+    list-style-type: circle;
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;  
+}
+
+.button button {
+    all: unset;
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    font-size: 13px;
+    color: white;
+    font-weight:600;
+    background-color: rgb(25, 180, 84);
+    border-radius: 45px;
+    cursor: pointer;
+}
+
+.family > :nth-child(2), .student > :nth-child(2) {
+    background-color: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.price {
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.price > :first-child {
+    border-right: 1px solid white;
+    padding-right: 5px;
+}
