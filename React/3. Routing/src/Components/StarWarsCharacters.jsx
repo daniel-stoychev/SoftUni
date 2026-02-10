@@ -19,7 +19,7 @@ export default function StarWarsCharacters() {
       <h2>Start Wars Characters</h2>
       <ul>
         {characters.map((character) => (
-          <li>{character.name}</li>
+          <li key={character.name}>{character.name}</li>
         ))}
       </ul>
     </div>

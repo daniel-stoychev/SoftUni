@@ -349,7 +349,7 @@
         </div>
       </div>
     </section>
-    {/* User details component  */}
+    {/* User details component  */} {/*added*/}
     <div class="overlay">
       <div class="backdrop"></div>
       <div class="modal">
@@ -412,7 +412,7 @@
         </div>
       </div>
     </div>
-    {/* Create/Edit Form component  */}
+    {/* Create/Edit Form component  */} {/*added*/}
     <div class="overlay">
       <div class="backdrop"></div>
       <div class="modal">
@@ -543,7 +543,7 @@
         </div>
       </div>
     </div>
-    {/* Delete user component  */}
+    {/* Delete user component  */} {/*added*/}
     <div class="overlay">
       <div class="backdrop"></div>
       <div class="modal">
