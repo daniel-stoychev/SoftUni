@@ -45,6 +45,7 @@ nav {
 .menu ul li:hover {
     background-color: rgb(77, 77, 77);
 }
+/* END NAV  */
 
 .green {
     height: 300px;
@@ -61,7 +62,7 @@ nav {
 .music { 
     width: 45%;
     position: absolute;
-    z-index: 0;
+    /* z-index: 0; */
     top: 100px;
 }
 
@@ -145,8 +146,8 @@ section {
 /* Dogopal section  */
 .dogopal {
     display: flex;
-    position: absolute;
-    top: 600px;
+    margin-top: 300px;
+    margin-bottom: 100px;
     justify-content: flex-start;
 }
 
@@ -179,10 +180,9 @@ section {
 
 /* whats included */
 .whats-included {
-    position: absolute;
-    top: 850px;
     text-align: center;
     width: 100%;
+    margin-bottom: 50px;
 }
 
 .whats-included h1 {
@@ -216,4 +216,16 @@ section {
     display: flex;
     width: 300px;
     justify-content: space-around;
+}
+
+footer {
+    background-color:#222;
+    width: 100%;
+
+    text-align: center;
+}
+
+footer p {
+    color: white;
+    padding: 20px;
 }
