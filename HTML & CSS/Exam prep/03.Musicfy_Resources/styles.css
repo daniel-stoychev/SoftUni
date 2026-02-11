@@ -7,6 +7,7 @@
 
 body {
     font-family: "Lato";
+
 }
 
 h1 {
@@ -176,4 +177,43 @@ section {
     width: 100%;
 }
 
+/* whats included */
+.whats-included {
+    position: absolute;
+    top: 850px;
+    text-align: center;
+    width: 100%;
+}
 
+.whats-included h1 {
+    margin-bottom: 25px;
+}
+
+.whats-included p {
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+}
+
+.table > :nth-child(odd) {
+ background-color: #aaa;
+}
+
+.table > :nth-child(even) {
+ background-color: #10ee9c;
+}
+
+.included {
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+}
