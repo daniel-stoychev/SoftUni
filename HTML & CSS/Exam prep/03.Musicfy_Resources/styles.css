@@ -140,3 +140,40 @@ section {
     border-right: 1px solid white;
     padding-right: 5px;
 }
+
+/* Dogopal section  */
+.dogopal {
+    display: flex;
+    position: absolute;
+    top: 600px;
+    justify-content: flex-start;
+}
+
+.dogotext, .dogoimg {
+    padding: 0 4.5rem;
+}
+
+.dogotext {
+    width: 55%;
+}
+
+.dogotext h1 {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.dogotext p {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.dogoimg {
+    width: 20%;
+
+}
+
+.dogoimg img {
+    width: 100%;
+}
+
+
