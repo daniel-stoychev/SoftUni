@@ -45,52 +45,50 @@ main {
 
 /* Progress ------------------------- bar */
 
-
-.progress-item label {
-  display: block;
-  margin: 10px 0;
-  font-size: 14px;
+.progress-item {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.adobe {
+    width: 90%;
+    background-color: rgb(85, 157, 240);
+    text-align: center;
+    border-radius:50px;
+    color: white;
+}
+.photo {
+    width: 80%;
+    background-color: rgb(85, 157, 240);
+    text-align: center;
+    border-radius:50px;
+    color: white;
 }
 
-/* Wrapper to center the percentage */
-.progress-wrapper {
-  position: relative;
+.Illustrator {
+    width: 75%;
+    background-color: rgb(85, 157, 240);
+    text-align: center;
+    border-radius:50px;
+    color: white;
 }
 
-/* Base progress element */
-.progress-wrapper progress {
-  width: 100%;
-  border-radius: 20px;
-  appearance: none;
+.media {
+   width: 50%;
+    background-color: rgb(85, 157, 240);
+    text-align: center;
+    border-radius:50px;
+    color: white; 
 }
 
-
-/* Chrome / Edge / Safari */
-.progress-wrapper progress::-webkit-progress-bar {
-  background-color: transparent;
-  border-radius: 20px;
+.photo, .media, .Illustrator, .adobe {
+    margin-top: 20px;
 }
 
-.progress-wrapper progress::-webkit-progress-value {
-  background-color: hsl(206, 94%, 57%);
-  border-radius: 20px;
-}
-
-/* Firefox */
-.progress-wrapper progress::-moz-progress-bar {
-  background-color: #2da0f8;
-  border-radius: 20px;
-}
-
-/* Percentage text */
 .progress-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 12px;
+    font-size: 13px;
 }
+
 /* Progress bar. ---------------- END */
 
 .experience {
