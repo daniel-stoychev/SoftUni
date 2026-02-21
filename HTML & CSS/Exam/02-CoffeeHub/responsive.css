@@ -1,0 +1,41 @@
+@media (max-width: 600px) {
+
+    .home-heading-container {
+        width: 100%;
+    }
+    
+    .home-features {
+        height: auto;
+    }
+
+    .home-cards-container {
+        flex-direction: column;
+        width: 100%;
+    }
+    .home-feature-card, .home-feature-card1, .home-feature-card2 {
+        width: 100%;
+    }
+
+    .home-stats {
+        display: block;
+    }
+
+    .home-hero {
+        flex-direction: column-reverse;
+
+    }
+
+    .home-hero img {
+        width: 100%;
+    }
+    
+    .home-hero-text-container {
+        width: 100%;
+        margin-left: 0;
+        align-items: center;
+    }
+    .home-cta-btn2 {
+        width: 35%;
+        margin: 0 auto;
+    }
+}
