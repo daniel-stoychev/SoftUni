@@ -25,9 +25,6 @@ type SleepFloor = {
 
 type simpliefied = TrainFloor | DineFloor | SleepFloor;
 
-visitFloor({ train() { }, number: 1, hallway: 'C', pass: 'Guest' });
-visitFloor({ dine() { }, number: 2, hallway: 'C', pass: 'Guest' });
-
 function visitFloor(
   floor:simpliefied) {
   switch (floor.number) {
