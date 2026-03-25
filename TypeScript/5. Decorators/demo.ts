@@ -1,3 +1,10 @@
+function classDecorator(constructor: Function) {
+    return (function name() {
+        return {age: 20}
+    }) as any;
+}
+
+@classDecorator
 class Person {
     firstName: string
     lastName: string
@@ -22,6 +29,11 @@ class Person {
 
 
 const personName = new Person('John', 'Doe');
-console.log(personName.fullName());
-personName.printInfo(true)
+console.log(personName);
+
+// console.log(personName.fullName());
+// personName.printInfo(true)
+
+
+
 
