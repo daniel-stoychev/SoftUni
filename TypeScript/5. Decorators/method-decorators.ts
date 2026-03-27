@@ -8,7 +8,15 @@ class Num {
 }
 
 function add10(target: Object, key: string, descriptor: PropertyDescriptor) {
-    console.log(descriptor);
+    let originalMethod = descriptor.value;
+
+    descriptor.value = function (...args: any[]) {
+        let result = originalMethod.call(this, args);
+        result += 10;
+        return result;
+    }
+
+    return descriptor;
     
 }
 
