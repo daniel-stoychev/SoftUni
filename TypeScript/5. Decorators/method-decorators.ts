@@ -9,6 +9,8 @@ class Num {
 
 function add10(target: Object, key: string, descriptor: PropertyDescriptor) {
     let originalMethod = descriptor.value;
+    console.log(key);
+    
 
     descriptor.value = function (...args: any[]) {
         let result = originalMethod.call(this, args);
