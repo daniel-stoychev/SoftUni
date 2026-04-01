@@ -1,3 +1,4 @@
+import { ConvertToEuro } from "./decorators";
 import { MenuItem, MenuItemType, WithId } from "./models";
 
 abstract class BaseMenuItem implements MenuItem{
@@ -19,7 +20,7 @@ abstract class BaseMenuItem implements MenuItem{
         return this._basePrice;
     }
 
-    // @ConvertToEuro 
+    @ConvertToEuro 
     get finalPrice(): number | undefined { return this._basePrice;}
 }
 
@@ -31,11 +32,7 @@ class WelcomeSnack extends BaseMenuItem {
     }
 
     getCalories(): number {
-        if (this.hasCream) {
-            return (this.weightGrams * 1.2) + (this.hasCream ? 20 : 0);
-        } else {
-            return this.weightGrams * 1.2;
-        }
+        return (this.weightGrams * 1.2) + (this.hasCream ? 20 : 0);
     }
 }
 
@@ -46,11 +43,7 @@ class MainCourse extends BaseMenuItem {
         this.fatGrams = fatGrams;
     }
     getCalories(): number {
-        if (this.fatGrams) {
-            return (this.weightGrams * 2.0) + (this.fatGrams * 3);
-        } else {
-            return this.weightGrams * 2.0;
-        }
+        return (this.weightGrams * 2.0) + (this.fatGrams * 3);
     }
 }
 
@@ -61,11 +54,7 @@ class Dessert extends BaseMenuItem {
         this.hasSugar = hasSugar;
     }
     getCalories(): number {
-        if (this.hasSugar) {
-            return (this.weightGrams * 2.5) + (this.hasSugar ? 100 : 0);
-        } else {
-            return this.weightGrams * 2.5;
-        }
+        return (this.weightGrams * 2.5) + (this.hasSugar ? 100 : 0);
     }
 }
 
@@ -74,3 +63,10 @@ function findItemById<T extends WithId> (items: T[], id: number): T | undefined 
     return itemFound;
 }
 
+export {
+    BaseMenuItem,
+    WelcomeSnack,
+    MainCourse,
+    Dessert,
+    findItemById
+}
