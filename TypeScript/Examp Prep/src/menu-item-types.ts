@@ -19,14 +19,14 @@ abstract class BaseMenuItem implements MenuItem{
         return this._basePrice;
     }
 
-    @ConvertToEuro 
+    // @ConvertToEuro 
     get finalPrice(): number | undefined { return this._basePrice;}
 }
 
 class WelcomeSnack extends BaseMenuItem {
     hasCream: boolean;
     constructor(id: number, name: string, weightGrams: number, hasCream: boolean) {
-        super(id, name, weightGrams);
+        super(id, name, weightGrams, MenuItemType.WelcomeSnack);
         this.hasCream = hasCream;
     }
 
@@ -42,7 +42,7 @@ class WelcomeSnack extends BaseMenuItem {
 class MainCourse extends BaseMenuItem {
     fatGrams: number;
     constructor(id: number, name: string, weightGrams: number, fatGrams: number) {
-        super(id, name, weightGrams);
+        super(id, name, weightGrams, MenuItemType.MainCourse);
         this.fatGrams = fatGrams;
     }
     getCalories(): number {
@@ -57,7 +57,7 @@ class MainCourse extends BaseMenuItem {
 class Dessert extends BaseMenuItem {
     hasSugar: boolean;
     constructor(id: number, name: string, weightGrams: number, hasSugar: boolean) {
-        super(id, name, weightGrams);
+        super(id, name, weightGrams, MenuItemType.Dessert);
         this.hasSugar = hasSugar;
     }
     getCalories(): number {
