@@ -34,9 +34,9 @@ console.log(menuManager.addMenuItem(dessert));
 // }
 
 // --- Test 5: Check Decorated finalPrice ---
-// console.log(`MainCourse base price: ${mainCourse.basePrice} BGN`);
-// console.log(`MainCourse final price in EUR: ${mainCourse.finalPrice} EUR`);
-// console.log(`WelcomeSnack final price (should be undefined): ${welcomeSnack.finalPrice}`);
+console.log(`MainCourse base price: ${mainCourse.basePrice} BGN`);
+console.log(`MainCourse final price in EUR: ${mainCourse.finalPrice} EUR`);
+console.log(`WelcomeSnack final price (should be undefined): ${welcomeSnack.finalPrice}`);
 
 
 export {
