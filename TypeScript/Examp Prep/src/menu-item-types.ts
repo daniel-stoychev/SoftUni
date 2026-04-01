@@ -4,11 +4,12 @@ abstract class BaseMenuItem implements MenuItem{
     id: number;
     name: string;
     weightGrams: number;
-    // type: MenuItemType;
-    constructor(id: number, name: string, weightGrams: number) {
+    type: MenuItemType;
+    constructor(id: number, name: string, weightGrams: number, type: MenuItemType) {
         this.id = id;
         this.name = name;
         this.weightGrams = weightGrams;
+        this.type = type;
     }
 
     abstract getCalories():number;
