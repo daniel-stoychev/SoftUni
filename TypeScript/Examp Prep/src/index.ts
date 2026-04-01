@@ -1,6 +1,6 @@
 import { MenuManager } from './menu-manager';
 import { WelcomeSnack, MainCourse, Dessert } from './menu-item-types';
-import { Client } from './models.ts';
+import { Client } from './models';
 
 
 const menuManager = new MenuManager();

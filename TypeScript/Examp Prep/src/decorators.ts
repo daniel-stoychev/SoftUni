@@ -10,7 +10,7 @@ export function ConvertToEuro(
     }
 
     descriptor.get = function () {
-        const result = originalGetter.call(this);
+        const result = originalGetter?.call(this);
 
         
         if (result === undefined) {

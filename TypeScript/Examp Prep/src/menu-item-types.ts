@@ -38,9 +38,10 @@ class WelcomeSnack extends BaseMenuItem {
 
 class MainCourse extends BaseMenuItem {
     fatGrams: number;
-    constructor(id: number, name: string, weightGrams: number, fatGrams: number) {
+    constructor(id: number, name: string, weightGrams: number, fatGrams: number, basePrice: number) {
         super(id, name, weightGrams, MenuItemType.MainCourse);
         this.fatGrams = fatGrams;
+        this._basePrice = basePrice;
     }
     getCalories(): number {
         return (this.weightGrams * 2.0) + (this.fatGrams * 3);
@@ -49,9 +50,10 @@ class MainCourse extends BaseMenuItem {
 
 class Dessert extends BaseMenuItem {
     hasSugar: boolean;
-    constructor(id: number, name: string, weightGrams: number, hasSugar: boolean) {
+    constructor(id: number, name: string, weightGrams: number, hasSugar: boolean, basePrice: number) {
         super(id, name, weightGrams, MenuItemType.Dessert);
         this.hasSugar = hasSugar;
+        this._basePrice = basePrice;
     }
     getCalories(): number {
         return (this.weightGrams * 2.5) + (this.hasSugar ? 100 : 0);
