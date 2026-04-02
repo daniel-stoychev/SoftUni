@@ -1,4 +1,4 @@
-enum ContentType {
+export enum ContentType {
     Movie,
     Series,
     Documentary
