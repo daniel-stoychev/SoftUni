@@ -38,7 +38,7 @@ export class Movie extends DetailedContent{
 export class Series extends DetailedContent{
     readonly platformUrl: string;
     constructor (id: number, title: string, releaseDate: Date, platformUrl: string) {
-        super(id, title, releaseDate, ContentType.Movie);
+        super(id, title, releaseDate, ContentType.Series);
         this.platformUrl = platformUrl;
     }
     getDetails(): string {

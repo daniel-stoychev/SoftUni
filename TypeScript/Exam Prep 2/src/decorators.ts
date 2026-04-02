@@ -5,7 +5,7 @@ export function NotifyOnSuccess(notificationType: 'Email' | 'Push') {
         descriptor.value = function (...args: any[]) {
             const returnedValue = originalMethod.apply(this, args);
             if (typeof returnedValue === 'string' && !returnedValue.startsWith('ERROR')) {
-                console.log(`[NOTIFY] Sending <${notificationType}> notification for successful action "<${methodName}>".`);   
+                console.log(`[NOTIFY] Sending ${notificationType} notification for successful action "${methodName}".`);   
             }
             return returnedValue;
         }
