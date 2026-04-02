@@ -1,7 +1,9 @@
-import { DetailedContent } from "./content-types";
+import { DetailedContent, findItemById } from "./content-types";
+import { NotifyOnSuccess } from "./decorators";
+
 import { Viewer } from "./models";
 
-class ContentManager {
+export class ContentManager {
     private contentItems: DetailedContent[] = [];
     private viewers: Map<number, Viewer[]> = new Map();
 
@@ -11,7 +13,7 @@ class ContentManager {
         return `Content "${item.title}" (ID: ${item.id}) has been added.`
     }
 
-    // @NotifyOnSuccess(Email)
+    @NotifyOnSuccess('Email')
     markAsWatched(contentId: number, viewer: Viewer) {
         if (this.viewers.has(contentId)) {
             const viewerArr = this.viewers.get(contentId);
@@ -28,7 +30,11 @@ class ContentManager {
             const curItem = item.getDetails();
             formatedArr.push(curItem);
         }
-        
+        return formatedArr;
+    }
+
+    findContent(contentId: number) {
+        findItemById(this.contentItems, contentId);
     }
 
 }

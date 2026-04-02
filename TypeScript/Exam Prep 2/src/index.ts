@@ -6,29 +6,29 @@ async function main() {
 
 // ------------------------------------------------------------
 // Input 1
-// const manager = new ContentManager();
+const manager = new ContentManager();
 
-// const duneMovie = new Movie( 
-//   1, "Dune: Part Two", new Date("2024-03-01"), "Denis Villeneuve"
-// );
+const duneMovie = new Movie( 
+  1, "Dune: Part Two", new Date("2024-03-01"), "Denis Villeneuve"
+);
 
-// const theLastOfUsSeries = new Series( 
-//   2, "The Last of Us", new Date("2023-01-15"), "http://hbo.com/the-last-of-us"
-// );
+const theLastOfUsSeries = new Series( 
+  2, "The Last of Us", new Date("2023-01-15"), "http://hbo.com/the-last-of-us"
+);
 
-// const inceptionMovie = new Movie(
-//   3, "Inception", new Date("2010-07-16"), "Christopher Nolan"
-// );
+const inceptionMovie = new Movie(
+  3, "Inception", new Date("2010-07-16"), "Christopher Nolan"
+);
 
-// const theCrownSeries = new Series(
-//   4, "The Crown", new Date("2016-11-04"), "http://netflix.com/the-crown"
-// );
+const theCrownSeries = new Series(
+  4, "The Crown", new Date("2016-11-04"), "http://netflix.com/the-crown"
+);
 
 
-// console.log(manager.addContent(duneMovie));
-// console.log(manager.addContent(theLastOfUsSeries));
-// console.log(manager.addContent(inceptionMovie));
-// console.log(manager.addContent(theCrownSeries));
+console.log(manager.addContent(duneMovie));
+console.log(manager.addContent(theLastOfUsSeries));
+console.log(manager.addContent(inceptionMovie));
+console.log(manager.addContent(theCrownSeries));
 // ------------------------------------------------------------
 
 // Input 2
