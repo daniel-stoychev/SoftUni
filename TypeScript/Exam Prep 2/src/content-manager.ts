@@ -24,14 +24,21 @@ export class ContentManager {
     //     }
     // }
     markAsWatched(contentId: number, viewer: Viewer): string {
-        if (this.viewers.has(contentId)) {
-            const viewerArr = this.viewers.get(contentId);
-            viewerArr?.push(viewer);
-            return `Viewer ${viewer.name} marked content ID ${contentId} as watched.`;
-        } else {
-            return `ERROR: Content with ID ${contentId} not found.`;
-        }
+    const viewerArr = this.viewers.get(contentId);
+
+    if (!viewerArr) {
+        return `ERROR: Content with ID ${contentId} not found.`;
     }
+
+    // prevent duplicates
+    if (viewerArr.some(v => v.name === viewer.name)) {
+        return `ERROR: Viewer ${viewer.name} already watched content ID ${contentId}.`;
+    }
+
+    viewerArr.push(viewer);
+
+    return `Viewer ${viewer.name} marked content ID ${contentId} as watched.`;
+}
 
     listAllContent():string[] {
         let formatedArr: string[] = [];
