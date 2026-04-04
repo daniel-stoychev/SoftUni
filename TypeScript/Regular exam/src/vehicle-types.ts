@@ -1,6 +1,6 @@
 import { Vehicle, VehicleCategory, WithId } from "./models";
 
-abstract class BaseVehicle implements Vehicle {
+export abstract class BaseVehicle implements Vehicle {
     id: number;
     model: string;
     engineCC: number; 
@@ -16,8 +16,6 @@ abstract class BaseVehicle implements Vehicle {
 
     abstract getMaintenanceCost(): number;
 
-    
-
     get baseRentalPrice(): number | undefined {
         return this._baseRentalPrice;
     }
@@ -29,7 +27,7 @@ abstract class BaseVehicle implements Vehicle {
 
 }
 
-class Sedan extends BaseVehicle {
+export class Sedan extends BaseVehicle {
     passengerCount: number;
     constructor(id: number, model: string, engineCC: number, passengerCount: number) {
         super(id, model, engineCC, VehicleCategory.Sedan);
@@ -42,7 +40,7 @@ class Sedan extends BaseVehicle {
 
 }
 
-class SUV extends BaseVehicle {
+export class SUV extends BaseVehicle {
     fourWheelDrive: boolean
     constructor(id: number, model: string, engineCC: number, fourWheelDrive: boolean, baseRentalPrice: number) {
         super(id, model, engineCC, VehicleCategory.SUV);
@@ -55,7 +53,7 @@ class SUV extends BaseVehicle {
     }
 }
 
-class Truck extends BaseVehicle {
+export class Truck extends BaseVehicle {
     payloadTons: number;
     constructor(id: number, model: string, engineCC: number, payloadTons: number, baseRentalPrice: number) {
         super(id, model, engineCC, VehicleCategory.Truck);
@@ -68,7 +66,7 @@ class Truck extends BaseVehicle {
     }
 }
 
-function findItemById<T extends WithId> (items: T[], id: number): T | undefined {
+export function findItemById<T extends WithId> (items: T[], id: number): T | undefined {
     return items.find((item) => item.id === id);
 }
 
