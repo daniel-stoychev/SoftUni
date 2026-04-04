@@ -29,13 +29,13 @@ export class FleetManager {
         for (const vehicle of this.vehicles) {
         if (vehicle.category === VehicleCategory.Sedan) {
                 const sedan = vehicle as Sedan;
-                allVihicles.push(`[${vehicle.category}] ${vehicle.model} (${vehicle.engineCC}cc, ${sedan.passengerCount}) - Maintenance: ${Number(vehicle.baseRentalPrice).toFixed(2)}`);
+                allVihicles.push(`[${VehicleCategory[vehicle.category].toUpperCase()}] ${vehicle.model} (${vehicle.engineCC}cc, Passengers ${sedan.passengerCount}) - Maintenance: ${vehicle.getMaintenanceCost().toFixed(2)}€`);
             } else if (vehicle.category === VehicleCategory.SUV) {
                 const suv = vehicle as SUV;
-                allVihicles.push(`[${vehicle.category}] ${vehicle.model} (${vehicle.engineCC}cc, ${suv.fourWheelDrive}) - Maintenance: ${Number(vehicle.baseRentalPrice).toFixed(2)}`);
+                allVihicles.push(`[${VehicleCategory[vehicle.category].toUpperCase()}] ${vehicle.model} (${vehicle.engineCC}cc, 4WD: ${suv.fourWheelDrive}) - Maintenance: ${vehicle.getMaintenanceCost().toFixed(2)}€`);
             } else {
                 const truck = vehicle as Truck;
-                allVihicles.push(`[${vehicle.category}] ${vehicle.model} (${vehicle.engineCC}cc, ${truck.payloadTons}) - Maintenance: ${Number(vehicle.baseRentalPrice).toFixed(2)}`);
+                allVihicles.push(`[${VehicleCategory[vehicle.category].toUpperCase()}] ${vehicle.model} (${vehicle.engineCC}cc, Payload ${truck.payloadTons}t) - Maintenance: ${vehicle.getMaintenanceCost().toFixed(2)}€`);
             }  
         }
         allVihicles.push("-----------------------------")

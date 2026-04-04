@@ -1,7 +1,7 @@
 // index.ts 
-import { FleetManager } from './fleet-manager.js';
-import { Sedan, SUV, Truck } from './vehicle-types.js';
-import { Driver } from './models.js';
+import { FleetManager } from './fleet-manager';
+import { Sedan, SUV, Truck } from './vehicle-types';
+import { Driver } from './models';
 
 async function main() {
     // --- Input 1: Add Vehicles ---
@@ -33,9 +33,9 @@ async function main() {
     // }
 
     // --- Input 5: Check Decorated insuredRentalPrice ---
-    // console.log(`Truck base rental price: ${truck.baseRentalPrice?.toFixed(2)}€`);
-    // console.log(`Truck insured rental price: ${truck.insuredRentalPrice?.toFixed(2)}€`);
-    // console.log(`Sedan insured rental price (should be undefined): ${sedan.insuredRentalPrice}`);
+    console.log(`Truck base rental price: ${truck.baseRentalPrice?.toFixed(2)}€`);
+    console.log(`Truck insured rental price: ${truck.insuredRentalPrice?.toFixed(2)}€`);
+    console.log(`Sedan insured rental price (should be undefined): ${sedan.insuredRentalPrice}`);
 }
 
 main();

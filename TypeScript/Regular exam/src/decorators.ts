@@ -14,7 +14,7 @@ export function ApplyInsurance(target: object, propertyKey: string, descriptor: 
 
         const surchargePrice = (result * 1.12).toFixed(2);
 
-        return surchargePrice;
+        return Number(surchargePrice);
     }
 
     return descriptor;
